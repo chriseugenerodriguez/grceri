@@ -1,0 +1,62 @@
+@import "../../../../assets/css/abstracts/_mixins.scss";
+@import "../../../../assets/css/abstracts/_variables.scss";
+
+:host {
+  background: $white;
+  position: fixed;
+  width: 100%;
+  top: 0px;
+  z-index: 1;
+
+  .header {
+    @include animation(slide-in-top .5s);
+    @include box-shadow(0 0 3px 0 rgba(57, 73, 76, 0.35));
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 15px 20px;
+    flex-direction: row;
+
+    a {
+      margin-right: 20px;
+      display: flex;
+
+      img {
+        width: 16px;
+      }
+    }
+
+    h1 {
+      @include font-size(25px);
+      margin: 0px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      width: 58%;
+
+      @media screen and (max-width: $screen-md) {
+        @include font-size(20px);
+      }
+    }
+
+    span {
+      display: flex;
+      margin-left: auto;
+
+      img {
+        cursor: pointer;
+        display: inline-flex;
+        align-self: center;
+        width: 16px;
+
+        &:not(:first-child) {
+          margin-left: 25px;
+        }
+
+        &:first-child {
+          @include rotate(90);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,258 @@
+<ng-container *ngIf="data; else nutritionSkeleton">
+  <h2 class="product__section-title">Nutritional Facts</h2>
+  <div class="product__section__nutrition">
+    <ul class="product__section__nutrition-legend">
+      <li class="product__section__nutrition-legend-pos">Beneficial Nutrients</li>
+      <li class="product__section__nutrition-legend-mod">Consume Moderately</li>
+      <li class="product__section__nutrition-legend-neg">Limit Consumption</li>
+    </ul>
+    <div class="row">
+      <div class="col col-md-2">
+        <h3 class="product__section__nutrition-title">Info</h3>
+        <hr />
+        <div class="product__section__nutrition__group">
+          <h4 class="product__section__nutrition__group-title">Serving</h4>
+          <ul class="product__section__nutrition__group-list">
+            <li><strong>Size:</strong> 1 cup (228g)</li>
+            <li><strong>Container:</strong> 3</li>
+          </ul>
+        </div>
+        <div class="product__section__nutrition__group">
+          <h4 class="product__section__nutrition__group-title">Calories</h4>
+          <ul class="product__section__nutrition__group-list">
+            <li><strong>Per Serving:</strong> 250</li>
+            <li><strong>Total:</strong> 750</li>
+          </ul>
+        </div>
+        <div class="product__section__nutrition__group">
+          <h4 class="product__section__nutrition__group-title">Warnings</h4>
+          <ul class="product__section__nutrition__group-list">
+            <li><strong>Medium</strong> Saturated Fat</li>
+            <li><strong>Contains</strong> Trans Fat</li>
+            <li><strong>High</strong> Sodium</li>
+          </ul>
+        </div>
+        <div class="product__section__nutrition__group">
+          <h4 class="product__section__nutrition__group-title">Contains</h4>
+          <ul class="product__section__nutrition__group-list">
+            <li>Eggs</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col col-md-3">
+        <h3 class="product__section__nutrition-title">Categories</h3>
+        <hr />
+        <div class="product__section__nutrition__group">
+
+          <div class="product__section__nutrition__group__category product__section__nutrition__group__category-pos">
+            <div class="product__section__nutrition__group__category-title">Carbohydrates</div>
+            <div class="product__section__nutrition__group__category-value">
+              <i class="fa fa-circle-thin"></i>
+            </div>
+          </div>
+          <div class="product__section__nutrition__group__category-row">
+            <div class="product__section__nutrition__group__category-half product__section__nutrition__group__category-pos">
+              <div class="product__section__nutrition__group__category-title">Vegetable</div>
+              <div class="product__section__nutrition__group__category-value">
+                <i class="fa fa-circle-thin"></i>
+              </div>
+            </div>
+            <div class="product__section__nutrition__group__category-half product__section__nutrition__group__category-pos">
+              <div class="product__section__nutrition__group__category-title">Fruit</div>
+              <div class="product__section__nutrition__group__category-value">
+                <i class="fa fa-circle-thin"></i>
+              </div>
+            </div>
+          </div>
+          <div class="product__section__nutrition__group__category-row">
+            <div class="product__section__nutrition__group__category-half product__section__nutrition__group__category-pos">
+              <div class="product__section__nutrition__group__category-title">Dairy</div>
+              <div class="product__section__nutrition__group__category-value">
+                <i class="fa fa-circle-thin"></i>
+              </div>
+            </div>
+            <div class="product__section__nutrition__group__category-half product__section__nutrition__group__category-pos">
+              <div class="product__section__nutrition__group__category-title">Meat</div>
+              <div class="product__section__nutrition__group__category-value">
+                <i class="fa fa-circle-thin"></i>
+              </div>
+            </div>
+          </div>
+          <hr />
+          <div class="product__section__nutrition__group__category-row">
+            <div class="product__section__nutrition__group__category-half product__section__nutrition__group__category-pos">
+              <div class="product__section__nutrition__group__category-title">Beneficial Fats</div>
+              <div class="product__section__nutrition__group__category-value">
+                <i class="fa fa-circle-thin"></i>
+              </div>
+            </div>
+            <div class="product__section__nutrition__group__category-half product__section__nutrition__group__category-neg">
+              <div class="product__section__nutrition__group__category-title">Other Fats</div>
+              <div class="product__section__nutrition__group__category-value">
+                <i class="fa fa-circle-thin"></i>
+              </div>
+            </div>
+          </div>
+          <div class="product__section__nutrition__group__category-row">
+            <div class="product__section__nutrition__group__category-half product__section__nutrition__group__category-mod">
+              <div class="product__section__nutrition__group__category-title">Sweets</div>
+              <div class="product__section__nutrition__group__category-value">
+                <i class="fa fa-circle-thin"></i>
+              </div>
+            </div>
+            <div class="product__section__nutrition__group__category-half product__section__nutrition__group__category-neg">
+              <div class="product__section__nutrition__group__category-title">Sodium</div>
+              <div class="product__section__nutrition__group__category-value">
+                <i class="fa fa-circle-thin"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col col-md-7">
+        <h3 class="product__section__nutrition-title">Summary</h3>
+        <hr />
+        <div class="product__section__nutrition__group">
+
+          <table class="product__section__nutrition__group-table">
+            <thead>
+              <tr>
+                <th width="200">Amount Per Serving</th>
+                <th width="80"></th>
+                <th colspan="2"><span>Daily Value</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="product__section__nutrition__group-table-mod">
+                <th class="product__section__nutrition__group-table-title">Calories</th>
+                <th class="product__section__nutrition__group-table-right">200</th>
+                <th>
+                  <bar-rating [rate]="76" [max]="100" readOnly="true" [theme]="'horizontal'"></bar-rating>
+                </th>
+                <th class="product__section__nutrition__group-table-right">12%</th>
+              </tr>
+              <tr class="product__section__nutrition__group-table-mod">
+                <th class="product__section__nutrition__group-table-title">Total Fat</th>
+                <th class="product__section__nutrition__group-table-right">12g</th>
+                <th>
+                  <bar-rating [rate]="76" [max]="100" readOnly="true" [theme]="'horizontal'"></bar-rating>
+                </th>
+                <th class="product__section__nutrition__group-table-right">12%</th>
+              </tr>
+              <tr class="product__section__nutrition__group-table-neg">
+                <th class="product__section__nutrition__group-table-subtitle">Saturated Fats</th>
+                <th class="product__section__nutrition__group-table-right">3g</th>
+                <th>
+                  <bar-rating [rate]="15" [max]="100" readOnly="true" [theme]="'horizontal'"></bar-rating>
+                </th>
+                <th class="product__section__nutrition__group-table-right">15%</th>
+              </tr>
+              <tr class="product__section__nutrition__group-table-neg">
+                <th class="product__section__nutrition__group-table-subtitle">Trans Fats</th>
+                <th class="product__section__nutrition__group-table-right">3g</th>
+                <th>
+                  <bar-rating [rate]="15" [max]="100" readOnly="true" [theme]="'horizontal'"></bar-rating>
+                </th>
+                <th class="product__section__nutrition__group-table-right">15%</th>
+              </tr>
+              <tr class="product__section__nutrition__group-table-neg">
+                <th class="product__section__nutrition__group-table-title">Cholesterol</th>
+                <th class="product__section__nutrition__group-table-right">30mg</th>
+                <th>
+                  <bar-rating [rate]="10" [max]="100" readOnly="true" [theme]="'horizontal'"></bar-rating>
+                </th>
+                <th class="product__section__nutrition__group-table-right">10%</th>
+              </tr>
+              <tr class="product__section__nutrition__group-table-neg">
+                <th class="product__section__nutrition__group-table-title">Sodium</th>
+                <th class="product__section__nutrition__group-table-right">470mg</th>
+                <th>
+                  <bar-rating [rate]="20" [max]="100" readOnly="true" [theme]="'horizontal'"></bar-rating>
+                </th>
+                <th class="product__section__nutrition__group-table-right">20%</th>
+              </tr>
+              <tr class="product__section__nutrition__group-table-pos">
+                <th class="product__section__nutrition__group-table-title">Total Carbohydrate</th>
+                <th class="product__section__nutrition__group-table-right">31g</th>
+                <th>
+                  <bar-rating [rate]="20" [max]="100" readOnly="true" [theme]="'horizontal'"></bar-rating>
+                </th>
+                <th class="product__section__nutrition__group-table-right">20%</th>
+              </tr>
+              <tr class="product__section__nutrition__group-table-pos">
+                <th class="product__section__nutrition__group-table-subtitle">Dietary Fiber</th>
+                <th class="product__section__nutrition__group-table-right">0g</th>
+                <th>
+                  <bar-rating [rate]="0" [max]="100" readOnly="true" [theme]="'horizontal'"></bar-rating>
+                </th>
+                <th class="product__section__nutrition__group-table-right">0%</th>
+              </tr>
+              <tr class="product__section__nutrition__group-table-pos">
+                <th class="product__section__nutrition__group-table-subtitle">Sugars</th>
+                <th class="product__section__nutrition__group-table-right">5g</th>
+                <th>
+                  <bar-rating [rate]="0" [max]="100" readOnly="true" [theme]="'horizontal'"></bar-rating>
+                </th>
+                <th class="product__section__nutrition__group-table-right">0%</th>
+              </tr>
+              <tr class="product__section__nutrition__group-table-pos product__section__nutrition__group-table-hr">
+                <th class="product__section__nutrition__group-table-title">Vitamin A</th>
+                <th class="product__section__nutrition__group-table-right">200 UI</th>
+                <th>
+                  <bar-rating [rate]="4" [max]="100" readOnly="true" [theme]="'horizontal'"></bar-rating>
+                </th>
+                <th class="product__section__nutrition__group-table-right">4%</th>
+              </tr>
+              <tr class="product__section__nutrition__group-table-pos">
+                <th class="product__section__nutrition__group-table-title">Vitamin C</th>
+                <th class="product__section__nutrition__group-table-right">1.2mg</th>
+                <th>
+                  <bar-rating [rate]="2" [max]="100" readOnly="true" [theme]="'horizontal'"></bar-rating>
+                </th>
+                <th class="product__section__nutrition__group-table-right">2%</th>
+              </tr>
+              <tr class="product__section__nutrition__group-table-pos">
+                <th class="product__section__nutrition__group-table-title">Calcium</th>
+                <th class="product__section__nutrition__group-table-right">200mg</th>
+                <th>
+                  <bar-rating [rate]="20" [max]="100" readOnly="true" [theme]="'horizontal'"></bar-rating>
+                </th>
+                <th class="product__section__nutrition__group-table-right">20%</th>
+              </tr>
+              <tr class="product__section__nutrition__group-table-pos">
+                <th class="product__section__nutrition__group-table-title">Iron</th>
+                <th class="product__section__nutrition__group-table-right">0.8mg</th>
+                <th>
+                  <bar-rating [rate]="4" [max]="100" readOnly="true" [theme]="'horizontal'"></bar-rating>
+                </th>
+                <th class="product__section__nutrition__group-table-right">4%</th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <p class="product__section__nutrition__group-ingredients">
+      <strong>Ingredients:</strong>
+    </p>
+    <small><strong>Disclaimer:</strong> Percent Daily Values are based on a 2000 calorie diet.</small>
+  </div>
+</ng-container>
+
+<ng-template #nutritionSkeleton>
+  <div class="row">
+    <div class="col col-md-6">
+      <div class="col col-md-4">
+        <div class="skeleton-bar"></div>
+      </div>
+    </div>
+    <div class="col col-md-6">
+      <div class="row">
+        <div class="col col-md-5 col-md-offset-7">
+          <div class="skeleton-bar"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>

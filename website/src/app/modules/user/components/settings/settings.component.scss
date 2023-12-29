@@ -1,0 +1,243 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the header of the site/application.
+// -----------------------------------------------------------------------------
+
+//  BEM - Block Element Modifier
+//  This is how our code is structured. Please follow this layout and format.
+//  More Info: https://css-tricks.com/bem-101/
+//
+//  .steps {
+//	    &__item {		
+//		    &--first {}
+//		    &--last {}
+//		    &--active {}
+//		    &--done {}
+//	    }
+//	    &__link {}
+//  }
+
+@import "../../../../../assets/css/abstracts/_mixins.scss";
+@import "../../../../../assets/css/abstracts/_variables.scss";
+
+::ng-deep {
+  .settings {
+    border-top: 1px solid #eeedf2;
+    display: block;
+
+    h1 {
+      display: block;
+      margin: 48px 0;
+
+      @media screen and (max-width: $screen-sm) {
+        margin: 25px 0;
+      }
+    }
+
+    &__links {
+      &__section {
+        display: flex;
+        flex-wrap: nowrap;
+        overflow: auto;
+
+        a {
+          @include font-size(16px);
+          flex: 0 0 auto;
+          padding-bottom: 1.6rem;
+          color: #9ea2a8;
+          display: inline;
+          text-transform: uppercase;
+          letter-spacing: .5px;
+          border-bottom: 2px solid transparent;
+          margin: 0 2rem 0 0;
+
+          &:hover,
+          &.active {
+            color: #30363d;
+          }
+
+          &.active {
+            text-decoration: none;
+            border-color: #30363d;
+          }
+
+          @media screen and (max-width: $screen-sm) {
+            padding-top: 1.6rem;
+          }
+        }
+      }
+    }
+
+    &__content {
+      border-top: 1px solid #eee;
+
+      .container {
+        padding: 3.2rem 15px;
+        min-height: 56vh;
+        max-width: 1200px;
+
+        @media screen and (max-width: $screen-sm) {
+          padding: 20px 20px 0 20px;
+        }
+      }
+
+      &-section {
+        background-color: #ffffff;
+        border: 1px solid #eee;
+        margin-bottom: 3.2rem;
+
+        .card-body,
+        .card-footer {
+          padding: 1.4rem 2.2rem;
+          border-bottom: 1px solid #e1e5eb;
+        }
+
+        .card-header {
+          background: #f9f9f9;
+          border-bottom: 1px solid #e0e0e0;
+          padding: 30px;
+        }
+
+        h2 {
+          @include font-size(21px);
+          margin: 0px;
+          color: #1c1e21;
+          font-family: 'AB', sans-serif;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          button,
+          span {
+            @include font-size(17px);
+            text-transform: uppercase;
+          }
+
+          span {
+            @include opacity(.6);
+            color: #686c73;
+
+            &.green {
+              @include opacity(1);
+              color: $green;
+            }
+          }
+        }
+
+
+        button {
+          font-family: 'AL', sans-serif;
+          font-weight: 400;
+          letter-spacing: 1px;
+          width: auto;
+          color: $white;
+        }
+
+        p {
+          @include font-size(17px);
+          display: flex;
+          justify-content: space-between;
+
+          strong {
+            font-family: 'AB', sans-serif;
+          }
+        }
+
+        .card-body,
+        .card-footer {
+          @include font-size(18px);
+          font-family: 'AL', sans-serif;
+        }
+
+        .card-body {
+          color: #686c73;
+          line-height: 26px;
+
+          h4 {
+            @include font-size(17px);
+            font-family: 'AB', sans-serif;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            margin: 0 0 20px 0;
+
+            &:nth-of-type(2) {
+              margin-top: 20px;
+            }
+          }
+
+          >ul {
+            @include font-size(16px);
+            margin: 0;
+
+            >li {
+              padding: 0 0 10px;
+              display: flex;
+              align-items: center;
+              justify-content: left;
+
+              &:last-child {
+                padding-bottom: 0px;
+              }
+
+              img {
+                width: 30px;
+                margin: 0 20px 0 0;
+              }
+
+              .card-dropdown {
+                width: 12px;
+                position: relative;
+                margin-left: auto;
+
+                img {
+                  @include transform(rotate(90deg));
+                  width: 100%;
+                }
+
+                &-menu {
+                  border-radius: 0px;
+                  box-shadow: 0 0 3px 0 rgba(57, 73, 76, 0.35);
+                  border: none;
+                  right: 20px;
+                  top: -8px;
+                  left: inherit;
+                }
+              }
+            }
+          }
+        }
+
+        &-avatar {
+          @include border-radius(100%);
+          width: 100px;
+          margin: 0px auto;
+          display: block;
+        }
+      }
+
+      .progress {
+        @include box-shadow(none);
+        @include border-radius(0px);
+        height: 13px;
+        margin: 8px 0 13px;
+
+        .progress-bar {
+          box-shadow: none;
+        }
+      }
+
+      @media screen and (min-width: $screen-sm) {
+        .card-right {
+          text-align: right;
+        }
+      }
+
+      .card-footer {
+        color: $green;
+      }
+
+      @media screen and (max-width: $screen-sm) {
+        margin-bottom: 20px;
+      }
+    }
+  }
+}

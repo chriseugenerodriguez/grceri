@@ -1,0 +1,24 @@
+@import "../../../../../../assets/css/abstracts/_mixins.scss";
+@import "../../../../../../assets/css/abstracts/_variables.scss";
+
+.feedback-block {
+  @include font-size(15px);
+  @include border-radius(4px);
+  padding: 20px;
+  background-color: #ccebf3;
+  color: #484848;
+  overflow: hidden;
+  margin: 0 0 20px 0;
+
+  &.success {
+    background-color: #d4ece6;
+  }
+
+  &.error {
+    background-color: #f8d0c8;
+  }
+
+  i {
+    margin-right: 10px;
+  }
+}

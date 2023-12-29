@@ -1,0 +1,18 @@
+<section class="slider-wrapper">
+  <ul #ul class="slider-wrapper__inner">
+    <li *ngFor="let item of items;" class="slider-wrapper__inner__item">
+      <ng-container [ngTemplateOutlet]="item.tpl"></ng-container>
+    </li>
+  </ul>
+  <ul *ngIf="showP" class="slider-wrapper__pag">
+    <ng-container *ngFor="let item of (multiple ? _getPagination(items) : items); let i = index" [attr.data-index]="i">
+      <li class="slider-wrapper__pag-item">
+        <i (click)="clickPag(i)" [class.active]="i == currentpag"></i>
+      </li>
+    </ng-container>
+  </ul>
+  <nav *ngIf="showC" class="slider-wrapper__arrows">
+    <i #left class="fa fa-angle-left slider-wrapper__arrows-left"></i>
+    <i #right class="fa fa-angle-right slider-wrapper__arrows-right"></i>
+  </nav>
+</section>

@@ -1,0 +1,27 @@
+<ng-container *ngIf="sSections?.length > 0">
+  <ng-container *ngIf="sectionDetailsDisabled; else sectioncontent">
+    <section *ngIf="sCategories?.length > 0" (click)="departmentDetails(); changeDetector.detectChanges()">
+      <h4>Departments <i class="fa fa-angle-right"></i></h4>
+    </section>
+    <ng-container *ngFor="let a of sSections, let i = index">
+      <section *ngIf="a.Value.length" (click)="sectionDetails(a); changeDetector.detectChanges()">
+        <h4>{{a.Name}} <i class="fa fa-angle-right"></i></h4>
+      </section>
+    </ng-container>
+  </ng-container>
+  <ng-template #sectioncontent>
+    <h4 (click)="disableSectionDetails(); changeDetector.detectChanges()"><i class="fa fa-angle-left" aria-hidden="true"></i> {{currentSection.Name}}</h4>
+    <ng-container *ngIf="currentSection.Name != 'Departments'; else departmentsectioncontent">
+      <dynamic
+        #mobiledynamiccomponent
+        [dataIn]="[currentSection.Type, currentSection.Value, currentSection.Name]"
+        [sidebarCache]="getMobileFilterCacheData(currentSection.Name)"
+        (activeFilters)="changeMobileFilterStatus($event, currentSection.Name)">
+      </dynamic>
+    </ng-container>
+
+    <ng-template #departmentsectioncontent>
+      <department *ngIf="sCategories?.length > 0" [aDepartments]="sCategories"></department>
+    </ng-template>
+  </ng-template>
+</ng-container>

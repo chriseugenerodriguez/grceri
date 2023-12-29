@@ -1,0 +1,17 @@
+@import "../../../../../assets/css/abstracts/_mixins.scss";
+@import "../../../../../assets/css/abstracts/_variables.scss";
+
+ol {
+  li {
+    margin-bottom: 10px;
+
+    a {
+      @include font-size(15px);
+      color: #333;
+
+      &:hover {
+        color: $green;
+      }
+    }
+  }
+}

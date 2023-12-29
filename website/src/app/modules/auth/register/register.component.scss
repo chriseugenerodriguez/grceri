@@ -1,0 +1,287 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the header of the site/application.
+// -----------------------------------------------------------------------------
+
+//  BEM - Block Element Modifier
+//  This is how our code is structured. Please follow this layout and format.
+//  More Info: https://css-tricks.com/bem-101/
+//
+//  .steps {
+//	    &__item {
+//		    &--first {}
+//		    &--last {}
+//		    &--active {}
+//		    &--done {}
+//	    }
+//	    &__link {}
+//  }
+
+@import "../../../../assets/css/abstracts/_mixins.scss";
+@import "../../../../assets/css/abstracts/_variables.scss";
+
+:host {
+  display: flex;
+  z-index: 1;
+  background: $white;
+
+  form {
+    padding: 20px;
+    margin: 20px 0;
+
+    h1 {
+      @include font-size(28px);
+      font-family: 'AB', sans-serif;
+      font-weight: 400;
+    }
+
+    .seperator {
+      padding-top: 50px;
+      position: relative;
+
+      &:before {
+        content: '';
+        background: #ddd;
+        width: 100%;
+        height: 1px;
+        position: absolute;
+        z-index: 0;
+        top: 25px;
+      }
+
+      &:after {
+        z-index: 1;
+        position: absolute;
+        top: 15px;
+        background: #fff;
+        content: 'or';
+        left: 50%;
+        width: 50px;
+        text-align: center;
+        margin-left: -25px;
+      }
+    }
+
+    #google-sign-up-button {
+      @include font-size(16px);
+      background-color: #4285f4;
+      color: #fff;
+      text-align: center;
+      height: 40px;
+      padding: 0 38px;
+      width: 100%;
+      border: 2px solid transparent;
+
+      &:before {
+        display: block;
+        position: absolute;
+        content: "";
+        width: 38px;
+        height: 36px;
+        margin: -8px 0 0 -38px;
+        background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg width='38' height='38' viewBox='0 0 101.33 101.33' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill='%23fff' d='M0 0h101.33v101.33H0z'/%3E%3Cpath d='M50.667 36.167c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85c-4.16-3.87-9.59-6.25-16.06-6.25-9.38 0-17.49 5.38-21.44 13.22l7.98 6.19c1.89-5.69 7.2-9.91 13.46-9.91z' fill='%23ea4335'/%3E%3Cpath d='M73.647 51.217c0-1.57-.15-3.09-.38-4.55h-22.6v9.02h12.94c-.58 2.96-2.26 5.48-4.78 7.18l7.73 6c4.51-4.18 7.09-10.36 7.09-17.65z' fill='%234285f4'/%3E%3Cpath d='M37.197 55.257c-.48-1.45-.76-2.99-.76-4.59s.27-3.14.76-4.59l-7.98-6.19c-1.63 3.24-2.55 6.9-2.55 10.78s.92 7.54 2.56 10.78z' fill='%23fbbc05'/%3E%3Cpath d='M50.667 74.667c6.48 0 11.93-2.13 15.89-5.81l-7.73-6c-2.15 1.45-4.92 2.3-8.16 2.3-6.26 0-11.57-4.22-13.47-9.91l-7.98 6.19c3.96 7.85 12.07 13.23 21.45 13.23z' fill='%2334a853'/%3E%3Cpath d='M26.667 26.667h48v48h-48z' fill='none'/%3E%3C/svg%3E");
+
+        @media (max-width: $screen-sm) {
+          margin-top: -9px;
+        }
+      }
+    }
+
+    @media (max-width: $screen-sm) {
+      padding: 0px;
+    }
+  }
+
+  .module {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    @media (max-width: $screen-lg) {
+      width: 100%;
+      height: 100vh;
+    }
+
+    @media (max-width: $screen-sm) {
+      padding: 75px 0;
+      height: auto;
+      overflow-y: scroll;
+    }
+
+    &-logo {
+      position: absolute;
+      top: 30px;
+      left: 30px;
+
+      img {
+        width: 40px;
+      }
+    }
+
+    &__content {
+      margin: 0px auto;
+      padding: 50px 10px;
+
+      @media screen and (max-width: $screen-xs) {
+        padding: 0px;
+      }
+
+      form {
+        .btn {
+          @include font-size(15px);
+          font-family: 'AM', sans-serif;
+          font-weight: 400;
+          display: flex;
+          justify-content: center;
+          text-transform: uppercase;
+          letter-spacing: .5px;
+
+          @media screen and (max-width: $screen-sm) {
+            @include border-radius(30px);
+            position: fixed;
+            bottom: 20px;
+            margin-left: 20px;
+            margin-right: 20px;
+            left: 0;
+            right: 0;
+            width: -webkit-fill-available;
+            z-index: 2;
+            line-height: 40px;
+          }
+        }
+
+        p {
+          @include font-size(17px);
+          font-family: 'AL', sans-serif;
+        }
+      }
+
+      &__header {
+        margin-bottom: 25px;
+
+        &-title {
+          @include font-size(20px);
+          line-height: 1.36;
+          margin: 0 0 .5rem;
+        }
+
+        &-subtitle {
+          @include font-size(16px);
+          line-height: 24px;
+          color: rgba(99, 114, 130, 0.9);
+          margin: 0 0 .5rem;
+          font-family: 'AL', sans-serif;
+        }
+      }
+
+      &-btn {
+        margin-top: 18px;
+      }
+
+      &-relative {
+        position: relative;
+
+        label {
+          font-family: 'AL', sans-serif;
+          position: absolute;
+          top: 13px;
+          right: 0px;
+          margin: 0px;
+          cursor: pointer;
+        }
+
+        img {
+          position: absolute;
+          right: 0px;
+          top: 15px;
+        }
+      }
+
+      &-acct {
+        margin-top: 20px;
+        color: rgba(99, 114, 130, 0.9);
+      }
+
+      &__fields {
+
+        &__password-requirements {
+          margin: 0 0 40px 0;
+
+          @media screen and (max-width: $screen-sm) {
+            margin: 0 0 20px 0;
+          }
+
+          &-meta {
+            @include opacity(1);
+            @include font-size(14px);
+            max-height: 200px;
+
+            li {
+              line-height: 24px;
+
+              @media screen and (max-width: $screen-sm) {
+                line-height: 18px;
+              }
+
+              &.error {
+                @include opacity(0);
+              }
+
+              &.active {
+                @include opacity(.5);
+
+                &:before {
+                  background: $green;
+                }
+
+                &.error {
+                  @include opacity(1);
+
+                  &:before {
+                    background: red;
+                  }
+                }
+              }
+
+              &:before {
+                content: "";
+                display: inline-block;
+                width: 8px;
+                height: 8px;
+                margin-right: 10px;
+                border-radius: 8px;
+                background: #eee;
+              }
+            }
+          }
+        }
+
+        &-small {
+          margin-bottom: 20px;
+
+          @media screen and (max-width: $screen-sm) {
+            margin-bottom: 0px;
+          }
+        }
+      }
+
+      &-buttons {
+        margin: 25px -15px 30px;
+        display: flex;
+        justify-content: space-between;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  .billboard {
+    width: 60%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #f6f6f6;
+    height: 100vh;
+    background-image: url('/assets/img/auth-login-bg.webp'), url('/assets/img/auth-login-bg.jpeg');
+    background-size: cover;
+  }
+}

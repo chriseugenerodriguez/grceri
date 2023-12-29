@@ -1,0 +1,75 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the header of the site/application.
+// -----------------------------------------------------------------------------
+
+//  BEM - Block Element Modifier
+//  This is how our code is structured. Please follow this layout and format.
+//  More Info: https://css-tricks.com/bem-101/
+//
+//  .steps {
+//	    &__item {		
+//		    &--first {}
+//		    &--last {}
+//		    &--active {}
+//		    &--done {}
+//	    }
+//	    &__link {}
+//  }
+
+@import "../../../../../assets/css/abstracts/_mixins.scss";
+@import "../../../../../assets/css/abstracts/_variables.scss";
+
+.policies {
+  &__container {
+
+    &__sidebar {
+      display: block;
+      padding: 5rem 0;
+
+      @media (max-width: $screen-sm) {
+        padding: 2rem 0 0;
+      }
+
+      &__container {
+        &-title {
+          @include font-size(20px);
+          font-family: 'AB', serif;
+          font-weight: 400;
+          line-height: 1.2;
+          letter-spacing: normal;
+          margin-bottom: 1rem;
+          color: #333;
+          display: block;
+        }
+
+        &__items {
+          &__item {
+            @include font-size(16px);
+            padding: 0 0 1rem;
+
+            a {
+              color: #777;
+
+              &:hover {
+                color: $green;
+              }
+            }
+
+            &.active {
+              a {
+                font-weight: 500;
+                color: $green;
+              }
+            }
+          }
+        }
+
+        h3 {
+          &:first-child {
+            margin-top: 0px;
+          }
+        }
+      }
+    }
+  }
+}

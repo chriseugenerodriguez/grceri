@@ -1,0 +1,93 @@
+<div class="lists">
+  <a class="lists__card" [routerLink]="['/lists/', data.id]">
+    <div class="lists__card__container">
+      <img *ngIf="data.productImages.length === 0" class="lists__card__container-img" [src]="load" />
+      <ng-container *ngFor="let i of data.productImages; let x = index">
+        <img *ngIf="x === 0" class="lists__card__container-img" [defaultImage]="load" [lazyLoad]="i.sizes.desktop" />
+      </ng-container>
+      <div class="lists__card__container-thumbnails">
+        <ng-container *ngFor="let i of data.productImages; let x = index">
+          <img *ngIf="x > 0 && x < 4" class="lists__card__container-img" [defaultImage]="load"
+            [lazyLoad]="i.sizes.mobile" />
+        </ng-container>
+
+        <ng-container *ngFor="let i of counter(data.productImages.length)">
+          <img class="lists__card__container-img" [src]="load" />
+        </ng-container>
+      </div>
+    </div>
+  </a>
+  <div class="lists__card__header">
+    <a (click)="listDetails($event, data.id)" class="lists__card__header-title">{{ data.title }}</a>
+
+    <div *ngIf="data.productCount.length" class="lists__card__header-count">
+      {{ data.productCount }} {{ data.productCount > 1 ? 'items' : 'item'}}
+    </div>
+    <div *ngIf="discover != true" class="lists__card__header-dropdown" dropdown [insideClick]="true">
+      <img class="lists__card__header-dropdown-img" alt="dots" src="assets/svg/dots.svg" dropdownToggle
+        data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" />
+      <div *dropdownMenu class="dropdown-menu" role="menu" aria-labelledby="menu1">
+        <form [formGroup]="form">
+          <h4>Label</h4>
+          <div class="lists__card__header-dropdown-search">
+            <input type="text" formControlName="name" placeholder="Enter label name">
+            <img src="assets/svg/search.svg" alt="Search" />
+          </div>
+          <ul formArrayName="label">
+            <ng-container *ngFor="let control of form.controls.label.controls; let idx = index;" [formGroupName]="idx">
+              <li *ngIf="!control.get('disabled').value" (click)="onChangeListLabel(control)">
+                <label [for]="control.get('name').value"><input type="checkbox" formControlName="selected">
+                  {{control.get('name').value}}</label>
+              </li>
+            </ng-container>
+          </ul>
+          <ng-container *ngIf="form.get('name').value && noLabel">
+            <button [disabled]="!form.valid || loading" type="button" class="btn btn-default"
+              (click)="createListLabel()">+
+              Create "{{form.get('name').value}}"</button>
+          </ng-container>
+        </form>
+      </div>
+    </div>
+  </div>
+  <ng-container *ngIf="discover !== true && listLabels && listLabels.length > 0">
+    <ul class="lists__card-labels">
+      <li *ngFor="let label of listLabels">{{ label }}</li>
+    </ul>
+  </ng-container>
+</div>
+
+<div class="lists__mobile">
+  <div *ngIf="date" class="lists__mobile-date"> {{ this.date | date: 'MMMM d, y' }}</div>
+
+  <a class="lists__mobile__card" [class.lists__mobile__card-discover]="discover" [routerLink]="['/lists/', data.id]">
+    <div class="lists__mobile__card__header">
+      <h4 class="lists__mobile__card__header-title">{{ data.title }}</h4>
+    </div>
+    <ng-container *ngIf="listLabels && listLabels.length > 0">
+      <ul class="lists__mobile-labels">
+        <li *ngFor="let label of listLabels">{{ label }}</li>
+      </ul>
+    </ng-container>
+    <div *ngIf="data.productImages.length > 0" class="lists__mobile__card__thumbnails">
+      <ng-container *ngFor="let i of data.productImages; let x = index">
+        <img *ngIf="x < 4" class="lists__mobile__card__thumbnails-img" [defaultImage]="load" [lazyLoad]="i.thumbnail" />
+      </ng-container>
+
+      <span *ngIf="data.productCount > 4" class="lists__mobile__card__thumbnails-more">+{{ data.productCount - 4 }}
+        More Items</span>
+    </div>
+
+    <div *ngIf="data.productCount.length" class="lists__mobile__card__header-count">
+      {{ data.productCount }} {{ data.productCount > 1 ? 'items' : 'item'}}
+    </div>
+  </a>
+  <div *ngIf="discover != true" class="lists__mobile__options">
+    <a class="lists__mobile__options-first" [routerLink]="['/lists/', data.id]">
+      View List
+    </a>
+    <div class="lists__mobile__options-last" (click)="openMoreOptions()">
+      More Options
+    </div>
+  </div>
+</div>

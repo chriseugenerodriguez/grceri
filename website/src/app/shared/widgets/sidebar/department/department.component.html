@@ -1,0 +1,13 @@
+<ng-container *ngIf="sDepartments.length > 0">
+  <ol class="department-list" [class.overflow]="sDepartments.length > 12">
+    <li *ngFor="let d of sDepartments, let i = index;" class="department-list-item">
+      <a [routerLink]="['/groceries/', cat, CS.formatted(d.name)]">{{ d.name }}</a>
+    </li>
+  </ol>
+</ng-container>
+
+<ol *ngIf="sDepartments.length === 0">
+  <li *ngFor="let d of nCategories">
+    <div class="skeleton-bar skeleton-margin-bottom"></div>
+  </li>
+</ol>

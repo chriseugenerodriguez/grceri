@@ -1,0 +1,24 @@
+<section *ngIf="availableFilters.category.length != 0">
+  <h4 (click)="toggle[1] = !toggle[1]">Category
+    <i class="fa" [ngClass]="toggle[1] ? 'fa-angle-up': 'fa-angle-down'" aria-hidden="true"></i>
+  </h4>
+  <category *ngIf="!toggle[1]" [availableFilters]="availableFilters.category" [activatedFilters]="activatedFilters.category" (activeFilters)="changeFilterStatus($event, 'category')"></category>
+</section>
+<section>
+  <h4 (click)="toggle[2] = !toggle[2]">Brand
+    <i class="fa" [ngClass]="toggle[2] ? 'fa-angle-up': 'fa-angle-down'" aria-hidden="true"></i>
+  </h4>
+  <brand *ngIf="!toggle[2]" [availableFilters]="availableFilters.brand" [activatedFilters]="activatedFilters.brand" (activeFilters)="changeFilterStatus($event, 'brand')"></brand>
+</section>
+<section>
+  <h4 (click)="toggle[3] = !toggle[3]">Price
+    <i class="fa" [ngClass]="toggle[3] ? 'fa-angle-up': 'fa-angle-down'" aria-hidden="true"></i>
+  </h4>
+  <price *ngIf="!toggle[3]" [availableFilters]="availableFilters.price" [activatedFilters]="activatedFilters.price" (activeFilters)="changeFilterStatus($event, 'price')"></price>
+</section>
+<section>
+  <h4 (click)="toggle[4] = !toggle[4]">Rating
+    <i class="fa" [ngClass]="toggle[4] ? 'fa-angle-up': 'fa-angle-down'" aria-hidden="true"></i>
+  </h4>
+  <rating *ngIf="!toggle[4]" [availableFilters]="availableFilters.rating" [activatedFilters]="activatedFilters.rating" (activeFilters)="changeFilterStatus($event, 'rating')"></rating>
+</section>

@@ -1,0 +1,45 @@
+<ng-container>
+  <div *ngIf="breadcrumbHeader; else categorySection" class="header">
+    <a (click)="location.back()">
+      <img  alt="arrow-left" src="assets/svg/mobile/arrow-left.svg" />
+    </a>
+    <h1>
+      {{breadcrumbHeader}}
+    </h1>
+    <span>
+      <img  alt="sort" src="assets/svg/mobile/sort.svg" (click)="triggerMobileCategorySort()" />
+      <img  alt="search" src="assets/svg/search.svg" (click)="SBS.enableSearchBarPopup()" />
+    </span>
+  </div>
+  <ng-template #categorySection>
+    <div *ngIf="categoryName" class="header">
+      <a (click)="location.back()">
+        <img  alt="arrow-left" src="assets/svg/mobile/arrow-left.svg" />
+      </a>
+      <h1>
+        {{categoryName}}
+      </h1>
+      <span>
+        <img  alt="sort" src="assets/svg/mobile/sort.svg" (click)="triggerMobileCategorySort()" />
+        <img  alt="search" src="assets/svg/search.svg" (click)="SBS.enableSearchBarPopup()" />
+      </span>
+    </div>
+  </ng-template>
+</ng-container>
+
+<ng-template #sort>
+  <div class="modal-body">
+    <ul>
+      <li *ngFor="let a of sortList">
+        <input
+        type="radio"
+        [name]="a.text"
+        [id]="a.text"
+        [value]="a.value"
+        (change)="sortChanges(a.value)"
+        [checked]="a.value === this.SBS.selectedSortOption">
+        {{a.text}}
+      </li>
+    </ul>
+  </div>
+</ng-template>

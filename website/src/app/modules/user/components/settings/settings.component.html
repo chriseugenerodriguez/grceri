@@ -1,0 +1,46 @@
+<ng-container *ngFor="let i of message">
+  <alert *ngIf="i" [type]="i.type"
+  (onClosed)="_close(i)" [dismissOnTimeout]="8000" [dismissible]="true">
+    {{ i.value }}
+  </alert>
+</ng-container>
+
+<section class="settings">
+  <div class="container">
+    <h1 class="hidden-xs">Settings</h1>
+
+    <div class="settings__links">
+      <div class="settings__links__section">
+        <a [routerLink]="['/user/settings/account/profile']" [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{exact:true}">
+          Profile
+        </a>
+        <a *ngIf="loginType !== 'google'" [routerLink]="['/user/settings/account/security']" [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{exact:true}">
+          Security
+        </a>
+        <!-- <a [routerLink]="['/user/settings/account/notifications']" [routerLinkActive]="['active']"
+              [routerLinkActiveOptions]="{exact:true}">
+              Notifications
+            </a> -->
+        <!-- <a [routerLink]="['/user/settings/account/management']" [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{exact:true}">
+          Management
+        </a> -->
+        <a [routerLink]="['/user/settings/billing/subscription']" [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{exact:true}">
+          Subscription
+        </a>
+        <a [routerLink]="['/user/settings/billing/payment']" [routerLinkActive]="['active']"
+          [routerLinkActiveOptions]="{exact:true}">
+          Payment
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="settings__content">
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</section>

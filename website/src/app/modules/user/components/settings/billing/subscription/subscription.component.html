@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col col-md-4">
+    <div class="settings__content-section">
+      <settings-subscription-plan [plan]="currentPlan"></settings-subscription-plan>
+    </div>
+  </div>
+  <div class="col col-md-8">
+      <div class="settings__content-section">
+        <settings-subscription-usage [planLimit]="planLimit" (latestPlan)="updatePlan($event)"></settings-subscription-usage>
+      </div>
+    </div>
+</div>

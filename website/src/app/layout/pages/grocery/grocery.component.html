@@ -1,0 +1,35 @@
+<div class="container">
+  <section class="grocery__categories" *ngFor="let a of lists">
+
+    <a class="grocery__categories__header" [routerLink]="['/groceries/', url(a)]">
+      <h2 class="grocery__categories__header-title">{{a.name}}</h2>
+    </a>
+
+    <div class="row">
+      <article class="grocery__categories__cat" *ngFor="let b of a.category">
+
+        <a class="grocery__categories__cat__header" *ngIf="!b.sub" [routerLink]="['/groceries/', url(a), url(b)]">
+          <h3 class="grocery__categories__cat__header-title">{{b.name}}</h3>
+        </a>
+
+        <ul class="grocery__categories__cat__dropdown" *ngIf="b.sub">
+          <li class="grocery__categories__cat__dropdown__item">
+            <a class="grocery__categories__cat__dropdown__item__link" [routerLink]="['/groceries/', url(a), url(b)]">
+              <h3 class="grocery__categories__cat__dropdown__item__link-title">{{b.name}}
+                <i class="fa fa-angle-down"></i>
+              </h3>
+            </a>
+
+            <ul class="grocery__categories__cat__dropdown__item__sub" *ngIf="b.sub">
+              <li class="grocery__categories__cat__dropdown__item__sub-item" *ngFor="let c of b.sub">
+                <a [routerLink]="['/groceries/', url(a), url(b), url(c)]">{{ c.name }}</a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </article>
+    </div>
+
+  </section>
+
+</div>

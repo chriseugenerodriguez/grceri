@@ -1,0 +1,358 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the header of the site/application.
+// -----------------------------------------------------------------------------
+
+//  BEM - Block Element Modifier
+//  This is how our code is structured. Please follow this layout and format.
+//  More Info: https://css-tricks.com/bem-101/
+//
+//  .steps {
+//	    &__item {		
+//		    &--first {}
+//		    &--last {}
+//		    &--active {}
+//		    &--done {}
+//	    }
+//	    &__link {}
+//  }
+
+
+login {
+	display: flex;
+	z-index: 1;
+	background: #fff;
+
+	.module {
+		width: 30%;
+		display: flex;
+		flex-direction: column;
+		margin-top: 30px;
+		padding-top: 30px;
+
+		&__content {
+			max-width: 440px;
+			margin: 0px auto;
+			padding: 0 10px;
+
+			&-img {
+				width: 125px;
+				margin: 40px auto 20px;
+				display: block;
+			}
+
+			&__header {
+				margin-bottom: 35px;
+
+				&-title {
+					margin: 35px 0;
+					text-align: center;
+					font-weight: 500;
+					font-size: 30px;
+				}			
+				
+				&-desc {
+					@include font-size(16px);
+					letter-spacing: .5px;
+				}
+			}
+
+			&-btn {
+				margin-top: 18px;
+			}
+
+			&-username {
+				text-align: right;
+				margin-top: 10px;
+			}
+
+			&__rememberme {
+				@include font-size(16px);
+				font-family: 'AM', serif;
+				font-weight: 400;
+				position:relative;
+
+				&-label {
+					display:inline-block;
+					padding: 0px;
+					margin-right: 8px;
+					position: relative;
+					top: 7px;
+				}
+
+				input[type=checkbox] {
+					display:none;
+				}
+
+				input[type=checkbox] + label {
+						height: 24px;
+						width: 24px;						
+						@include border-radius(3px);
+						border: 2px solid #ccc;
+						cursor:pointer;
+						
+						&:hover {
+							border-color: #777;
+					 }
+				 }
+
+				 input[type=checkbox]:checked {
+
+						+ label {
+							background: rgb(108, 219, 143) url('/assets/svg/check.svg');
+							background-size: 13px 13px;
+							background-repeat: no-repeat;
+							background-position: 50% 50%;
+						 border-color: $green;
+							height: 24px;
+							width: 24px;	
+
+							&:hover {
+								border-color:rgb(49, 190, 94);
+								background-color:rgb(73, 173, 105);
+							}
+						}
+
+				 } 	
+			}
+
+			&__fields {
+				
+				&__form-group {
+					position: relative;
+
+					label {
+						letter-spacing: .5px;
+						font-family: 'AM', serif;
+						font-weight: 400;
+					}
+
+					button {
+						font-family: 'AM', serif;
+						font-weight: 400;
+						text-transform: uppercase;
+						letter-spacing: .5px;
+					}
+
+					&-show {
+						cursor: pointer;
+						border: none;
+						color: #333;
+
+						i {
+							@include font-size(18px);
+							margin-right: 5px;
+						}
+					}
+
+					input {
+						@include font-size(17px);
+						min-height: 52px;
+						line-height: 20px;
+						padding: 0 15px;
+
+						&.ng-invalid.ng-touched {
+							border-color: $red;
+						}
+						&.ng-valid.ng-touched {
+							border-color: $green;
+						}
+					}
+
+				}
+			}
+
+			&-forgot {
+				line-height: normal;
+				margin: 8px 0px;
+				float: right;
+				width: fit-content;
+			}		
+		}
+	}		
+
+	.billboard {
+		width: 75%;
+		display: flex;
+		flex-direction: column;
+		position: fixed;
+    right: 0;
+		min-height: auto;
+		height: 100vh;
+    position: relative;
+		
+		&__image {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: #d9d9d9;
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-size: cover;
+		}
+	}
+}
+
+register {
+	display: flex;
+	z-index: 1;
+	background: #fff;
+
+	.register {
+		
+		.register-content {
+			height: calc(100vh - 96px);
+			max-width: 1200px;
+			margin: 48px;
+			padding: 50px 36px;
+			display: table;
+			width: 100%;
+
+			.logo {
+				width: 150px;
+				margin-bottom: 50px;
+			}
+
+			h1 {
+				font-weight: 500;
+				margin: 0 0 20px 0;
+			}
+
+			p {
+				max-width: 635px;
+				font-size: 15px;
+				line-height: 24px;
+				margin-bottom: 30px;
+
+				&.small-meta {
+					@include font-size(13px);
+					margin: 0px;
+				}
+			}
+
+			.form-group {
+
+				input {
+					@include font-size(17px);
+					min-height: 52px;
+					line-height: 20px;
+					padding: 0 15px;
+					max-width: inherit;
+
+					&.ng-invalid.ng-touched {
+						border-color: $red;
+					}
+					&.ng-valid.ng-touched {
+						border-color: $green;
+					}
+				}
+				.invalid-error {
+					@include font-size(13px);
+					line-height: 18px;
+					display: block;
+					color: #db3a1b;
+					white-space: normal;
+					word-wrap: break-word;
+					font-weight: 600;
+					position: relative;
+					margin-top: -19px;
+					margin-bottom: 18px;
+				}
+				
+				.show {
+					cursor: pointer;
+					border: none;
+
+					i {
+						@include font-size(18px);
+						margin-right: 5px;
+					}
+				}
+			}
+		
+			.password-requirements {
+				margin: 0 0 40px 0;
+
+				.small-meta {
+					@include opacity(1);
+					@include font-size(13px);
+					max-height: 200px;
+
+					li {
+						line-height: 24px;
+
+						&.error {
+							@include opacity(0);
+						}
+						&.active {
+							@include opacity(.5);
+
+							&:before {
+								background: #d0d0d0;
+							}
+						
+							&.error {
+								@include opacity(1);
+								
+								&:before {
+									background: red;
+								}
+							}
+						}
+
+						&:before {
+							content: "";
+							display: inline-block;
+							width: 8px;
+							height: 8px;
+							margin-right: 10px;
+							border-radius: 8px;
+							background: #52bad5;
+						}
+					}
+				}
+			}
+
+			ul {
+				li {
+					p {				
+						@include font-size(16px);
+						margin-bottom: 15px;
+
+						i {
+							color: $green;
+							margin-right: 20px;
+						}
+					}
+				}
+			}
+		}
+	}
+
+	credit-card {
+		.btn {
+			text-transform: initial;
+			letter-spacing: .5px;
+		}
+	}
+}
+
+forgot-password {
+	.forgot-content {
+		width: 400px;
+		margin: 0 auto;
+
+		.logo {
+			width: 125px;
+			margin: 200px auto 20px;
+			display: block;
+		}
+
+		h1 {
+			font-family: 'Permanent Marker', sans-serif;
+			text-align: center;
+			margin: 50px 0;
+		}
+	}
+}

@@ -1,0 +1,7 @@
+<a class="btn btn-primary small" [routerLink]="['/groceries']" *ngIf="!totalQuantity()">Shop</a>
+
+<a class="cart-icon" *ngIf="totalQuantity()" [routerLink]="['/cart']">
+  <i class="fa fa-shopping-cart"></i>
+  <span class="items">{{totalQuantity()}}</span>
+</a>
+

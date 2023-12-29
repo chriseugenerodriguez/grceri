@@ -1,0 +1,105 @@
+<div class="card-header">
+  <h2>Billing Methods
+    <button class="btn btn-primary small" (click)="addPaymentAccount($event)">
+      <div class="hidden-xs visible-sm visible-md visible-lg">
+        Add Method
+      </div>
+      <img class="visible-xs hidden-sm hidden-md hidden-lg" src="../../../../../../../../assets/svg/mobile/plus.svg" />
+    </button>
+  </h2>
+</div>
+<div class="card-body">
+  <ng-container *ngIf="loading; else loaded">
+    <div class="row skeleton-margin-bottom">
+      <div class="col col-xs-4">
+        <div class="skeleton-bar-20"></div>
+      </div>
+    </div>
+    <div class="row skeleton-margin-bottom-40">
+      <div class="col col-xs-2">
+        <div class="skeleton-bar-20"></div>
+      </div>
+      <div class="col col-xs-3">
+        <div class="skeleton-bar-20"></div>
+      </div>
+      <div class="col col-xs-1 col-xs-offset-6">
+        <div class="skeleton-bar-20"></div>
+      </div>
+    </div>
+    <div class="row skeleton-margin-bottom">
+      <div class="col col-xs-4">
+        <div class="skeleton-bar-20"></div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col col-xs-2">
+        <div class="skeleton-bar-20"></div>
+      </div>
+      <div class="col col-xs-3">
+        <div class="skeleton-bar-20"></div>
+      </div>
+      <div class="col col-xs-1 col-xs-offset-6">
+        <div class="skeleton-bar-20"></div>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #loaded>
+    <ng-container *ngIf="primaryCard && additionalCards; else empty">
+      <ng-container *ngIf="primaryCard">
+        <h4>Primary</h4>
+
+        <ul>
+          <li>
+            <img [defaultImage]="load" [lazyLoad]="cardIcon(primaryCard.cardBrand)">
+            {{primaryCard.cardBrand}} ending in {{primaryCard.lastFourDigits}}
+            <div class="card-dropdown" dropdown>
+              <a dropdownToggle data-toggle="dropdown" aria-haspopup="true" aria- expanded="true">
+                <img alt="dots" src="assets/svg/dots.svg" />
+              </a>
+              <ul *dropdownMenu class="card-dropdown-menu dropdown-menu" role="menu" aria-labelledby="menu1">
+                <li role="presentation">
+                  <a role="menuitem" tabindex="-1" href="#" (click)="editPaymentMethod($event, primaryCard)">Edit</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </ng-container>
+
+      <ng-container *ngIf="additionalCards && additionalCards?.length > 0">
+        <h4>Additional</h4>
+        <ul>
+          <li *ngFor="let method of additionalCards">
+            <img [defaultImage]="load" [lazyLoad]="cardIcon(method.cardBrand)">
+            {{method.cardBrand}} ending in {{method.lastFourDigits}}
+            <div class="card-dropdown" dropdown>
+              <a dropdownToggle data-toggle="dropdown" aria-haspopup="true" aria- expanded="true">
+                <img alt="dots" src="assets/svg/dots.svg" />
+              </a>
+              <ul *dropdownMenu class="card-dropdown-menu dropdown-menu" role="menu" aria-labelledby="menu1">
+                <li role="presentation">
+                  <a role="menuitem" tabindex="-1" href="#" (click)="editPaymentMethod($event, method)">Edit</a>
+                  <a role="menuitem" tabindex="-1" href="#" (click)="setPrimaryPaymentMethod($event, method.paymentId)">Set
+                    as primary</a>
+                  <a role="menuitem" tabindex="-1" href="#"
+                    (click)="removePaymentMethod($event, method.paymentId)">Remove</a>
+                </li>
+              </ul>
+            </div>
+          </li>
+        </ul>
+      </ng-container>
+    </ng-container>
+    <ng-template #empty>
+      <div class="card-body__empty">
+        <div class="card-body__empty-ball">
+          <i class="fa fa-credit-card"></i>
+          <h4>No cards have been added.</h4>
+        </div>
+      </div>
+    </ng-template>
+  </ng-template>
+</div>
+
+<edit-payment-method (editRefresh)="latestMethods($event)" [paymentMethod]="selectedPaymentMethod"></edit-payment-method>
+<add-payment-method (refresh)="latestMethods($event)"></add-payment-method>

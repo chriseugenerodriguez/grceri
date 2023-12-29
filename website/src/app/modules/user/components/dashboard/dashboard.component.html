@@ -1,0 +1,64 @@
+<div class="dashboard">
+  <div class="dashboard__contents">
+    <div class="dashboard__contents-header">
+      <ng-container *ngIf="profile">
+        <div class="dashboard__contents-header-title">Hello, {{profile.firstName}} {{profile.lastName}}</div>
+        <div class="dashboard__contents-header-subtitle">{{ profile.emailAddress }}</div>
+      </ng-container>
+    </div>
+
+    <div class="container">
+      <div class="row">
+        <div class="col col-md-4">
+          <div class="dashboard__contents__section">
+            <h2 class="dashboard__contents__section-title">User</h2>
+            <a [routerLink]="['/watchlists']">
+              Watchlists <span *ngIf="user['interactions']">{{ user['interactions'].watchlists }}</span>
+            </a>
+            <a [routerLink]="['/lists']">
+              Lists <span *ngIf="user['interactions']">{{ user['interactions'].shoppingLists }}</span>
+            </a>
+            <a [routerLink]="['/user/favorites']">
+              Favorites <span *ngIf="user['interactions']">{{ user['interactions'].favorites }}</span>
+            </a>
+            <a [routerLink]="['/user/history']">
+              History <span *ngIf="user['interactions']">{{ user['interactions'].history }}</span>
+            </a>
+            <a [routerLink]="['/user/settings']">
+              Settings
+            </a>
+            <a (click)="logout()">
+              Logout
+            </a>
+          </div>
+        </div>
+        <div class="col col-md-4">
+          <div class="dashboard__contents__section">
+            <h2 class="dashboard__contents__section-title">Account</h2>
+            <a [routerLink]="['/user/settings/account/profile']">
+              Profile
+            </a>
+            <a *ngIf="loginType !== 'google'" [routerLink]="['/user/settings/account/security']">
+              Security
+            </a>
+            <!-- <a [routerLink]="['/user/settings/account/notifications']" [routerLinkActive]="['active']"
+                          [routerLinkActiveOptions]="{exact:true}">
+                          Notifications
+                        </a> -->
+          </div>
+        </div>
+        <div class="col col-md-4">
+          <div class="dashboard__contents__section">
+            <h2 class="dashboard__contents__section-title">Billing</h2>
+            <a [routerLink]="['/user/settings/billing/subscription']">
+              Subscription <span *ngIf="user['plan']">{{ user['plan'] }}</span>
+            </a>
+            <a [routerLink]="['/user/settings/billing/payment']">
+              Payment
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,265 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the header of the site/application.
+// -----------------------------------------------------------------------------
+
+//  BEM - Block Element Modifier
+//  This is how our code is structured. Please follow this layout and format.
+//  More Info: https://css-tricks.com/bem-101/
+//
+//  .steps {
+//	    &__item {		
+//		    &--first {}
+//		    &--last {}
+//		    &--active {}
+//		    &--done {}
+//	    }
+//	    &__link {}
+//  }
+
+@import "../../../../assets/css/abstracts/_mixins.scss";
+@import "../../../../assets/css/abstracts/_variables.scss";
+
+.mobile-footer {
+  @include box-shadow(0 0 2px 0 rgba(57, 73, 76, .35));
+  background: #fff;
+  display: none;
+  position: fixed;
+  z-index: 1;
+  bottom: 0px;
+  left: 0;
+  right: 0;
+
+  &-container {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    padding: 17px;
+    text-align: center;
+    flex: 1 0 21%;
+    border-right: 1px solid #eee;
+
+    &.active,
+    &:focus,
+    &:hover {
+      background: #fafafa;
+    }
+
+    img {
+      width: 15px;
+      display: block;
+      margin: 0 auto 4px;
+
+      @media (max-width: $screen-xs) {
+        margin-bottom: 0px;
+      }
+    }
+
+    span {
+      @include font-size(12px);
+      font-family: 'AL', sans-serif;
+      text-transform: uppercase;
+      color: #888;
+      letter-spacing: 2px;
+
+      @media (max-width: $screen-xs) {
+        display: none;
+      }
+    }
+
+    &:last-child {
+      border: none;
+    }
+  }
+
+  @media (max-width: $screen-sm) {
+    display: block;
+  }
+}
+
+footer {
+  @media (min-width: $screen-sm) {
+    margin-top: 60px;
+  }
+
+  &.mobile {
+    @media (max-width: $screen-sm) {
+      padding-bottom: 72px;
+    }
+
+    @media (max-width: $screen-xs) {
+      padding-bottom: 50px;
+    }
+  }
+
+  .main {
+    padding: 40px 10px;
+  }
+
+  &.reg {
+    background: #fcfcfc;
+
+    .container {
+      position: relative;
+      padding-top: 80px;
+      padding-bottom: 80px;
+      line-height: 22px;
+
+      @media (max-width: $screen-sm) {
+        padding-top: 0px;
+        padding-bottom: 0px;
+
+        .main {
+          flex-direction: column;
+        }
+
+        .links {
+          display: flex;
+          align-items: center;
+          flex-direction: column;
+          padding: 20px 10px;
+          background: #f6f6f6;
+        }
+      }
+
+      .reg {
+        &__nav {
+          text-align: right;
+          padding-bottom: 0px;
+        }
+
+        &-title {
+          @include font-size(20px);
+          font-family: 'AB', sans-serif;
+          margin: 0 0 15px 0;
+          letter-spacing: 1px;
+        }
+
+        &-desc {
+          @include font-size(17px);
+          margin-bottom: 30px;
+          color: #777;
+          line-height: 24px;
+        }
+
+        &__social {
+          text-align: right;
+
+          &-link {
+            margin-left: 20px;
+            color: #555;
+
+            @media screen and (max-width: $screen-sm) {
+              margin: 0 10px;
+            }
+          }
+        }
+
+        &__links {
+          vertical-align: middle;
+          display: flex;
+          align-items: center;
+
+          @media screen and (max-width: $screen-sm) {
+            margin-bottom: 20px;
+            justify-content: center;
+          }
+
+          &-link {
+            @include font-size(13px);
+            display: inline-flex;
+            text-transform: uppercase;
+            margin-right: 20px;
+
+            img {
+              width: 20px;
+            }
+
+            &-copyright {
+              letter-spacing: 1px;
+              color: #aaa;
+              font-weight: 500;
+            }
+
+            a {
+              color: #333;
+            }
+
+            &.active {
+              a {
+                text-decoration: underline;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    .android {
+      @include border-radius(8px);
+      width: 160px;
+      background-color: rgb(73, 73, 73);
+      margin-top: 40px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2px 8px;
+
+      @media screen and (max-width: $screen-sm) {
+        margin: 0 0 40px 0;
+      }
+    }
+  }
+
+  footer-nav {
+    display: block;
+    padding-bottom: 40px;
+
+    @media (max-width: $screen-xs) {
+      padding-bottom: 0px;
+    }
+
+    &::ng-deep {
+      .footer-nav {
+
+        &-title {
+          @include font-size(18px);
+          font-family: 'AB', sans-serif;
+          color: #333;
+          margin: 0 0 20px;
+          letter-spacing: 1px;
+        }
+
+        &__list {
+          @include font-size(16px);
+          line-height: 22px;
+
+          &__item {
+            margin-bottom: 9px;
+
+            a {
+              color: #777;
+
+              &:visited {
+                color: #777;
+              }
+
+              &:hover {
+                color: #333;
+                text-decoration: underline;
+              }
+            }
+
+            &.active {
+              a {
+                color: #333;
+                text-decoration: underline;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

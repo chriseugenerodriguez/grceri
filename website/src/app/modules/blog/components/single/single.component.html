@@ -1,0 +1,60 @@
+<main>
+  <div class="blog__section">
+    <article class="blog__section__single">
+      <section class="blog__section__single__section">
+        <h2 class="blog__section__single__section-title">
+          {{ post.data.title[0].text}}
+        </h2>
+        <p>{{ post.data.summary[0].text}}</p>
+      </section>
+      <figure>
+        <img  [src]="post.data.image.tablet.url" />
+      </figure>
+    </article>
+  </div>
+  <div class="blog__section__meta">
+    <div class="blog__section__meta__content">
+      <div class="blog__section__meta__content__by">
+        <div class="blog__section__meta__content__by-author">Grceri Team on</div>
+        <div class="blog__section__meta__content__by-date">{{day}} at {{time}}</div>
+      </div>
+      <ul class="blog__section__meta__content__share">
+        <li>
+          <a class="fb" (click)="social('facebook')"><i class="fa fa-facebook"></i></a>
+        </li>
+        <li>
+          <a class="li" (click)="social('linkedin')"><i class="fa fa-linkedin"></i></a>
+        </li>
+        <li>
+          <a class="tw" (click)="social('twitter')"><i class="fa fa-twitter"></i></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="blog__section__post">
+    <div class="blog__section__post__article" [innerHtml]="CMS.content(post.data.content)"></div>
+
+    <ng-container *ngIf="post.tags">
+      <ng-container *ngFor="let i of post.tags">
+        <div class="blog__section__post__tags" *ngIf="i > 0">
+          <a class="blog__section__post__tags-tag" [routerLink]="['/blog/tags', i]">{{i}}</a>
+        </div>
+      </ng-container>      
+    </ng-container>
+
+
+    <div class="blog__section__post__related" *ngIf="post.related">
+      <h2 class="blog__section__post__related-title">Keep Reading</h2>
+
+      <div class="blog__section__post__related__container">
+        <ng-container *ngFor="let i of post.related; let x = index">
+          <article class="blog__section__post__related__container__post" *ngIf="x < 2">
+            <h3 class="blog__section__post__related__container__post-title">{{i.title}}</h3>
+            <p>{{i.excerpt}}</p>
+          </article>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  <disqus class="blog__section__comments" [identifier]="post.data.title[0].text" [url]="['/blog/', lower(post.tags[0]), post.slugs[0]]"></disqus>
+</main>

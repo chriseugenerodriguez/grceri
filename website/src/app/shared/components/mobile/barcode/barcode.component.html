@@ -1,0 +1,16 @@
+<ng-template #barcode>
+  <img src="assets/svg/mobile/arrow-left.svg" alt="" (click)="BS.closePopupAndScanner()" />
+  <div class="modal-body">
+    <div id="barcodescanner">
+    </div>
+    <div id="barcodescanner-noresults">
+      <i class="fa fa-barcode" aria-hidden="true"></i>
+      <h3>No Results Found.</h3>
+      <button (click)="BS.restart()" class="btn btn-secondary">Try Again</button>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <strong>Barcode scanner</strong>
+    <span>Center a barcode to find your product.</span>
+  </div>
+</ng-template>

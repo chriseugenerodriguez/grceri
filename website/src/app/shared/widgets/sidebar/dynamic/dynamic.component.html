@@ -1,0 +1,123 @@
+<ng-container *ngIf="dataIn?.length > 0">
+  <ol class="list" *ngIf="list?.length > 0 && sectionName !== 'Rating'">
+    <ng-container *ngFor="let d of list, let i = index;">
+      <li *ngIf="i < fieldsLoaded">
+        <ng-container *ngIf="type === 'Checkbox';">
+          <input
+            type="checkbox"
+            [disabled]="!isProductsLoaded"
+            [id]="getUniqueInputID(i)"
+            [checked]="activeFilter(d.value)"
+            (click)="changeFilter($event, d.value)">
+        </ng-container>
+        <ng-template *ngIf="type === 'Radio';">
+          <input
+            type="radio"
+            [disabled]="!isProductsLoaded"
+            [id]="getUniqueInputID(i)"
+            [checked]="activeFilter(d.value)"
+            (click)="changeFilter($event, d.value)">
+        </ng-template>
+        <label
+          [class.disabled]="!isProductsLoaded"
+          [for]="getUniqueInputID(i)"
+          *ngIf="type !== 'Slider';">
+          {{d.value}}
+        </label>
+      </li>
+      <ng-container *ngIf="seeMore[i]">
+        <li *ngIf="i > fieldsLoaded">
+          <ng-container *ngIf="type === 'Checkbox';">
+            <input
+              type="checkbox"
+              [disabled]="!isProductsLoaded"
+              [id]="getUniqueInputID(i)"
+              [checked]="activeFilter(d.value)"
+              (click)="changeFilter($event, d.value)">
+          </ng-container>
+          <ng-template *ngIf="type === 'Radio';">
+            <input
+              type="radio"
+              [disabled]="!isProductsLoaded"
+              [id]="getUniqueInputID(i)"
+              [checked]="activeFilter(d.value)"
+              (click)="changeFilter($event, d.value)">
+          </ng-template>
+          <label
+            [class.disabled]="!isProductsLoaded"
+            [for]="getUniqueInputID(i)"
+            *ngIf="type !== 'Slider';">
+            {{d.value}}
+          </label>
+        </li>
+      </ng-container>
+    </ng-container>
+    <a
+      *ngIf="type !== 'Slider' && collapsable === true"
+      (click)="expandCollapseFields()"
+      class="list-more">
+      <span *ngIf="sectionName !== 'Category'; else categorySeeMoreLess">
+        {{ seeMore[uniqueID] === false ? 'See Fewer' : 'See More' }} {{ renameSection(sectionName) + 's' }}
+      </span>
+      <ng-template #categorySeeMoreLess><span>
+        {{ seeMore[uniqueID] === false ? 'See Fewer' : 'See More' }} Categories
+      </span></ng-template>
+      <img  src="assets/svg/dots.svg" alt="" />
+    </a>
+  </ol>
+  <ng-container *ngIf="type === 'Slider';">
+    <div class="slider">
+      <slider-chart [priceSliderCount]="priceSliderCount" [priceSliderValue]="priceSliderValue"></slider-chart>
+      <ng5-slider
+        [(value)]="minValue"
+        [(highValue)]="maxValue"
+        [options]="options"
+        (userChangeStart)="onUserChangeStart($event)"
+        (userChange)="onUserChange($event)"
+        (userChangeEnd)="onUserChangeEnd($event)">
+      </ng5-slider>
+      <button
+        [disabled]="((initialMinValue === minValue && initialMaxValue === maxValue) || !isProductsLoaded)"
+        [class.disabled]="((initialMinValue === minValue && initialMaxValue === maxValue) || !isProductsLoaded)"
+        class="slider-cancel"
+        type="button"
+        (click)="resetPriceRange()">
+        Cancel
+      </button>
+      <button
+        [disabled]="disableApplyButton()"
+        [class.disabled]="!isProductsLoaded || disableApplyButton()"
+        class="slider-apply"
+        type="button"
+        (click)="submitPriceRange()">
+        Apply
+      </button>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="sectionName === 'Rating';">
+    <ol>
+      <ng-container *ngFor="let d of list, let i = index;">
+        <li *ngIf="i < fieldsLoaded">
+          <input
+            type="checkbox"
+            [disabled]="!isProductsLoaded"
+            [id]="getUniqueInputID(i)"
+            [checked]="activeFilter(d.value)"
+            (click)="changeFilter($event, d.value)">
+          <label
+            [class.disabled]="!isProductsLoaded"
+            [for]="getUniqueInputID(i)">
+            <bar-rating
+              [rate]="d.value"
+              [max]="5"
+              readOnly="true"
+              [showText]="true"
+              [titles]="[' & Up', ' & Up' , ' & Up', ' & Up', ' ']"
+              theme="fontawesome-o">
+            </bar-rating>
+          </label>
+        </li>
+      </ng-container>
+    </ol>
+  </ng-container>
+</ng-container>

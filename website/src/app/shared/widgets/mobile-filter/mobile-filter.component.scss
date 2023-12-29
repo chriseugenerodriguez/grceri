@@ -1,0 +1,81 @@
+@import "../../../../assets/css/abstracts/_mixins.scss";
+@import "../../../../assets/css/abstracts/_variables.scss";
+
+
+h4 {
+  @include font-size(20px);
+  border-bottom: 1px solid #ddd;
+  padding: 20px;
+  margin: 0px;
+
+  i {
+    float: right;
+  }
+}
+
+dynamic {
+  padding: 20px;
+  display: block;
+
+  &::ng-deep {
+    ol {
+      li {
+        margin-bottom: 15px !important;
+
+        a {
+          font-size: 18px !important;
+        }
+
+        label {
+          font-size: 16px !important;
+          padding: 0 0 0 30px !important;
+        }
+      }
+
+      .list {
+        &-more {
+          span {
+            @include font-size(18px);
+            text-decoration: underline;
+          }
+
+          img {
+            width: 15px;
+          }
+        }
+      }
+    }
+
+    .slider {
+      &-apply,
+      &-cancel {
+        font-size: 16px !important;
+      }
+      ng5-slider {
+        &::ng-deep {
+          .ng5-slider-bubble {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+  }
+}
+
+department {
+  &::ng-deep {
+    ol {
+      &.department-list {
+        padding: 20px;
+      }
+
+      li {
+        margin-bottom: 15px !important;
+
+        a {
+          font-size: 16px !important;
+        }
+      }
+    }
+  }
+}

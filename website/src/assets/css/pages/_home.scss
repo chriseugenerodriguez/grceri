@@ -1,0 +1,612 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the header of the site/application.
+// -----------------------------------------------------------------------------
+
+//  BEM - Block Element Modifier
+//  This is how our code is structured. Please follow this layout and format.
+//  More Info: https://css-tricks.com/bem-101/
+//
+//  .steps {
+//	    &__item {		
+//		    &--first {}
+//		    &--last {}
+//		    &--active {}
+//		    &--done {}
+//	    }
+//	    &__link {}
+//  }
+
+home-app {
+  overflow: hidden;
+  display: block;
+
+  .app-viewer {
+    position: relative;
+
+      &-stripes {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        -webkit-transform: skewY(-11deg);
+        /* transform: skewY(-12deg); */
+        -webkit-transform-origin: 0;
+        transform-origin: 0;
+        background: #333;
+        /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+      }
+
+      &__container {
+        position: relative;
+        height: 850px;
+        display: flex;
+        align-items: center;
+        margin-top: -5%;
+        padding-top: 0;
+        padding-bottom: 0;
+
+        &__content {
+          width: 34%;
+          padding-left: 0px;
+
+          &__announcement {
+            @include font-size(14px);
+            line-height: 26px;
+            margin: 0 0 55px;
+            padding: 0 12px 0 5px;
+            border-radius: 15px;
+            display: inline-flex;
+            align-items: center;
+            font-weight: 500;
+            text-decoration: none;
+            background: rgba(0, 0, 0, .08);
+
+            &-pill {
+              @include font-size(12px);
+              font-family: 'AB', sans-serif;
+              padding: 0 6px;
+              line-height: 16px;
+              background: #24b47e;
+              text-transform: uppercase;
+              border-radius: 10px;
+              color: #fff;
+            }
+
+            &-message {
+              margin: 0 7px 0 6px;
+              flex: 1;
+              color: #fff;
+
+            }
+          }
+
+          &-title {
+            @include font-size(50px);
+            color: #fff;
+            margin: 0 0 30px;
+            line-height: 55px;
+            font-family: "B", serif;
+            letter-spacing: 2px;
+          }
+
+          &-desc {
+            @include font-size(18px);
+            font-family: 'AL', sans-serif;
+            color: #aaa;
+            margin-bottom: 40px;
+            line-height: 24px;
+          }
+
+          search {
+            display: block;
+            width: 80%;
+
+            .search .search-wrapper .wrapper {
+              @include border-radius(50px);
+              border: 3px solid #444;
+
+              label {
+                padding: 0 10px 0 15px;
+              }
+
+              .filter {
+                width: 12%;
+
+                ul {
+                  background: #444;
+                  left: -160px;
+                  top: 57px;
+
+                  li.active {
+                    background: #555;
+                  }
+
+                  &:after {
+                    border-bottom-color: #444;
+                  }
+                }
+              }
+
+              .inner-wrapper {
+                width: 88%;
+
+                .overflow {
+                  width: 82%;
+
+                  input {
+                    width: 88%;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+  }
+
+  .groceries__illustrations {
+    position: relative;
+
+    &__one {
+      >div {
+        position: absolute;
+        background-image: url('/assets/img/food.png');
+        background-repeat: no-repeat;
+      }
+    }
+
+    &__one {
+      width: 829px;
+      margin-left: -10px;
+      top: -700px;
+      left: 45%;
+      transform: rotate(-12deg);
+      pointer-events: none;
+      position: absolute;
+
+      &-one {
+        top: 50px;
+        left: -125px;
+        width: 430px;
+        height: 672px;
+        background-position: -512px -944px;
+      }
+
+      &-two {
+        width: 250px;
+        height: 299px;
+        right: 260px;
+        top: 113px;
+        background-position: -427px -396px;
+      }
+
+      &-three {
+        width: 160px;
+        right: 315px;
+        height: 544px;
+        top: 440px;
+        background-position: -1132px -1153px;
+      }
+
+      &-four {
+        width: 170px;
+        height: 547px;
+        left: 759px;
+        top: 737px;
+        transform: rotate(90deg);
+        background-position: -952px -979px;
+      }
+
+      &-five {
+        width: 450px;
+        height: 111px;
+        right: -19px;
+        top: 600px;
+        transform: rotate(90deg);
+        background-position: -355px -719px;
+      }
+
+      &-six {
+        width: 400px;
+        height: 214px;
+        left: -80px;
+        top: 755px;
+        background-position: -815px -719px;
+      }
+
+      &-seven {
+        width: 125px;
+        height: 547px;
+        right: -87px;
+        top: 60px;
+        transform: rotate(90deg);
+        background-position: -1359px -5px;
+      }
+
+      &-eight {
+        height: 312px;
+        width: 123px;
+        right: -118px;
+        top: 655px;
+        transform: rotate(90deg);
+        background-position: -857px -396px;
+      }
+
+      &-nine {
+        height: 406px;
+        width: 310px;
+        right: -235px;
+        top: 391px;
+        transform: rotate(90deg);
+        background-position: -160px -944px;
+      }
+    }
+
+    &__sub-header {
+      padding: 40px 0 100px;
+      border-bottom: 1px solid #eee;
+
+      &__list {
+        color: #222;
+        margin-left: 10%;
+        width: 425px;
+        text-align: left;
+
+        &__item {
+          margin-top: 15px;
+
+          &-title {
+            @include font-size(42px);
+            line-height: 1.1;
+            margin: 0 0 15px;
+            font-family: 'B', sans-serif;
+            letter-spacing: 1px;
+          }
+
+          &-desc {
+            @include font-size(18px);
+            font-family: 'AL', serif;
+            letter-spacing: 0.5px;
+            margin-bottom: 40px;
+            color:#666;  
+          }
+
+          &__case {
+            position: relative;
+            padding-top: 5px;
+            padding-bottom: 5px;
+            padding-left: 45px;
+
+            &-title {
+              @include font-size(18px);
+              font-weight: 500;
+              margin: 0;
+              line-height: 24px;
+              letter-spacing: .5px;
+              color: #444;
+            }
+
+            &-desc {
+              @include font-size(15px);
+              letter-spacing: .5px;
+              font-family: 'AL', serif;
+              line-height: 22px;
+              color: #555;
+            }
+
+            &:before {
+              @include font-size(20px);
+              content: "";
+              position: absolute;
+              left: 0;
+              top: 17px;
+              bottom: 0;
+              height: 1px;
+              width: 30px;
+              background: #24b47e;
+              text-align: center;
+              color: #fff;
+            }
+          }
+
+          &:first-child {
+            margin-top: 0px;
+          }
+        }
+      }
+
+      &-link {
+        @include font-size(16px);
+        margin: 20px 0 0 10%;
+        padding-top: 30px;
+        display: block;
+        width: 425px;
+        text-align: left;
+
+        i {
+          @include font-size(12px);
+          margin-left: 10px;
+          position: relative;
+        }
+
+        &:hover {
+          i {
+            right: -5px;
+          }
+        }
+      }
+
+      &__recommendations {
+        margin-top: 100px;
+
+        &-title {
+          @include font-size(24px);
+          font-family: 'B', sans-serif;
+          font-weight: 400;
+          letter-spacing: .5px;
+          margin: 0 0 50px;
+        }
+      }
+    }
+  }
+
+  .category {
+    padding: 130px 0;
+
+    &__content {
+      text-align: right;
+      width: 30%;
+      float: right;
+      padding: 0 50px;
+
+      &-title {
+        @include font-size(40px);
+        position: relative;
+        font-family: 'B', sans-serif;
+        letter-spacing: 1px;
+        line-height: 1.1;
+        margin: 0 0 15px 0;
+      }
+
+      &-desc {
+        @include font-size(18px);
+        font-family: 'AL', serif;
+        letter-spacing: 0.5px;
+        margin-bottom: 40px;
+        color:#666;
+      }
+
+      &__lists {
+        margin-bottom: 40px;
+
+        &__list {
+          padding-right: 40px;
+          margin-bottom: 15px;
+          position: relative;
+
+          strong {
+            @include font-size(18px);
+            font-family: 'AM', serif;
+            font-weight: 400;
+            margin-bottom: 2px;
+            letter-spacing: .5px;
+            display: block;
+          }
+
+          p {
+            @include font-size(15px);
+            font-family: 'AL', serif;
+            letter-spacing: 0.5px;
+            color:#444;
+          }
+
+          &:before {
+            @include font-size(20px);
+            content: "";
+            position: absolute;
+            right: 0;
+            top: 13px;
+            bottom: 0;
+            height: 1px;
+            width: 30px;
+            background: #24b47e;
+            text-align: center;
+            color: #fff;
+          }
+        }
+      }
+
+      &-btn {
+
+        .btn {
+          @include font-size(14px);
+          @include border-radius(50px);
+          font-family: 'AM', sans-serif;
+          font-weight: 400;
+          text-transform: uppercase;
+          letter-spacing: 1px;
+          line-height: 30px;
+          float: right;
+          width: auto;
+          padding: 0 20px;
+
+          &-primary {
+            font-family: 'AB', sans-serif;
+            font-weight: 500;
+            margin-right: 20px;
+          }
+
+          i {
+            font-size: 90%;
+            margin-left: 3px;
+            color: #666;
+            position: relative;
+          }
+        }
+      }
+    }
+
+    &__list {
+      width: 60%;
+      margin-left: 5%;
+      display: flex;
+      flex-flow: row wrap;
+
+      &__item {
+        text-align: center;
+        flex: 0 1 calc(23%);
+        margin: 0 1% 40px;
+
+        &__link {
+          display: block;
+
+          &-img {
+            @include border-radius(100%);
+            background-image: url('/assets/img/cats.png');
+            background-repeat: no-repeat;
+            margin: 0 auto 20px;
+            display: block;
+            object-fit: cover;
+            width: 125px;
+            height: 125px;
+
+            &-baby-food {
+              background-position: 0 0;
+            }
+
+            &-cooking {
+              background-position: -150px 0;
+            }
+
+            &-beer {
+              background-position: -300px 0;
+            }
+
+            &-beverage {
+              background-position: -450px 0;
+            }
+
+            &-bread {
+              background-position: 0 -150px;
+            }
+
+            &-breakfast {
+              background-position: -150px -150px;
+            }
+
+            &-candy {
+              background-position: -300px -150px;
+            }
+
+            &-chocolate {
+              background-position: -450px -150px;
+            }
+
+            &-condiments {
+              background-position: 0 -300px;
+            }
+
+            &-dairy {
+              background-position: -150px -300px;
+            }
+
+            &-fruit {
+              background-position: -300px -300px;
+            }
+
+            &-grain {
+              background-position: -450px -300px;
+            }
+
+            &-jam {
+              background-position: 0 -450px;
+            }
+
+            &-meat {
+              background-position: -150px -450px;
+            }
+
+            &-noodle {
+              background-position: -300px -450px;
+            }
+
+            &-oil {
+              background-position: -450px -450px;
+            }
+
+            &-pasta {
+              background-position: -600px 0;
+            }
+
+            &-prepared-food {
+              background-position: -600px -150px;
+            }
+
+            &-sauce {
+              background-position: -600px -300px;
+            }
+
+            &-seafood {
+              background-position: -600px -450px;
+            }
+
+            &-snack {
+              background-position: 0 -600px;
+            }
+
+            &-spice {
+              background-position: -150px -600px;
+            }
+
+            &-vegetable {
+              background-position: -300px -600px;
+            }
+          }
+
+          &-title {
+            @include font-size(15px);
+            letter-spacing: .5px;
+            margin: 0 40px;
+            color: #222;
+          }
+
+          &:hover {
+
+            h4 {
+              color: $green;
+            }
+          }
+        }
+
+        &:nth-last-child(-n+2) {
+          margin-bottom: 0px;
+        }
+      }
+    }
+  }
+
+  .popular {
+    padding: 100px 0;
+
+    &-title {
+      @include font-size(26px);
+      font-family: 'B', sans-serif;
+      text-align: left;
+      margin: 0 0 50px;
+    }
+  }
+
+  .featured {
+    border-top: 1px solid #eee;
+    padding: 50px 0;
+    text-align: center;
+    position: relative;
+
+    h4 {
+      font-weight: 500;
+      margin-bottom: 30px;
+    }
+  }
+
+}
+

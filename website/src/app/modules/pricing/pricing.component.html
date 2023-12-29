@@ -1,0 +1,358 @@
+<section class="pricing">
+  <div class="pricing-stripe"></div>
+  <div class="pricing__header">
+    <h1 class="pricing__header-title">Simple Monthly Pricing</h1>
+    <p class="pricing__header-desc">Get started to start saving money over time with our advanced grocery search.</p>
+  </div>
+  <div class="container">
+    <section class="pricing__container">
+      <table cellpadding="0" cellspacing="0" class="pricing__container__table">
+        <tbody>
+          <tr class="pricing__container__table__no-border table-hide">
+            <td></td>
+            <td class="pricing__container__table__no-border__price">
+              <h3 class="pricing__container__table__no-border__price-title">Free</h3>
+              <h3 class="pricing__container__table__no-border__price-price"><span>$</span>0</h3>
+            </td>
+            <td class="pricing__container__table__no-border__price">
+              <h3 class="pricing__container__table__no-border__price-title">Basic</h3>
+              <h3 class="pricing__container__table__no-border__price-price"><span>$</span>0.99</h3>
+              <span class="pricing__container__table__no-border__price-desc">billed monthly</span>
+            </td>
+            <td class="pricing__container__table__no-border__price">
+              <h3 class="pricing__container__table__no-border__price-title">Elite</h3>
+              <h3 class="pricing__container__table__no-border__price-price"><span>$</span>9.99</h3>
+              <span class="pricing__container__table__no-border__price-desc">billed monthly</span>
+            </td>
+          </tr>
+          <tr class="pricing__container__table__no-border table-hide">
+            <td></td>
+            <td>
+              <button (click)="GS.event('link', 'Pricing - Free', 'click', 0)" class="btn" [routerLink]="['/sign-up']">
+                Continue
+              </button>
+            </td>
+            <td>
+              <button (click)="GS.event('link', 'Pricing - Basic', 'click', 0)" class="btn btn-primary"
+                [routerLink]="['/sign-up/basic']">
+                Buy Basic
+              </button>
+            </td>
+            <td>
+              <button (click)="GS.event('link', 'Pricing - Elite', 'click', 0)" class="btn btn-primary"
+                [routerLink]="['/sign-up/elite']">
+                Buy Elite
+              </button>
+            </td>
+          </tr>
+          <tr class="pricing__container__table__no-border table-hide">
+            <td></td>
+            <td class="pricing__container__table-valign-top">
+              <div class="pricing__container__table-sep"></div>
+              <p>For individuals wanting to use the service but wouldn't make a lot of online food purchases.</p>
+            </td>
+            <td class="pricing__container__table-valign-top">
+              <div class="pricing__container__table-sep"></div>
+              <p>For individuals using this service to save on multiple food purchases based on moderate online
+                shopping.</p>
+            </td>
+            <td class="pricing__container__table-valign-top">
+              <div class="pricing__container__table-sep"></div>
+              <p>For individuals to take advantage of every online purchase based on heavy online shopping.</p>
+            </td>
+          </tr>
+          <!-- <tr class="pricing__container__table-bottom-padding pricing__container__table__no-border">
+            <td></td>
+            <td><a [routerLink]="['/pricing/free']">Learn more</a></td>
+            <td><a [routerLink]="['/pricing/basic']">Learn more</a></td>
+            <td><a [routerLink]="['/pricing/elite']">Learn more</a></td>
+          </tr> -->
+          <tr class="pricing__container__table-feature">
+            <td colspan="4" scope="col">Search & Intelligence</td>
+          </tr>
+          <tr>
+            <td class="title">History
+              <span class="pricing__container__table__tooltip">
+                <i class="fa fa-question-o"></i>
+                <div class="pricing__container__table__tooltip-content">
+                  Grceri saves all your products for you, but you can only see and search the most recent 20 Products
+                  on the Free plan.
+                </div>
+              </span>
+            </td>
+            <td data-label="Free">Last 20 Products you've searched for.</td>
+            <td data-label="Basic">Unlimited</td>
+            <td data-label="Elite">Unlimited</td>
+          </tr>
+          <tr>
+            <td class="title">UPC, ISNB, Barcode
+              <span class="pricing__container__table__tooltip">
+                <i class="fa fa-question-circle"></i>
+                <div class="pricing__container__table__tooltip-content">
+                  Have a barcode, or any categorized code listed by USDA to search for a product online.
+                </div>
+              </span>
+            </td>
+            <td data-label="Free"><img  src="assets/svg/check.svg" alt="check" /></td>
+            <td data-label="Basic"><img  src="assets/svg/check.svg" alt="check" /></td>
+            <td data-label="Elite"><img  src="assets/svg/check.svg" alt="check" /></td>
+          </tr>
+          <!-- <tr>
+            <td>Product Recommendations
+              <span class="pricing__container__table__tooltip">
+                <i class="fa fa-question-circle"></i>
+                <div class="pricing__container__table__tooltip-content">
+                  We are constantly advising alternative products based on your shopping search, lists, and saves.
+                </div>
+              </span>
+            </td>
+            <td><img  src="assets/svg/check.svg" alt="check" /></td>
+            <td><img  src="assets/svg/check.svg" alt="check" /></td>
+            <td><img  src="assets/svg/check.svg" alt="check" /></td>
+          </tr> -->
+          <tr class="pricing__container__table-feature">
+            <td colspan="4" scope="col">Information Allowance</td>
+          </tr>
+          <tr>
+            <td class="title">Shopping Lists</td>
+            <td data-label="Free">1</td>
+            <td data-label="Basic">5</td>
+            <td data-label="Elite">50</td>
+          </tr>
+          <tr>
+            <td class="title">Watchlists
+              <span class="pricing__container__table__tooltip">
+                <i class="fa fa-question-circle"></i>
+                <div class="pricing__container__table__tooltip-content">
+                  Items you've saved to your product lists to track, and get automatic updated pricing in one
+                  place.
+                </div>
+              </span>
+            </td>
+            <td data-label="Free">10</td>
+            <td data-label="Basic">500</td>
+            <td data-label="Elite">5,000</td>
+          </tr>
+          <!-- <tr>
+            <td>Nutritional Information</td>
+            <td><img  src="assets/svg/check.svg" alt="check" /></td>
+            <td><img  src="assets/svg/check.svg" alt="check" /></td>
+            <td><img  src="assets/svg/check.svg" alt="check" /></td>
+          </tr> -->
+          <!-- <tr>
+            <td>Product Comparison</td>
+            <td><img  src="assets/svg/check.svg" alt="check" /></td>
+            <td><img  src="assets/svg/check.svg" alt="check" /></td>
+            <td><img  src="assets/svg/check.svg" alt="check" /></td>
+          </tr> -->
+          <tr>
+            <td class="title">Automated Pricing</td>
+            <td data-label="Free"><img  src="assets/svg/check.svg" alt="check" /></td>
+            <td data-label="Basic"><img  src="assets/svg/check.svg" alt="check" /></td>
+            <td data-label="Elite"><img  src="assets/svg/check.svg" alt="check" /></td>
+          </tr>
+          <!-- <tr class="pricing__container__table-feature">
+            <td colspan="4">User Insights</td>
+          </tr>
+          <tr>
+            <td>Food Analytics
+              <span class="pricing__container__table__tooltip">
+                <i class="fa fa-question-circle"></i>
+                <div class="pricing__container__table__tooltip-content">
+                  Chart analysis of recommended daily intake and any incongruences from your product lists.
+                </div>
+              </span>
+            </td>
+            <td></td>
+            <td><img  src="assets/svg/check.svg" alt="check" /></td>
+            <td><img  src="assets/svg/check.svg" alt="check" /></td>
+          </tr>
+          <tr>
+            <td>Diet & Analysis
+              <span class="pricing__container__table__tooltip">
+                <i class="fa fa-question-circle"></i>
+                <div class="pricing__container__table__tooltip-content">
+                  Different diet categories we give you analysis charts that analyze your product lists.
+                </div>
+              </span>
+            </td>
+            <td></td>
+            <td><img  src="assets/svg/check.svg" alt="check" /></td>
+            <td><img  src="assets/svg/check.svg" alt="check" /></td>
+          </tr>
+          <tr>
+            <td>Smart Notifications
+              <span class="pricing__container__table__tooltip">
+                <i class="fa fa-question-circle"></i>
+                <div class="pricing__container__table__tooltip-content">
+                  Based on your product lists, saves, and history we give you email notifications on related products.
+                </div>
+              </span>
+            </td>
+            <td></td>
+            <td><img  src="assets/svg/check.svg" alt="check" /></td>
+            <td><img  src="assets/svg/check.svg" alt="check" /></td>
+          </tr>
+          <tr>
+            <td>Diet Congruence
+              <span class="pricing__container__table__tooltip">
+                <i class="fa fa-question-circle"></i>
+                <div class="pricing__container__table__tooltip-content">
+                  Based on your dietary needs and restrictions, would approve or deny any product you view.
+                </div>
+              </span>
+            </td>
+            <td></td>
+            <td><img  src="assets/svg/check.svg" alt="check" /></td>
+            <td><img  src="assets/svg/check.svg" alt="check" /></td>
+          </tr> -->
+          <!-- <tr class="pricing__container__table-feature">
+            <td colspan="4">Other benefits</td>
+          </tr>
+          <tr>
+            <td>User Data</td>
+            <td>1 MB total</td>
+            <td>500 MB total</td>
+            <td>2 GB total</td>
+          </tr> -->
+          <!-- <tr>
+            <td>Support</td>
+            <td>Standard support</td>
+            <td>Priority support</td>
+            <td>24/7 support with four-hour response time </td>
+          </tr> -->
+          <!-- <tr>
+            <td></td>
+            <td>
+              <button (click)="GS.event('link', 'Pricing - Free', 'click', 0)" class="btn" [routerLink]="['/sign-up']">
+                Continue
+              </button>
+            </td>
+            <td>
+              <button (click)="GS.event('link', 'Pricing - Basic', 'click', 0)" class="btn btn-primary"
+                [routerLink]="['/sign-up/basic']">
+                Buy Basic
+              </button>
+            </td>
+            <td>
+              <button (click)="GS.event('link', 'Pricing - Elite', 'click', 0)" class="btn btn-primary"
+                [routerLink]="['/sign-up/Elite']">
+                Buy Elite
+              </button>
+            </td>
+          </tr> -->
+          <tr class="show-mobile">
+            <td data-label="Free">
+              <a (click)="GS.event('link', 'Pricing - Free', 'click', 0)" [routerLink]="['/sign-up']">
+                Continue
+              </a>
+            </td>
+            <td data-label="Basic">
+              <a (click)="GS.event('link', 'Pricing - Basic', 'click', 0)" [routerLink]="['/sign-up/basic']">
+                $0.99 /mo
+              </a>
+            </td>
+            <td data-label="Elite">
+              <a (click)="GS.event('link', 'Pricing - Elite', 'click', 0)" [routerLink]="['/sign-up/elite']">
+                $9.99 /mo
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section class="pricing__addons">
+      <h2 class="pricing__addons-title text-center">Add Ons</h2>
+      <p class="pricing__addons-desc text-center">Add additional features to your existing account.</p>
+      <div class="pricing__addons__content">
+        <div class="pricing__addons__content__addon">
+          <h3 class="pricing__addons__content__addon-title">
+            No Advertisements
+            <button (click)="GS.event('link', 'Pricing - No Advertisements', 'click', 0)" class="btn btn-primary"
+              [routerLink]="['/user/settings/billing/subscription']">
+              Add
+            </button>
+          </h3>
+          <div class="pricing__addons__content__addon__desc">
+            <p>If you don't like to see 3rd party ads, we will remove them for you, add this feature to any existing
+              plan.</p>
+          </div>
+          <div class="pricing__addons__content__addon__price">
+            <strong>$ 0.25 / mo</strong>
+          </div>
+        </div>
+        <!-- <div class="pricing__addons__content__addon">
+          <h3 class="pricing__addons__content__addon-title">
+            Data Export
+            <button (click)="GS.event('link', 'Pricing - Data Export', 'click', 0)" class="btn btn-primary"
+              [routerLink]="['/user/settings/billing/subscription']">
+              Add
+            </button>
+          </h3>
+          <div class="pricing__addons__content__addon__desc">
+            <p>Export all diet, nutritional, recommended analytics that nutritionists usually give you based on this
+              information, all automated.</p>
+          </div>
+          <div class="pricing__addons__content__addon__price">
+            <strong>$ 0.99 / mo</strong>
+          </div>
+        </div> -->
+      </div>
+    </section>
+
+    <section class="pricing__faq">
+      <h2 class="pricing__faq-title text-center">Commonly Asked Questions</h2>
+      <div class="row">
+        <div class="col-lg-offset-2 col col-lg-4 col-md-6 col-sm-6 col-xs-12">
+          <ul>
+            <li>
+              <strong>If I switch from yearly to monthly, do I lose any data?</strong>
+              <p>No, you do not lose any data, we restrict what data you can access based on your plan. Only if you go
+                down a tier you will lose data based on cap restrictions.</p>
+            </li>
+            <li>
+              <strong>Do you offer refunds if I want to cancel?</strong>
+              <p>No, all charges are final. This prevent users from abusing the service by spamming accounts. </p>
+            </li>
+            <li>
+              <strong>What nutritional information do you provide?</strong>
+              <p>We provide product nutrition to help your decisions when shopping. Set limits on your diet by
+                viewing personalized results and recommendations to stay on track.</p>
+            </li>
+            <li>
+              <strong>Do you provide a free trial with all paid plans?</strong>
+              <p>All paid plans have a 15-day trial with no obligation, risk free and automated. No humans
+                required.</p>
+            </li>
+          </ul>
+        </div>
+        <div class="col col-lg-4 col-md-6 col-sm-6 col-xs-12">
+          <ul>
+            <li>
+              <strong>If I don't like the service am I charged a cancellation fee?</strong>
+              <p>No, there is no cancellation fee. Everything is automated, and accessible to put on hold or cancel
+                on your dashboard. </p>
+            </li>
+            <li>
+              <strong>What does your product comparison do?</strong>
+              <p>This allows you to compare multiple products on every detail from pricing, to nutrition data,
+                rating, etc. This helps your decision making when looking for differences between similiar food
+                types.</p>
+            </li>
+            <li>
+              <strong>How accurate is your product data?</strong>
+              <p>All our data is the most accurate information you can find online today, we search for all online
+                vendors that sell products you're interested in. All in one place, convienence at your fingertips.</p>
+            </li>
+            <li>
+              <strong>Can I customize the types of notifications I get?</strong>
+              <p>Yes, in your dashboard portal you will be able to choose what types of notifications and the
+                frequency. If you decide on selecting a few or deciding not to have any you do that too.</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+  </div>
+</section>

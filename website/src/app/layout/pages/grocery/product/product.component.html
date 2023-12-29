@@ -1,0 +1,179 @@
+<div class="breadcrumb-single">
+  <div class="container">
+    <div class="row">
+      <div class="col col-md-10">
+        <breadcrumb></breadcrumb>
+      </div>
+      <div class="col col-md-2">
+        <product-social [meta]="product"></product-social>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="product">
+  <div class="container">
+    <div class="row">
+      <div class="col col-md-9" *ngIf="product">
+        <product-carousel [data]="Cproduct"></product-carousel>
+        <div *ngIf="!feedbackS(product.sem3_id)" class="product__feedback product__feedback-cursor" (click)="popup('feedback')">
+          <i class="fa fa-comment-o"></i> Tell us if something is incorrect
+        </div>
+        <div *ngIf="feedbackS(product.sem3_id)" class="product__feedback">
+          <i class="fa fa-comment"></i> Thank you for your feedback!
+        </div>
+      </div>
+      <div class="col col-md-3 product__details" *ngIf="product">
+        <h1 class="product__details-title">{{product.name}}</h1>
+        <div class="product__details-meta">
+          <ul>
+            <li class="product__details-meta-rating">
+              <a (click)="scrollReview()">
+                <ng-container *ngIf="product.rating">
+                  <bar-rating [(rate)]="product.rating" [max]="5" readOnly="true" theme="fontawesome-o"></bar-rating>
+                  {{product.rating}} (100)
+                </ng-container>
+                <ng-container *ngIf="!product.rating">
+                  <bar-rating [rate]="0" [max]="5" readOnly="true" theme="fontawesome-o"></bar-rating> 
+                  Write a Review
+                </ng-container>
+              </a>
+            </li>
+            <li *ngIf="product.manufacturer">
+              <a>{{ product.manufacturer }}</a>
+            </li>
+            <li>
+              Grceri # {{ product.upc }}
+            </li>
+          </ul>
+        </div>
+        <div class="product__details-price">${{ product.price }}</div>
+
+        <div class="product__details__section__meta">
+          <kendo-dropdownlist [defaultItem]="qtyDefault" [data]="qty" (selectionChange)="productqty($event)" class="product__details__section__meta-qty"></kendo-dropdownlist>
+          <button class="product__details__section__meta-btn btn btn-primary" (click)="addToCart(product)">
+            <span *ngIf="!addedToCart">Add to Cart</span>
+            <img *ngIf="addedToCart" src="./assets/svg/three-dots.svg" />
+          </button>
+
+          <div class="product__details__section__meta-diet">
+            <i class="fa fa-question-circle"></i>
+            <div class="product__details__section__meta-diet-popup">
+              If your diet goals aren't aligned with this product. We will display feedback for your to see.
+            </div>
+          </div>
+        </div>
+
+        <hr />
+
+        <product-diet [data]="product"></product-diet>
+
+        <hr />
+
+        <div class="product__details__section-sold">
+          Sold & Shipped by <a (click)="login(router.url, 'login')" *ngIf="!AS.isAuthenticated()">Login to See</a><span
+            *ngIf="AS.isAuthenticated()">{{ vendor }}</span>
+        </div>
+
+        <hr />
+
+        <div class="product__details__section__save">
+          <span class="product__details__section__save-save">
+            <a *ngIf="!AS.isAuthenticated()" (click)="login(router.url, 'save')"><i class="fa-bookmark-o fa"></i> Save
+              for Later</a>
+            <a *ngIf="AS.isAuthenticated()" (click)="save(product)">
+              <i [ngClass]="saved ? 'fa-bookmark' : 'fa-bookmark-o'" class="fa"></i>
+              <span *ngIf="!saved">Save for Later</span>
+              <span *ngIf="saved">Item Saved</span>
+            </a>
+          </span>
+          <span class="product__details__section__save-compare" *ngIf="product">
+            <a (click)="compare(product)">
+              <i [ngClass]="comparedF(product.sem3_id) ? 'fa-plus-square' : 'fa-plus-square-o'" class="fa"></i>
+              <span *ngIf="!comparedF(product.sem3_id)">Add to Compare</span>
+              <span *ngIf="comparedF(product.sem3_id)">Now Comparing</span>
+            </a>
+          </span>
+        </div>
+
+        <product-sellers [data]="product"></product-sellers>
+      </div>
+    </div>
+
+    <hr class="product__divider" />
+
+    <div class="product__section">
+      <h4 class="product__section-title">Customers also viewed these products</h4>
+      <slider #slider="slider" [showControls]="true" multiple="true" items="7">
+        <ng-container *ngFor="let i of items;">
+          <ng-container *sliderItem>
+            <item [cat]="i.category" [id]="i.cat_id" [rating]="i.rating" [name]="i.name" [images]="i.images" [price]="i.price"
+              [currency]="i.currency"></item>
+          </ng-container>
+        </ng-container>
+      </slider>
+    </div>
+
+    <div class="product__advertisement"></div>
+
+    <div class="product__section">
+      <h4 class="product__section-title">Customers also added these products</h4>
+      <slider #slider="slider" [showControls]="true" multiple="true" items="7">
+        <ng-container *ngFor="let i of items;">
+          <ng-container *sliderItem>
+            <item [cat]="i.category" [id]="i.cat_id" [rating]="i.rating" [name]="i.name" [images]="i.images" [price]="i.price"
+              [currency]="i.currency"></item>
+          </ng-container>
+        </ng-container>
+      </slider>
+    </div>
+
+    <hr class="product__divider" />
+
+    <div class="product__section">
+      <div class="row">
+        <div class="col col-md-10">
+          <section class="product__section">
+            <h2 class="product__section-title">Overview</h2>
+            <product-overview [data]="product"></product-overview>
+          </section>
+          <section class="product__section">
+            <h2 class="product__section-title">Nutritional Facts</h2>
+            <product-nutrition [data]="product"></product-nutrition>
+          </section>
+          <section #review class="product__section">
+            <h2 class="product__section-title">Ratings & Reviews</h2>
+            <reviews-module [data]="product"></reviews-module>
+          </section>
+        </div>
+        <div class="col col-md-2">
+          <div class="advertisement-vertical">
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="product__divider" />
+
+    <div class="product__advertisement"></div>
+
+    <hr class="product__divider" />
+
+    <div class="product__section">
+      <h4 class="product__section-title">Inspired by your browsing history</h4>
+      <slider #slider="slider" [showControls]="true" multiple="true" items="7">
+        <ng-container *ngFor="let i of items;">
+          <ng-container *sliderItem>
+            <item [cat]="i.category" [id]="i.cat_id" [rating]="i.rating" [name]="i.name" [images]="i.images" [price]="i.price"
+              [currency]="i.currency"></item>
+          </ng-container>
+        </ng-container>
+      </slider>
+    </div>
+  </div>
+</div>
+
+<product-feedback *ngIf="feedbackO" (open)="feedback($event, 'open')" (success)="feedback($event, 'success')" [id]="product"></product-feedback>
+<product-added *ngIf="addedO" (open)="added($event)" [added]="product"></product-added>
+
+<product-compare></product-compare>

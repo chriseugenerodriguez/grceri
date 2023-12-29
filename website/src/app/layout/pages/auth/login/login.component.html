@@ -1,0 +1,59 @@
+<div class="module">
+
+	<form [formGroup]="login">
+		<div class="module__content">
+
+			<img class="module__content-img" src="/assets/svg/cart.svg" />
+
+			<div class="module__content__header">
+				<h1 class="module__content__header-title">Log In</h1>
+				<p class="module__content__header-desc">Need a Grceri account?
+					<a [routerLink]="['/pricing']">Create an account</a>
+				</p>
+			</div>
+
+			<div class="module__content__fields">
+				<div *ngIf="error" class="feedback-block error">{{error}}</div>
+
+				<div class="module__content__fields__form-group form-group">
+					<label for="email">Email</label>
+					<input #email type="email" class="form-control" name="email" formControlName="email" />
+				</div>
+				<div class="module__content__fields__form-group form-group">
+					<label for="password" class="float-left">Password</label>
+					<div class="float-right">
+						<a class="module__content__fields__form-group-show" *ngIf="!show" (click)="password()">
+							<i class="fa fa-eye"></i> Show</a>
+						<a class="module__content__fields__form-group-show" *ngIf="show" (click)="password()">
+							<i class="fa fa-eye-slash"></i> Hide</a>
+					</div>
+					<input #pass [type]="show ? 'text' : 'password'" class="form-control" name="password" formControlName="password" />
+				</div>
+			</div>
+			<div class="module__content__fields__form-group form-group">
+				<button type="submit" [disabled]="!login.valid" class="btn btn-primary" (click)="click(login.controls.email.value, login.controls.password.value, login.controls.rememberme.value);">
+					<span [class.hidden]="submit == true">Log In</span>
+					<span [class.hidden]="submit != true" class="spinner">
+						<img src="/assets/svg/three-dots.svg" width="35" alt="" />
+					</span>
+				</button>
+			</div>
+			<div class="row">
+				<div class="form-group col col-md-6">
+					<label class="module__content__rememberme">
+						<div class="module__content__rememberme-label">
+							<input type='checkbox' id='rememberme' formControlName='rememberme' />
+							<label for="rememberme"></label>
+						</div>
+						Keep me logged in
+					</label>
+				</div>
+				<a class="module__content-forgot col col-md-6" [routerLink]="['/forgot-password']">Forgot Password?</a>
+			</div>
+		</div>
+	</form>
+</div>
+<div class="billboard">
+	<div class="billboard__image" [ngStyle]="{ 'background-image': 'url(assets/img/grocery.jpg)'}">
+	</div>
+</div>

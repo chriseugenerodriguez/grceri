@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="header">
+    <ul class="header__nav">
+      <li class="header__nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a routerLink="/blog/new-at-grceri">New at Grceri</a>
+      </li>
+      <li class="header__nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a routerLink="/blog/tips-tricks">Tips & Tricks</a>
+      </li>
+      <li class="header__nav-item" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+        <a routerLink="/blog/healthier-decisions">Healthier Decisions</a>
+      </li>
+    </ul>
+    <div class="header__nav-search" [class.is-focused]="focus">
+      <span>
+        <input type="text" placeholder="Search the blog..." (focus)="showS($event)" (focusout)="hideS($event)"
+          (keyup.enter)="search($event.target.value)" />
+      </span>
+    </div>
+  </div>
+</div>
+<div class="container">
+    <router-outlet></router-outlet>
+</div>
+
+<div class="sign__up">
+  <div class="container">
+    <div class="row">
+      <div class="col col-md-6">
+        <h4 class="sign__up-title">
+          Stay updated with Grceri by signing up for our newsletter.
+        </h4>
+      </div>
+      <div class="col col-md-6">
+        <div class="sign__up__form">
+          <form-SignUp></form-SignUp>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

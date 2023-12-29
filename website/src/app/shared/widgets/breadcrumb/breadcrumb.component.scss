@@ -1,0 +1,25 @@
+@import "../../../../assets/css/abstracts/_mixins.scss";
+@import "../../../../assets/css/abstracts/_variables.scss";
+
+.breadcrumb {
+  @include font-size(14px);
+  background: transparent;
+  padding: 0px;
+  margin-bottom: 0px;
+  z-index: 1;
+
+  a {
+    color: #666;
+
+    &:hover {
+      border-bottom: 1px solid #666;
+    }
+  }
+
+  h1 {
+    @include font-size(14px);
+    margin: 0px;
+    color: #333;
+    display: inline-block;
+  }
+}

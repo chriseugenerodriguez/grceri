@@ -1,0 +1,15 @@
+<ol class="breadcrumb" *ngIf="breadcrumbURLParams?.length > 0">
+  <li *ngFor="let i of breadcrumbURLParams">
+    <ng-container *ngIf="i.url; else lastBreadcrumb">
+      <a [routerLink]="i.url">{{i.title}}</a>
+    </ng-container>
+    <ng-template #lastBreadcrumb>
+      <ng-container *ngIf="currentPage == 'categories'; else otherPages">
+        <h1>{{i.title}}</h1>
+      </ng-container>
+    </ng-template>
+    <ng-template #otherPages>
+      {{i.title}}
+    </ng-template>
+  </li>
+</ol>

@@ -1,0 +1,61 @@
+<div class="visible-xs">
+  <div class="grocery__categories__mobile">
+    <a (click)="location.back()">
+      <img alt="arrow-left" src="assets/svg/mobile/arrow-left.svg" />
+    </a>
+    <h1>All Groceries</h1>
+    <img alt="search" src="assets/svg/search.svg" (click)="SBS.enableSearchBarPopup()" />
+  </div>
+</div>
+
+<div class="container">
+  <h1 class="hidden-xs">All Groceries</h1>
+  <section class="grocery__categories hidden-xs" *ngFor="let a of lists; let i = index">
+
+    <div class="grocery__categories-title">
+      <a class="grocery__categories__header" [routerLink]="['/groceries/', url(a)]">
+        <h2 class="grocery__categories__header-title">{{a.name}}</h2>
+      </a>
+    </div>
+    <div class="row">
+      <article class="grocery__categories__cat" *ngFor="let b of a.categories">
+        <a (click)="gEvent(b.name)" class="grocery__categories__cat__header" *ngIf="!b.categories.length"
+          [routerLink]="['/groceries/', url(a), url(b)]">
+          <h3 class="grocery__categories__cat__header-title">{{b.name}}</h3>
+        </a>
+
+        <ul class="grocery__categories__cat__dropdown" *ngIf="b.categories.length">
+          <li class="grocery__categories__cat__dropdown__item">
+            <a (click)="gEvent(b.name)" class="grocery__categories__cat__dropdown__item__link"
+              [routerLink]="['/groceries/', url(a), url(b)]">
+              <h3 class="grocery__categories__cat__dropdown__item__link-title">{{b.name}}
+                <!-- <i class="fa fa-angle-down"></i> -->
+              </h3>
+            </a>
+
+            <ul class="grocery__categories__cat__dropdown__item__sub" *ngIf="b.sub">
+              <li class="grocery__categories__cat__dropdown__item__sub-item" *ngFor="let c of b.sub">
+                <a (click)="gEvent(c.name)" [routerLink]="['/groceries/', url(a), url(b), url(c)]">
+                  {{ c.name }}
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <div class="visible-xs">
+    <section class="grocery__categories-mobile">
+      <ng-container *ngFor="let a of lists; let i = index">
+        <div class="grocery__categories-mobile-box">
+          <a [routerLink]="['/groceries/', url(a)]">
+            <img [alt]="a.name" [defaultImage]="load" [lazyLoad]="a.categoryImage" [useSrcset]="true" />
+            <h2>{{a.name}}</h2>
+          </a>
+        </div>
+      </ng-container>
+    </section>
+  </div>
+</div>

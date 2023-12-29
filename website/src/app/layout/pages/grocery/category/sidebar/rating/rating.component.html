@@ -1,0 +1,11 @@
+<ol class="star-list">    
+    <li *ngFor="let item of availableFilters, let i = index;">
+      <input type="checkbox" [name]="[i]" (click)="changeFilterStatus($event, item)">
+      <!-- <div class="rating" [ngStyle]="{ 'width': +filter.rating}"></div> -->
+      <ng-template ngFor let-star [ngForOf]="stars" let-j="index" let-last="last">
+        <i *ngIf="star <= item.rate" class="fa fa-star" aria-hidden="true"></i>
+        <i *ngIf="star > item.rate" class="fa fa-star-o"></i>
+      </ng-template>
+      <span>{{item.rate}} {{item.rate < 5 ? " &amp; Up" : ""}} <span class="count">({{ item.num }})</span></span>
+    </li>
+  </ol>

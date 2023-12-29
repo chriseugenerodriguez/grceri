@@ -1,0 +1,19 @@
+<div class="compare" *ngIf="items">
+  <div class="compare__module">
+    <div class="compare__module__content">
+      <div class="compare__module__content__item" *ngFor="let i of items; let x of index;">
+        <img  class="compare__module__content__item-img" [src]="i.images[0]" />
+        <div class="compare__module__content__item__content">
+          <img  (click)="remove(x)" class="compare__module__content__item__content-close" src="assets/svg/close.svg" />
+          <p class="compare__module__content__item__content-title">{{i.name}}</p>
+        </div>
+      </div>
+      <ng-container *ngIf="items.length > 1">
+        <div class="compare__module__content__btns">
+          <img  (click)="compare()" class="compare__module__content__btns-btn btn-primary" src="assets/svg/check.svg" />
+          <img  (click)="clear()" class="compare__module__content__btns-btn btn" src="assets/svg/close.svg" />
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</div>

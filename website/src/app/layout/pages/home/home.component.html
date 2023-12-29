@@ -1,0 +1,169 @@
+<section class="app-viewer">
+  <div class="app-viewer-stripes"></div>
+  <div class="app-viewer__container container">
+    <div class="app-viewer__container__content">
+      <a *ngIf="latest" class="app-viewer__container__content__announcement" [routerLink]="['/blog/', lower(latest.tags[0]), latest.slugs[0]]">
+        <span class="app-viewer__container__content__announcement-pill">New</span>
+        <span class="app-viewer__container__content__announcement-message">
+          {{ latest.data.title[0].text}}
+        </span>
+      </a>
+      <h1 class="app-viewer__container__content-title">The new standard in grocery shopping.</h1>
+      <p class="app-viewer__container__content-desc">Grceri is the best solution for searching all your favorite food
+        products
+        online. Compare 1000's of stores in one place, every branded food product sold online here at Grceri.</p>
+      <search *ngIf="!login()"></search>
+    </div>
+
+  </div>
+</section>
+
+<section class="groceries__illustrations">
+  <div class="groceries__illustrations__one">
+    <div class="groceries__illustrations__one-one"></div>
+    <div class="groceries__illustrations__one-two"></div>
+    <div class="groceries__illustrations__one-three"></div>
+    <div class="groceries__illustrations__one-four"></div>
+    <div class="groceries__illustrations__one-five"></div>
+    <div class="groceries__illustrations__one-six"></div>
+    <div class="groceries__illustrations__one-seven"></div>
+    <div class="groceries__illustrations__one-eight"></div>
+    <div class="groceries__illustrations__one-nine"></div>
+  </div>
+  <section class="groceries__illustrations__sub-header">
+    <div class="container">
+      <ul class="groceries__illustrations__sub-header__list">
+        <li class="groceries__illustrations__sub-header__list__item">
+          <h3 class="groceries__illustrations__sub-header__list__item-title">Search every food product online:</h3>
+          <p class="groceries__illustrations__sub-header__list__item-desc">Automated shopping experience for returning
+            customers. Shop for the same things, always get the best price. Vendors don't matter anymore.</p>
+        </li>
+        <li class="groceries__illustrations__sub-header__list__item">
+          <div class="groceries__illustrations__sub-header__list__item__case">
+            <h4 class="groceries__illustrations__sub-header__list__item__case-title">Best Deals</h4>
+            <p class="groceries__illustrations__sub-header__list__item__case-desc">We look for the best prices and put
+              it in one place.</p>
+          </div>
+        </li>
+        <li class="groceries__illustrations__sub-header__list__item">
+          <div class="groceries__illustrations__sub-header__list__item__case">
+            <h4 class="groceries__illustrations__sub-header__list__item__case-title">Multiple Vendors</h4>
+            <p class="groceries__illustrations__sub-header__list__item__case-desc">We take the hassle out of price
+              comparison for different
+              vendors.</p>
+          </div>
+        </li>
+        <li class="groceries__illustrations__sub-header__list__item">
+          <div class="groceries__illustrations__sub-header__list__item__case">
+            <h4 class="groceries__illustrations__sub-header__list__item__case-title">Online Convienence</h4>
+            <p class="groceries__illustrations__sub-header__list__item__case-desc">One website will never have the
+              lowest price for their products,
+              until
+              now.</p>
+          </div>
+        </li>
+      </ul>
+      <a class="groceries__illustrations__sub-header-link" routerLink="/pricing">Discover how our features can start
+        saving you
+        money <i class="fa fa-angle-right"></i></a>
+    </div>
+    <section class="groceries__illustrations__sub-header__recommendations" *ngIf="login()">
+      <div class="container">
+        <h4 class="groceries__illustrations__sub-header__recommendations-title">Recommended Brands Picked for you</h4>
+        <slider #slider="slider" [showControls]="true" multiple="true" items="7">
+          <ng-container *ngFor="let i of items;">
+            <ng-container *sliderItem>
+              <item [cat]="i.category" [id]="i.cat_id" [rating]="i.rating" [name]="i.name" [images]="i.images" [price]="i.price"
+                [currency]="i.currency"></item>
+            </ng-container>
+          </ng-container>
+        </slider>
+      </div>
+    </section>
+  </section>
+</section>
+
+<section class="container category text-center">
+  <div class="category__content">
+    <h3 class="category__content-title">Build a grocery list from the best source</h3>
+    <p class="category__content-desc">At Grceri. You will be able to set custom preferences based on your diet, with a
+      bunch of goodies included.</p>
+    <ul class="category__content__lists">
+      <li class="category__content__lists__list">
+        <strong>Food Analytics</strong>
+        <p>Chart analysis of recommended daily intake and any incongruences from your product lists.</p>
+      </li>
+      <li class="category__content__lists__list">
+        <strong>Diet & Analysis</strong>
+        <p>Different diet categorical charts to analyze your product lists.</p>
+      </li>
+      <li class="category__content__lists__list">
+        <strong>Diet Congruence</strong>
+        <p>Based on your dietary needs and restrictions, approve or deny any product you view.</p>
+      </li>
+    </ul>
+    <div class="category__content-btn">
+      <a class="btn" (click)="moreCat()">
+        <span *ngIf="!moreC">More</span>
+        <span *ngIf="moreC">Less</span>
+      </a>
+      <a *ngIf="moreC" class="btn btn-primary" [routerLink]="['/groceries']">See all Categories</a>
+    </div>
+  </div>
+
+  <ul class="category__list">
+    <ng-container *ngFor="let i of category; let x = index">
+      <li class="category__list__item" *ngIf="x < 12">
+        <a class="category__list__item__link" [routerLink]="['/groceries/', url(i)]">
+          <i [class]="'category__list__item__link-img-' + i.class + ' category__list__item__link-img'"></i>
+          <h4 class="category__list__item__link-title">{{i.name}}</h4>
+        </a>
+      </li>
+    </ng-container>
+    <ng-container *ngIf="moreC">
+      <ng-container *ngFor="let i of category; let x = index">
+        <li class="category__list__item" *ngIf="x > 12">
+          <a class="category__list__item__link" [routerLink]="['/groceries/', url(i)]">
+            <i [class]="'category__list__item__link-img-' + i.class + ' category__list__item__link-img'"></i>
+            <h4 class="category__list__item__link-title">{{i.name}}</h4>
+          </a>
+        </li>
+      </ng-container>
+
+    </ng-container>
+  </ul>
+</section>
+
+<section class="popular">
+  <div class="container">
+    <h4 class="popular-title">Trending on Grceri.com</h4>
+    <slider #slider="slider" [showControls]="true" multiple="true" items="7">
+      <ng-container *ngFor="let i of items;">
+        <ng-container *sliderItem>
+          <item [cat]="i.category" [id]="i.cat_id" [rating]="i.rating" [name]="i.name" [images]="i.images" [price]="i.price"
+            [currency]="i.currency"></item>
+        </ng-container>
+      </ng-container>
+    </slider>
+  </div>
+</section>
+
+<section class="featured" style="display: none;">
+  <h4>As Featured In:</h4>
+  <img src="./assets/img/featured.jpg" />
+</section>
+
+<section class="cta">
+  <div class="container">
+    <div class="row">
+      <div class="col col-md-6">
+        <h3 class="cta-title">Ready to get started?</h3>
+        <h4 class="cta-subtitle">Start shopping or create an account.</h4>
+      </div>
+      <div class="col col-md-6">
+        <a [routerLink]="['/pricing']" class="cta-btn btn btn-primary">Create Grceri Account</a>
+        <a [routerLink]="['/groceries']" class="cta-btn btn">Start Shopping</a>
+      </div>
+    </div>
+  </div>
+</section>

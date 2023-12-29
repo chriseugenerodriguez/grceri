@@ -1,0 +1,19 @@
+<ul class="breadcrumb-single__share">
+  <div class="hidden-xs">
+    <li>
+      <a class="fb" (click)="social('facebook')"><i class="fa fa-facebook"></i></a>
+    </li>
+    <li>
+      <a class="pt" (click)="social('pinterest')"><i class="fa fa-pinterest"></i></a>
+    </li>
+    <li>
+      <a class="tw" (click)="social('twitter')"><i class="fa fa-twitter"></i></a>
+    </li>
+  </div>
+
+  <div class="visible-xs" (click)="share()">
+    <i class="fa fa-share-alt"></i>
+
+    <span>Share This</span>
+  </div>
+</ul>

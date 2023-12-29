@@ -1,0 +1,97 @@
+<div class="module">
+  <a class="module-logo" [routerLink]="['/']">
+    <img src="assets/svg/cart.svg" alt="Grceri" />
+  </a>
+
+  <div class="module__content col col-lg-8 col-md-6 col-sm-7 col-xs-10">
+    <form [formGroup]="register">
+      <ng-container *ngFor="let i of message">
+        <alert *ngIf="i" [type]="i.type" (onClosed)="_close(i)" [dismissOnTimeout]="8000" [dismissible]="true">
+          {{ i.value }} </alert>
+      </ng-container>
+      <div class="module__content__header visible-lg visible-md">
+        <h2 class="module__content__header-title">Access over 700,000 food products!</h2>
+        <h3 class="module__content__header-subtitle">Always find the cheaping price, convienence at your fingertips, all
+          in one place.</h3>
+      </div>
+
+      <h1>Register</h1>
+
+      <alert *ngIf="register.get('email').errors && register.get('email').errors.emailTaken" type="danger"
+        (onClosed)="_close(i)" [dismissOnTimeout]="4000" [dismissible]="true">
+        {{register.get('email').errors.emailTaken}}
+      </alert>
+
+      <div class="form-group row">
+        <div class="col col-xs-6">
+          <input #firstname type="text" class="form-control" formControlName="firstName" placeholder="First Name" />
+        </div>
+        <div class="col col-xs-6">
+          <input type="text" class="form-control" formControlName="lastName" placeholder="Last Name" />
+        </div>
+      </div>
+
+      <div class="form-group module__content-relative">
+        <input #email [class.ng-false]="emailTaken" [class.ng-true]="!emailTaken" type="email" class="form-control"
+          formControlName="email" placeholder="Email Address" />
+        <img *ngIf="emailLoading" class="spinner" src="assets/svg/oval.svg" width="15" alt="" />
+      </div>
+      <div class="form-group module__content-relative">
+        <label class="show" (click)="_password()">
+          <i [class]="!show ? 'fa fa-eye' : 'fa fa-eye-slash'"></i>
+          {{ !show ? 'Show' : 'Hide' }}
+        </label>
+        <input #pass [type]="show ? 'text' : 'password'" class="form-control" maxlength="50" name="password"
+          (input)="_passwordChange($event.target.value)" formControlName="password" placeholder="Password" />
+      </div>
+
+      <div class="module__content__fields__password-requirements">
+        <div *ngIf="!passwordRequirements" class="form-group row">
+          <div class="col col-xs-12 col-sm-6 col-md-12 col-lg-6">
+            <ul class="module__content__fields__password-requirements-meta">
+              <li [class.active]='lowercase'>One lowercase character</li>
+              <li [class.active]='uppercase'>One uppercase character</li>
+              <li [class.active]='number'>One number</li>
+            </ul>
+          </div>
+          <div class="col col-xs-12 col-sm-6 col-md-12 col-lg-6">
+            <ul class="module__content__fields__password-requirements-meta selfclear">
+              <li [class.active]='special'>One special character</li>
+              <li [class.active]='eight'>8 characters minimum</li>
+              <li *ngIf="plus50" [class.active]='plus50' class="error">50 characters maximum</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <p class="module__content__fields-small">
+        By signing up you agree to our <a routerLink="/policies/terms-of-use" target="_blank">Terms & Conditions</a> and
+        <a routerLink="/policies/terms-of-use" target="_blank">Privacy Statement</a>.
+      </p>
+
+      <div class="buttons">
+        <button type="submit" [disabled]="!register.valid" class="register__content__form-btn btn btn-primary"
+          (click)="submitSignUp();">
+          <span *ngIf="!submit; else : spin">
+            Sign Up
+          </span>
+          <ng-template #spin>
+            <img class="spinner" src="assets/svg/three-dots.svg" width="35" alt="" />
+          </ng-template>
+        </button>
+      </div>
+
+      <div class="seperator"></div>
+
+      <button id="google-sign-up-button" [disabled]="googleSignUpLoading" (click)="onGoogleSignUp()">
+        Sign up with Google
+      </button>
+
+      <p class="module__content-acct">Have have a Grceri account?
+        <a [routerLink]="['/login']">Sign In</a>
+      </p>
+    </form>
+  </div>
+</div>
+<div class="billboard hidden-md hidden-xs hidden-sm">
+</div>

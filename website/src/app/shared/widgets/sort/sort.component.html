@@ -1,0 +1,8 @@
+<div class="arrange">
+  <div class="arrange_unit middle sort">
+    <span>Sort by </span>
+    <select (change)="onChange($event.target.value)">
+      <option *ngFor="let a of sortList" [selected]="this.sortBy === a.value" [value]="a.value"> {{a.text}} </option>
+    </select>
+  </div>
+</div>

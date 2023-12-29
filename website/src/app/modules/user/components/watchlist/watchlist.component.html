@@ -1,0 +1,143 @@
+<div class="visible-xs">
+  <div #watchlist class="header__mobile">
+    <h1>My Watchlists</h1>
+    <div class="header__mobile-dropdown" dropdown [isDisabled]="watchlists.length < 2 || watchlists == undefined">
+      <a dropdownToggle data-toggle="dropdown" aria-haspopup="true" aria- expanded="true">
+        <img alt="dots" src="assets/svg/dots.svg" />
+      </a>
+      <ul *dropdownMenu class="header__mobile-dropdown-menu dropdown-menu" role="menu" aria-labelledby="menu1">
+        <li role="presentation">
+          <a role="menuitem" tabindex="-1" [class.active]="SS.activeSort === 'lastSeenPrice'"
+            (click)="SS.sortIt('lastSeenPrice', 0, 5, 0)">
+            Last Seen Price
+          </a>
+          <a role="menuitem" tabindex="-1" [class.active]="SS.activeSort === 'latestPrice'"
+            (click)="SS.sortIt('latestPrice', 1, 5, 0)">
+            Latest Price
+          </a>
+          <a role="menuitem" tabindex="-1" [class.active]="SS.activeSort === 'title'"
+            (click)="SS.sortIt('title', 2, 5, 0)">
+            Title: A - Z
+          </a>
+          <a role="menuitem" tabindex="-1" [class.active]="SS.activeSort === 'availability'"
+            (click)="SS.sortIt('availability', 3, 5, 0)">
+            Availability
+          </a>
+          <a role="menuitem" tabindex="-1" [class.active]="SS.activeSort === 'lastViewed'"
+            (click)="SS.sortIt('lastViewed', 4, 5, 0)">
+            Recently Viewed
+          </a>
+          <a role="menuitem" tabindex="-1" [class.active]="SS.activeSort === 'createdAt'"
+            (click)="SS.sortIt('createdAt', 5, 5, 0)">
+            Recently Created
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<section class="watchlist">
+  <div #watchlistcontainer class="container">
+    <div class="watchlist__header hidden-xs">
+      <h1 class="watchlist__header-title">My Watchlists</h1>
+      <div class="dropdown-sort" dropdown [isDisabled]="watchlists.length < 2 || watchlists == undefined">
+        <a dropdownToggle data-toggle="dropdown" aria-haspopup="true" aria- expanded="true">
+          Sort by Category <i class="fa fa-angle-down"></i>
+        </a>
+        <ul *dropdownMenu role="menu" aria-labelledby="menu1">
+          <li role="presentation">
+            <a role="menuitem" tabindex="-1" [class.active]="SS.activeSort === 'lastSeenPrice'"
+              (click)="SS.sortIt('lastSeenPrice', 0, 5, 0)">
+              Last Seen Price
+            </a>
+            <a role="menuitem" tabindex="-1" [class.active]="SS.activeSort === 'latestPrice'"
+              (click)="SS.sortIt('latestPrice', 1, 5, 0)">
+              Latest Price
+            </a>
+            <a role="menuitem" tabindex="-1" [class.active]="SS.activeSort === 'title'"
+              (click)="SS.sortIt('title', 2, 5, 0)">
+              Title: A - Z
+            </a>
+            <a role="menuitem" tabindex="-1" [class.active]="SS.activeSort === 'availability'"
+              (click)="SS.sortIt('availability', 3, 5, 0)">
+              Availability
+            </a>
+            <a role="menuitem" tabindex="-1" [class.active]="SS.activeSort === 'lastViewed'"
+              (click)="SS.sortIt('lastViewed', 4, 5, 0)">
+              Recently Viewed
+            </a>
+            <a role="menuitem" tabindex="-1" [class.active]="SS.activeSort === 'createdAt'"
+              (click)="SS.sortIt('createdAt', 5, 5, 0)">
+              Recently Created
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row" *ngIf="watchlists.length !== 0; else skeleton">
+      <ng-container *ngFor="let i of message">
+        <alert *ngIf="i" [type]="i.type === 'watchlist-close-limit-error' ? 'danger' : i.type" (onClosed)="_close(i)"
+          [dismissOnTimeout]="8000" [dismissible]="true">
+          {{ i.value }} <a *ngIf="i.type === 'watchlist-close-limit-error'"
+            [routerLink]="['/user/settings/billing/subscription']">Upgrade Now</a>
+        </alert>
+      </ng-container>
+      <ng-container *ngFor="let tile of watchlists">
+        <ng-container *ngIf="tile.images">
+          <watchlist-tile class="col col-lg-3 col-md-4 col-sm-6 col-xs-6"
+            [bookmarked]="checkItemBookmarked(tile.productId)" [data]="tile">
+          </watchlist-tile>
+        </ng-container>
+      </ng-container>
+    </div>
+    <ng-template #skeleton>
+      <ng-container *ngIf="loading; else empty">
+        <div class="row">
+          <ng-container *ngFor="let i of nitems">
+            <div class="col col-md-3 col-sm-4 col-xs-6">
+              <div class="skeleton-box">
+                <div class="row">
+                  <div class="col col-md-5 col-sm-5 col-md-5 col-xs-5">
+                    <div class=" skeleton-bar skeleton-margin-bottom"></div>
+                  </div>
+                </div>
+                <div class="skeleton-square skeleton-margin-bottom"></div>
+                <div class="row">
+                  <div class="col col-md-9 col-sm-9 col-xs-9">
+                    <div class=" skeleton-bar skeleton-margin-bottom"></div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col col-md-9 col-sm-9 col-xs-9">
+                    <div class=" skeleton-bar skeleton-margin-bottom-20"></div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col col-md-5 col-sm-5 col-xs-5">
+                    <div class=" skeleton-bar skeleton-margin-bottom"></div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col col-md-5 col-sm-5 col-xs-5">
+                    <div class=" skeleton-bar"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </ng-container>
+      <ng-template #empty>
+        <div class="watchlist__empty">
+          <div class="watchlist__empty-ball">
+            <i class="fa fa-list-ol"></i>
+            <h3>You haven't added a watchlist yet.</h3>
+          </div>
+        </div>
+      </ng-template>
+    </ng-template>
+  </div>
+</section>
+
+<watchlist-popup></watchlist-popup>

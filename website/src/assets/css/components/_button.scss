@@ -1,0 +1,90 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the button component.
+// -----------------------------------------------------------------------------
+
+//  BEM - Block Element Modifier
+//  This is how our code is structured. Please follow this layout and format.
+//  More Info: https://css-tricks.com/bem-101/
+//
+//  .steps {
+//	    &__item {		
+//		    &--first {}
+//		    &--last {}
+//		    &--active {}
+//		    &--done {}
+//	    }
+//	    &__link {}
+//  }
+
+	.btn {
+		@include border-radius(3px);
+		@include font-size(17px);
+		background: #e7e9ec;
+    font-weight: 600;
+    text-align: center;
+    vertical-align: middle;
+    text-transform: capitalize;
+    user-select: none;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 0 18px;
+    border: 0 none;
+    display: inline-block;
+    line-height: 49px;
+		width: 100%;
+
+		&:hover,
+		&:focus,
+		&:active {
+			background: #e7e9ec;
+		}
+		&.small {
+			@include border-radius(2px);	
+			@include font-size(15px);
+			padding: 7px 18px;
+			line-height: 15px;
+
+			&:hover {
+				@include opacity(.9);
+			}
+		}
+
+		&.clear {
+    	@include font-size(14px);
+			border: 2px solid #e0e0e0;
+			padding: 8px 38px;
+			line-height: 20px;
+			background: transparent;
+
+			&:hover {
+				border-color: $green;
+			}
+
+			&:active,
+			&:focus,
+			&:visited {
+				color:#333;
+			}
+		}
+
+	}
+
+	.btn-primary {
+		color:#fff;
+		background: $green;
+		box-shadow: 0 1px 5px 0 rgba(57,73,76,.35);
+
+		&:hover,
+		&:active,
+		&:focus,
+		&:visited {
+			color:#fff;
+			background: $green;
+			@include opacity(.9);
+		}
+	}
+	
+	.btn.disabled, .btn[disabled], fieldset[disabled] .btn {
+    @include opacity(.25);
+		pointer-events: none;
+	}
