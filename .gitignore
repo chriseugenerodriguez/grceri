@@ -1,0 +1,6 @@
+*.psd
+designs/*
+scraper/*
+sql/*
+utils/*
+mobile/*
