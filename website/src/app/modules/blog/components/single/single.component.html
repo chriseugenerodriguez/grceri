@@ -8,7 +8,7 @@
         <p>{{ post.data.summary[0].text}}</p>
       </section>
       <figure>
-        <img  [src]="post.data.image.tablet.url" />
+        <img [src]="post.data.image.tablet.url" />
       </figure>
     </article>
   </div>
@@ -39,7 +39,7 @@
         <div class="blog__section__post__tags" *ngIf="i > 0">
           <a class="blog__section__post__tags-tag" [routerLink]="['/blog/tags', i]">{{i}}</a>
         </div>
-      </ng-container>      
+      </ng-container>
     </ng-container>
 
 
@@ -56,5 +56,4 @@
       </div>
     </div>
   </div>
-  <disqus class="blog__section__comments" [identifier]="post.data.title[0].text" [url]="['/blog/', lower(post.tags[0]), post.slugs[0]]"></disqus>
 </main>
