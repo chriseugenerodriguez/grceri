@@ -1,4 +1,5 @@
 {
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
@@ -62,7 +63,7 @@
               ],
               "ngswConfigPath": "ngsw-config.json"
             },
-            "local": {
+            "development": {
               "buildOptimizer": true,
               "optimization": false,
               "vendorChunk": true,
@@ -97,11 +98,11 @@
             "production": {
               "browserTarget": "grceri:build:production"
             },
-            "local": {
-              "browserTarget": "grceri:build:local"
+            "development": {
+              "browserTarget": "grceri:build:development"
             }
           },
-          "defaultConfiguration": "local"
+          "defaultConfiguration": "development"
         },
         "mobile": {
           "builder": "@angular-builders/custom-webpack:browser",
@@ -239,35 +240,6 @@
           }
         }
       }
-    }
-  },
-  "defaultProject": "grceri",
-  "schematics": {
-    "@schematics/angular:class": {
-      "spec": false
-    },
-    "@schematics/angular:component": {
-      "spec": false,
-      "inlineStyle": true,
-      "inlineTemplate": true,
-      "prefix": "app",
-      "styleext": "scss"
-    },
-    "@schematics/angular:directive": {
-      "spec": false,
-      "prefix": "app"
-    },
-    "@schematics/angular:guard": {
-      "spec": false
-    },
-    "@schematics/angular:module": {
-      "spec": false
-    },
-    "@schematics/angular:pipe": {
-      "spec": false
-    },
-    "@schematics/angular:service": {
-      "spec": false
     }
   }
 }

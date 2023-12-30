@@ -10,10 +10,6 @@ if (environment.production) {
   enableProdMode();
 }
 
-if (environment.production) {
-  enableProdMode();
-}
-
 document.addEventListener('DOMContentLoaded', () => {
   platformBrowserDynamic().bootstrapModule(AppBrowserModule);
 });
