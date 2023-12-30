@@ -58,7 +58,6 @@
     "ng5-slider": "^1.2.6",
     "ngx-bootstrap": "^10.1.0",
     "ngx-device-detector": "^5.0.1",
-    "ngx-disqus": "^2.3.7",
     "ngx-pagination": "^6.0.3",
     "ngx-stripe": "^15.7.2",
     "npm-run-all": "^4.1.3",

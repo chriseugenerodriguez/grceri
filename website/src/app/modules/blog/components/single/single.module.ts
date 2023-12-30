@@ -9,16 +9,12 @@ import { BlogSingleComponent } from './single.component';
 // SERVICES
 import { SocialService } from '../../../../shared/services';
 
-// DISQUS
-import { DisqusModule } from 'ngx-disqus';
-
 // IMPORT MODULES, DECLARE COMPONENTS
 @NgModule({
 	imports: [
 		CommonModule,
 		RouterModule,
 		FormsModule,
-		DisqusModule.forRoot('grceri-com-blog')
 	],
 	declarations: [
 		BlogSingleComponent

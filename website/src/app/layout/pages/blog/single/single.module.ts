@@ -9,8 +9,6 @@ import { BlogSingleComponent } from './single.component';
 // META
 import { SocialService } from '../../../../core';
 
-// DISQUS
-import { DisqusModule } from 'ngx-disqus';
 
 // IMPORT MODULES, DECLARE COMPONENTS
 @NgModule({
@@ -18,7 +16,6 @@ import { DisqusModule } from 'ngx-disqus';
 		CommonModule,
 		RouterModule,
 		FormsModule,
-		DisqusModule.forRoot('grceri-com-blog')
 	],
 	declarations: [
 		BlogSingleComponent
