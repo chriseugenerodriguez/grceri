@@ -31,10 +31,10 @@ jobs:
       - name: Build
         run: cd ./hosting && npm run build
       - uses: FirebaseExtended/action-hosting-deploy@v0
-      with:
-        repoToken: '${{ secrets.GITHUB_TOKEN }}'
-        firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_GRCERI_C3702 }}'
-        channelId: live
-        projectId: grceri-c3702
+        with:
+          repoToken: "${{ secrets.GITHUB_TOKEN }}"
+          firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_GRCERI_C3702 }}"
+          channelId: live
+          projectId: grceri-c3702
         env:
           FIREBASE_CLI_EXPERIMENTS: webframeworks
