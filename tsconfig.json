@@ -1,7 +1,7 @@
 {
   "compileOnSave": true,
   "compilerOptions": {
-    "outDir": "./dist",
+    "outDir": "./dist/browser",
     "sourceMap": true,
     "declaration": false,
     "moduleResolution": "node",
