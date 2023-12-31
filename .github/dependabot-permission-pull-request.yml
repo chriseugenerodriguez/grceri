@@ -1,4 +1,3 @@
-
 name: Dependabot fetch metadata
 on: pull_request
 
