@@ -12,9 +12,6 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
 
-    env:
-      FIREBASE_FRAMEWORKS_BUILD_TARGET: "production"
-
     steps:
       - uses: actions/checkout@v3
 
