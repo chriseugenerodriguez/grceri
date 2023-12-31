@@ -14,5 +14,4 @@ jobs:
         with:
           repoToken: "${{ secrets.GITHUB_TOKEN }}"
           firebaseServiceAccount: "${{ secrets.FIREBASE_SERVICE_ACCOUNT_GRCERI_C3702 }}"
-          expires: 14d
           projectId: grceri-c3702
