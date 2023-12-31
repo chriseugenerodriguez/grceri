@@ -25,17 +25,8 @@
       "**/.*",
       "**/node_modules/**"
     ],
-    "targets": {
-      "production": {
-        "frameworksBackend": {
-          "region": "us-central1"
-        }
-      },
-      "staging": {
-        "frameworksBackend": {
-          "region": "us-central1"
-        }
-      }
+    "frameworksBackend": {
+      "region": "us-central1"
     }
   },
   "remoteconfig": {
