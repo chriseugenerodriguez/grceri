@@ -1,0 +1,270 @@
+<form [formGroup]="editMobileListGroup">
+  <div *ngIf="listService.single['title']">
+    <div class="mobile__header">
+      <ng-container *ngIf="listDetails; else details">
+        <h1 (click)="listDetails = !listDetails;"><i
+            class="fa fa-angle-down"></i>{{ listService.single['list'].length + listService.checked.length }} items
+        </h1>
+        <div class="mobile__header-dropdown" dropdown>
+          <a dropdownToggle data-toggle="dropdown" aria-haspopup="true" aria- expanded="true">
+            <img alt="dots" src="assets/svg/dots.svg" />
+          </a>
+          <ul *dropdownMenu class="mobile__header-dropdown-menu dropdown-menu" role="menu" aria-labelledby="menu1">
+            <li role="presentation">
+              <a role="menuitem" (click)="$event.preventDefault();listService.deleteAllItems()"
+                (keydown.enter)="listService.checked.length > 0" [class.isDisabled]="listService.checked.length <= 1"
+                tabindex="-1">Delete All</a>
+            </li>
+            <li role="presentation">
+              <a role="menuitem" (click)="$event.preventDefault();listService.selectAll()"
+                (keydown.enter)="listService.checked.length === 0"
+                [class.isDisabled]="listService.single['list'].length <= 0" tabindex="-1">Select All</a>
+            </li>
+            <li role="presentation">
+              <a role="menuitem" (click)="$event.preventDefault();listService.deleteCompleted()"
+                (keydown.enter)="listService.checked.length > 0" [class.isDisabled]="listService.checked.length < 1"
+                tabindex="-1">Delete Completed</a>
+            </li>
+            <li role="presentation">
+              <a role="menuitem" (click)="$event.preventDefault();listService.uncheckAll()"
+                (keydown.enter)="listService.checked.length > 0" [class.isDisabled]="listService.checked.length <= 1"
+                tabindex="-1">Uncheck All</a>
+            </li>
+            <li role="presentation">
+              <a role="menuitem" (click)="$event.preventDefault();listService.moveCopyItems()"
+                (keydown.enter)="listService.checked.length > 0" [class.isDisabled]="listService.checked.length === 0"
+                tabindex="-1">Move / Copy Items</a>
+            </li>
+          </ul>
+        </div>
+      </ng-container>
+      <ng-template #details>
+        <h1 *ngIf="!editMobileListInfo; else listtitle">{{ listService.single['title'] }}</h1>
+        <ng-template #listtitle>
+          <input type="text" formControlName="listTitle">
+        </ng-template>
+        <div *ngIf="editMobileListInfo" class="mobile__header-btns">
+          <button class="btn btn-primary" type="button" (click)="updateUserListInfo()">Save</button>
+          <button class="btn" type="button" (click)="resetEditList()">Cancel</button>
+        </div>
+        <div class="mobile__header-dropdown" dropdown>
+          <a dropdownToggle data-toggle="dropdown" aria-haspopup="true" aria- expanded="true">
+            <img alt="dots" src="assets/svg/dots.svg" />
+          </a>
+          <ul *dropdownMenu class="mobile__header-dropdown-menu dropdown-menu" role="menu" aria-labelledby="menu1">
+            <li role="presentation"
+              *ngIf="listService.single['visibility'] !== null || listService.single['visibility'] !== 'private'">
+              <a (click)="$event.preventDefault();listService.shareMobileList()" role="menuitem" tabindex="-1">Share
+                List</a>
+            </li>
+            <li role="presentation">
+              <a (click)="editMobileInfo($event)" role="menuitem" tabindex="-1">Edit Info</a>
+            </li>
+            <li role="presentation">
+              <a (click)="listService.deleteList()" role="menuitem" tabindex="-1">Delete List</a>
+            </li>
+            <li role="presentation">
+              <a role="menuitem" tabindex="-1" (click)="MS.openChangeLabelModal(config)">Change Labels</a>
+            </li>
+            <li role="presentation" *ngIf="listService.single['list'].length || listService.checked.length">
+              <a (click)="$event.preventDefault();listService.exportList()" role="menuitem" tabindex="-1">Export
+                List</a>
+            </li>
+          </ul>
+        </div>
+      </ng-template>
+    </div>
+
+    <div class="mobile_plus" (click)="SBS.enableSearchBarPopup()">
+      <img alt="" src="../../../../../assets/svg/mobile/plus.svg" />
+    </div>
+  </div>
+  <ng-container *ngIf="listDetails">
+    <div #mobileHeaderDetails class="mobile__content mobile__content-details">
+      <div class="mobile__content-container">
+        <div class="mobile__content-actions">
+          <a (click)="BS.openScanner()">
+            <img src="../../../../../../assets/svg/search/barcode.svg" alt="" />
+            <span>Scan Item</span>
+          </a>
+          <a (click)="SBS.enableSearchBarPopup()">
+            <img src="../../../../../../assets/svg/mobile/plus.svg" alt="" />
+            <span>Add to List</span>
+          </a>
+        </div>
+        <ng-container *ngIf="listService.single['list'].length || listService.checked.length; else empty">
+          <ul class="mobile__content__list">
+            <li class="item" *ngFor="let list of listService.single['list']">
+              <input [checked]="listService.toggleItemChecked(list.productId)" [id]="list.productId" type="checkbox"
+                (change)="listService.updateProductList($event, list)" />
+              <a [routerLink]="['/grocery/', commonService.product(list.title), list.productId]"
+                class="mobile__content__list__text">
+                <strong class="mobile__content__list__text-title">{{ list.title }}</strong>
+                <div class="mobile__content__list__text-details">
+                  <span>${{ list.vendorPrice | number : '1.2' }}</span> {{ list.brand }} -
+                  {{ list.vendor }}
+                </div>
+              </a>
+              <img [defaultImage]="load" [lazyLoad]="list.productImages.sizes.mobile" [alt]="list.title" />
+            </li>
+          </ul>
+          <div *ngIf="listService.checked.length" class="mobile__content__list-completed">
+            <div class="mobile__content__list-completed-title">
+              <p (click)="listService.toggleShowCompleted()">{{ listService.hideCompleted ? 'Show': 'Hide' }}
+                {{ listService.checked.length }} completed
+              </p>
+            </div>
+            <ul *ngIf="!listService.hideCompleted">
+              <li *ngFor="let list of listService.checked">
+                <input [id]="list.productId" type="checkbox"
+                  (change)="listService.removeChecked($event, list.productId)" checked />
+                <label [attr.for]="list.productId" class="mobile__content__list-completed__text">
+                  {{ list.title }}
+                </label>
+              </li>
+            </ul>
+          </div>
+        </ng-container>
+        <ng-template #empty>
+          <div class="mobile__empty">
+            <div class="mobile__empty-ball">
+              <i class="fa fa-list-ol"></i>
+              <h3>There are no items yet.</h3>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+    </div>
+  </ng-container>
+  <div [ngStyle]="{'z-index': listDetails ? 9 : 0 }">
+    <div class="mobile__meta" *ngIf="listService.single">
+      <div class="mobile__meta-followers">
+        {{ listService.single['followersCount'] !== null ? listService.single['followersCount'] : 0 }} Followers
+      </div>
+      <div class="mobile__meta-updated">
+        <time [dateTime]="listService.single['updatedAt']">
+          Last Updated {{ listService.single['updatedAt'] | date: 'short' }}
+        </time>
+      </div>
+    </div>
+    <ng-container *ngIf="listService.single['description']">
+      <ng-container *ngIf="!editMobileListInfo; else listdescription">
+        <div class="mobile__meta-desc">
+          {{ listService.single['description'] }}
+        </div>
+      </ng-container>
+      <ng-template #listdescription>
+        <textarea formControlName="listDescription" rows="8" cols="80"></textarea>
+      </ng-template>
+    </ng-container>
+
+    <ng-container *ngIf="listLabels && listLabels.length > 0">
+      <ul class="mobile-labels">
+        <li *ngFor="let label of listLabels">{{ label }}</li>
+      </ul>
+    </ng-container>
+
+    <ng-container *ngIf="listService.user['favorites']">
+      <h2 class="mobile__section-title">Favorites</h2>
+      <div *ngIf="listService.user['favorites'].length > 0; else favorites" class="mobile__section">
+        <slider showC="false" multiple="true" count="2" [touchEnabled]="true">
+          <ng-container *ngFor="let i of listService.user['favorites'];">
+            <ng-container *sliderItem>
+              <div class="mobile__section__item">
+                <img class="mobile__section__item-img" [defaultImage]="load"
+                  [lazyLoad]="i.productImages.sizes.mobile" />
+                <button class="mobile__section__item-btn btn btn-primary" [disabled]="disableAddToList"
+                  (click)="addToList(i)">Add to List</button>
+              </div>
+            </ng-container>
+          </ng-container>
+        </slider>
+      </div>
+      <ng-template #favorites>
+        <ng-container *ngIf="floading; else fempty">
+          <div class="row skeleton-margin-bottom-20">
+            <div class="skeleton-bar col col-sm-4 col-xs-4 col-sm-offset-4 col-xs-offset-4"></div>
+          </div>
+          <div class="row skeleton-margin-bottom-40">
+            <div class="col col-sm-6 col-xs-6">
+              <div class="skeleton-box">
+                <div class="skeleton-square skeleton-margin-bottom"></div>
+                <div class="skeleton-bar-20"></div>
+              </div>
+            </div>
+            <div class="col col-sm-6 col-xs-6">
+              <div class="skeleton-box">
+                <div class="skeleton-square skeleton-margin-bottom"></div>
+                <div class="skeleton-bar-20"></div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <ng-template #fempty>
+          <div class="mobile__section__empty">
+            <div class="mobile__section__empty-ball">
+              <i class="fa fa-list-ol"></i>
+              <h4>You don't have any favorites yet.</h4>
+            </div>
+          </div>
+        </ng-template>
+      </ng-template>
+    </ng-container>
+
+    <ng-container *ngIf="listService.user['viewed']">
+      <h2 class="mobile__section-title">Recently Viewed</h2>
+      <div *ngIf="listService.user['viewed'].length > 0; else viewed" class="mobile__section">
+        <slider showC="false" multiple="true" count="2" [touchEnabled]="true">
+          <ng-container *ngFor="let i of listService.user['viewed'];">
+            <ng-container *sliderItem>
+              <div class="mobile__section__item">
+                <img class="mobile__section__item-img" [defaultImage]="load"
+                  [lazyLoad]="i.productImages.sizes.mobile" />
+                <button class="mobile__section__item-btn btn btn-primary" [disabled]="disableAddToList"
+                  (click)="addToList(i)">Add to List</button>
+              </div>
+            </ng-container>
+          </ng-container>
+        </slider>
+      </div>
+      <ng-template #viewed>
+        <ng-container *ngIf="rloading; else rempty">
+          <div class="row skeleton-margin-bottom-20">
+            <div class="skeleton-bar col col-sm-4 col-xs-4 col-sm-offset-4 col-xs-offset-4"></div>
+          </div>
+          <div class="row">
+            <div class="col col-sm-6 col-xs-6">
+              <div class="skeleton-box">
+                <div class="skeleton-square skeleton-margin-bottom"></div>
+                <div class="skeleton-bar-20"></div>
+              </div>
+            </div>
+            <div class="col col-sm-6 col-xs-6">
+              <div class="skeleton-box">
+                <div class="skeleton-square skeleton-margin-bottom"></div>
+                <div class="skeleton-bar-20"></div>
+              </div>
+            </div>
+          </div>
+        </ng-container>
+        <ng-template #rempty>
+          <div class="mobile__section__empty">
+            <div class="mobile__section__empty-ball">
+              <i class="fa fa-list-ol"></i>
+              <h4>You don't have any recently viewed yet.</h4>
+            </div>
+          </div>
+        </ng-template>
+      </ng-template>
+    </ng-container>
+
+    <div class="mobile__content" [class.hidden-xs]="listDetails" *ngIf="listService.single['list']">
+      <div #mobileContentLength (click)="listDetails = !listDetails;" class="mobile__content-length">
+        {{ listService.single['list'].length + listService.checked.length }} items
+      </div>
+    </div>
+  </div>
+</form>
+
+<app-change-label [listId]="listId" [userLabels]="userLabels" (labelAction)="mobileLabelActions($event)">
+</app-change-label>

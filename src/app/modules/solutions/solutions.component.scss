@@ -1,0 +1,261 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the header of the site/application.
+// -----------------------------------------------------------------------------
+
+//  BEM - Block Element Modifier
+//  This is how our code is structured. Please follow this layout and format.
+//  More Info: https://css-tricks.com/bem-101/
+//
+//  .steps {
+//	    &__item {		
+//		    &--first {}
+//		    &--last {}
+//		    &--active {}
+//		    &--done {}
+//	    }
+//	    &__link {}
+//  }
+
+@import "../../../assets/css/abstracts/_mixins.scss" ;
+@import "../../../assets/css/abstracts/_variables.scss" ;
+
+:host {
+  .solutions {
+    &__section {
+      padding: 5rem 0;
+
+      &__container {
+        display: grid;
+        align-items: center;
+
+        &__header {
+          text-align: left;
+          width: 100%;
+          color: #323648;
+
+          &-title {
+            font-family: 'AB', sans-serif;
+            margin: 0 auto 1.5rem;
+            font-weight: 500;
+            line-height: 1.1;
+            letter-spacing: normal;
+
+            &-larger {
+              @include font-size(60px);
+              letter-spacing: 1px;
+            }
+
+            &-reg {
+              @include font-size(40px);
+              letter-spacing: 1px;
+              line-height: 1.3;
+            }
+          }
+
+          &-desc {
+            font-size: 22px !important;
+            font-family: 'AL', serif;
+            font-weight: 400;
+            color: #999 !important;
+            max-width: 44rem;
+            margin: 0 auto 2rem;
+            line-height: 1.3 !important;
+          }
+
+          &__form {
+            .alert {
+              line-height: 21px;
+            }
+
+            input {
+              @include font-size(22px);
+              @include border-radius(4px);
+              background-color: $white;
+              color: #5b5e6d;
+              text-decoration: none;
+              font-weight: 400;
+              line-height: 1.2;
+              letter-spacing: 1px;
+              border: 1px solid #a8a9b0;
+              box-shadow: none;
+              padding: 19px 16px 16px;
+              display: inline-block;
+              max-width: 55%;
+              margin: 0 5px 0 0;
+              position: relative;
+              top: -1px;
+            }
+
+            button {
+              @include border-radius(4px);
+              background-color: $green;
+              color: $white;
+              text-transform: uppercase;
+              text-decoration: none;
+              padding: 19px 40px 20px;
+              display: inline-block;
+              white-space: nowrap;
+              flex-basis: auto;
+              width: auto;
+              border-color: transparent;
+              font-weight: 500;
+
+              img {
+                width: 40px;
+                vertical-align: middle;
+              }
+            }
+          }
+
+          p {
+            @include font-size(18px);
+            font-family: 'AL', serif;
+            color: #999;
+            font-weight: 400;
+            line-height: 1.5;
+            letter-spacing: .5px;
+          }
+        }
+
+        &__center {
+          &__illustration {
+            max-width: 76.875rem;
+          }
+
+          &__header {
+            max-width: 38.5rem;
+            margin: 0 auto;
+            text-align: center;
+
+            &-title {
+              @include font-size(26px);
+              font-family: 'AB', sans-serif;
+              margin: 0 auto 1.5rem;
+              font-weight: 500;
+              line-height: 1.3;
+              letter-spacing: 1px;
+            }
+
+            p {
+              @include font-size(18px);
+              font-family: 'AL', sans-serif;
+              color: #777;
+              max-width: 44rem;
+              font-weight: 400;
+              line-height: 1.5;
+              letter-spacing: 1px;
+              margin-bottom: 2rem;
+            }
+          }
+        }
+
+        &-main {
+          grid-column-gap: 5%;
+          grid-template-columns: 40% 55%;
+        }
+
+        &-two {
+          grid-column-gap: 10.97560976%;
+          grid-template-columns: 48.7804878% 40.24390244%;
+
+          &-reverse {
+            grid-template-columns: 40.24390244% 48.7804878%;
+          }
+        }
+      }
+
+      &__wrap-small {
+        max-width: 38.5rem;
+        margin: 0 auto;
+
+        &-title {
+          @include font-size(26px);
+          font-family: 'AB', sans-serif;
+          letter-spacing: 1px;
+          font-weight: 500;
+          line-height: 1.2;
+          margin: 0 0 1rem;
+        }
+
+        p {
+          @include font-size(16px);
+          font-family: 'AL', serif;
+          font-weight: 400;
+          line-height: 1.5;
+          margin-bottom: 2rem;
+          color: #5b5e6d;
+        }
+
+        &__container {
+          max-width: 76.875rem;
+          margin: 0px auto;
+
+          &__columns {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-column-gap: 6.504065%;
+            justify-content: space-around;
+
+            &__column {
+              flex-basis: 20.73170732%;
+              text-align: center;
+              list-style-type: none;
+              margin-bottom: 1rem;
+
+              &-number {
+                @include font-size(100px);
+                font-family: 'AB', sans-serif;
+                font-weight: 500;
+                line-height: 1.3;
+                letter-spacing: normal;
+                margin-bottom: 1rem;
+                color: $green;
+                white-space: nowrap;
+                text-align: center;
+              }
+
+              &-desc {
+                @include font-size(16px);
+                font-family: 'AL', serif;
+                letter-spacing: .5px;
+                color: #5b5e6d;
+              }
+            }
+          }
+        }
+      }
+
+      &-headline {
+        @include font-size(26px);
+        font-family: 'AB', sans-serif;
+        text-align: center;
+        max-width: 54rem;
+        padding: 6rem 0;
+        margin: 0 auto;
+        color: #666;
+        line-height: 2.9rem;
+        font-weight: 400;
+      }
+    }
+
+    &__content {
+      @include font-size(17px);
+      letter-spacing: .5px;
+      color: #555;
+      margin: 2rem 0;
+      text-align: center;
+    }
+
+    &-grey {
+      background-color: #fafafa;
+    }
+
+    &-center {
+      align-items: center;
+    }
+
+    &-border-bottom {
+      border-bottom: 1px solid #eee;
+    }
+  }
+}

@@ -1,0 +1,12 @@
+<div *ngIf="success" class="alert alert-success">Awesome! More information will be sent to your email address.</div>
+<div *ngIf="error" class="alert alert-danger" [innerHTML]="error"></div>
+
+<form [formGroup]="Blog">
+  <input formControlName="Email" type="text" placeholder="Your email address" />
+  <button (click)="onSubmit()" type="submit" [disabled]="!Blog.valid || success">
+    <img  *ngIf="submit" src="assets/svg/three-dots.svg" />
+    <i class="fa fa-angle-right" *ngIf="!submit"></i>
+  </button>
+</form>
+
+<small>View Grceri's <a [routerLink]="['/policies/privacy-policy']">Privacy Policy</a>.</small>

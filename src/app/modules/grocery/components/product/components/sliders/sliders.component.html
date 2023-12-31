@@ -1,0 +1,190 @@
+<div class="product__section">
+  <div *ngIf="productsViewed.length; else vLoading" class="col col-md-12">
+    <h3 class="product__section-title">
+      Top Alternatives
+    </h3>
+    <ng-container *ngIf="productsViewed.length > 0">
+      <slider class="visible-md visible-lg" showC="true" multiple="true" count="6">
+        <ng-container *ngFor="let i of productsViewed">
+          <ng-container *sliderItem>
+            <item [productID]="i.productId" [cat]="i.category" [upc]="i.upc" [rating]="i.rating"
+              [ratingC]="i.ratingCount" [name]="i.title" [images]="i.productImages.sizes.desktop" [Lprice]="i.price"
+              [Hprice]="i.highestVendorPrice">
+            </item>
+          </ng-container>
+        </ng-container>
+      </slider>
+      <slider class="visible-sm" showC="true" multiple="true" count="4">
+        <ng-container *ngFor="let i of productsViewed">
+          <ng-container *sliderItem>
+            <item [productID]="i.productId" [cat]="i.category" [upc]="i.upc" [rating]="i.rating"
+              [ratingC]="i.ratingCount" [name]="i.title" [images]="i.productImages.sizes.tablet" [Lprice]="i.price"
+              [Hprice]="i.highestVendorPrice">
+            </item>
+          </ng-container>
+        </ng-container>
+      </slider>
+      <slider class="visible-xs" showP="false" multiple="true" count="3" [touchEnabled]="true">
+        <ng-container *ngFor="let i of productsViewed">
+          <ng-container *sliderItem>
+            <item [productID]="i.productId" [cat]="i.category" [upc]="i.upc" [rating]="i.rating"
+              [ratingC]="i.ratingCount" [name]="i.title" [images]="i.productImages.sizes.mobile" [Lprice]="i.price"
+              [Hprice]="i.highestVendorPrice">
+            </item>
+          </ng-container>
+        </ng-container>
+      </slider>
+    </ng-container>
+  </div>
+  <ng-template #vLoading>
+    <div class="container">
+      <div class="row hidden-xs skeleton-margin-top-80">
+        <div class="col-xs-2">
+          <div class="skeleton-bar skeleton-margin-bottom-40"></div>
+        </div>
+      </div>
+      <div class="row visible-xs skeleton-margin-top-40">
+        <div class="col-xs-5">
+          <div class="skeleton-bar skeleton-margin-bottom-20"></div>
+        </div>
+      </div>
+      <div class="visible-lg visible-md hidden-xs skeleton-margin-bottom-80">
+        <div class="skeleton-flex">
+          <ng-container *ngFor="let i of sitems; let x = index">
+            <div class="skeleton-flex-column">
+              <div class="skeleton-square"></div>
+              <div class="skeleton-bar col col-xs-11 skeleton-margin-bottom"></div>
+              <div class="skeleton-bar col col-xs-11 skeleton-margin-bottom-20"></div>
+              <div class="skeleton-bar col col-xs-6 skeleton-margin-bottom-20"></div>
+              <div class="skeleton-bar col col-xs-5"></div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+
+      <div class="visible-sm skeleton-margin-bottom-40">
+        <div class="skeleton-flex">
+          <ng-container *ngFor="let i of sitems; let x = index">
+            <div class="skeleton-flex-column" *ngIf="x < 4">
+              <div class="skeleton-square"></div>
+              <div class="skeleton-bar col col-xs-11 skeleton-margin-bottom"></div>
+              <div class="skeleton-bar col col-xs-11 skeleton-margin-bottom-20"></div>
+              <div class="skeleton-bar col col-xs-6 skeleton-margin-bottom-20"></div>
+              <div class="skeleton-bar col col-xs-5"></div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+
+      <div class="visible-xs skeleton-margin-bottom-40">
+        <div class="skeleton-flex">
+          <ng-container *ngFor="let i of sitems; let x = index">
+            <div class="skeleton-flex-column" *ngIf="x < 3">
+              <div class="skeleton-square"></div>
+              <div class="skeleton-bar col col-xs-11 skeleton-margin-bottom"></div>
+              <div class="skeleton-bar col col-xs-11 skeleton-margin-bottom-20"></div>
+              <div class="skeleton-bar col col-xs-6 skeleton-margin-bottom-20"></div>
+              <div class="skeleton-bar col col-xs-5"></div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+
+</div>
+
+<div class="product__section">
+  <div *ngIf="productsWatched.length; else wLoading" class="col col-md-12">
+    <h3 class="product__section-title">
+      Related Products
+    </h3>
+    <ng-container *ngIf="productsWatched.length > 0">
+      <slider class="visible-md visible-lg" showC="true" multiple="true" count="6">
+        <ng-container *ngFor="let i of productsWatched">
+          <ng-container *sliderItem>
+            <item [productID]="i.productId" [cat]="i.category" [upc]="i.upc" [rating]="i.rating"
+              [ratingC]="i.ratingCount" [name]="i.title" [images]="i.productImages.sizes.desktop" [Lprice]="i.price"
+              [Hprice]="i.highestVendorPrice">
+            </item>
+          </ng-container>
+        </ng-container>
+      </slider>
+      <slider class="visible-sm" showC="true" multiple="true" count="4">
+        <ng-container *ngFor="let i of productsWatched">
+          <ng-container *sliderItem>
+            <item [productID]="i.productId" [cat]="i.category" [upc]="i.upc" [rating]="i.rating"
+              [ratingC]="i.ratingCount" [name]="i.title" [images]="i.productImages.sizes.tablet" [Lprice]="i.price"
+              [Hprice]="i.highestVendorPrice">
+            </item>
+          </ng-container>
+        </ng-container>
+      </slider>
+      <slider class="visible-xs" showP="false" showC="true" multiple="true" count="3" [touchEnabled]="true">
+        <ng-container *ngFor="let i of productsWatched">
+          <ng-container *sliderItem>
+            <item [productID]="i.productId" [cat]="i.category" [upc]="i.upc" [rating]="i.rating"
+              [ratingC]="i.ratingCount" [name]="i.title" [images]="i.productImages.sizes.mobile" [Lprice]="i.price"
+              [Hprice]="i.highestVendorPrice">
+            </item>
+          </ng-container>
+        </ng-container>
+      </slider>
+    </ng-container>
+  </div>
+  <ng-template #wLoading>
+    <div class="container">
+      <div class="row hidden-xs skeleton-margin-top-80">
+        <div class="col-xs-2">
+          <div class="skeleton-bar skeleton-margin-bottom-40"></div>
+        </div>
+      </div>
+      <div class="row visible-xs skeleton-margin-top-40">
+        <div class="col-xs-5">
+          <div class="skeleton-bar skeleton-margin-bottom-20"></div>
+        </div>
+      </div>
+      <div class="visible-lg visible-md hidden-xs skeleton-margin-bottom-80">
+        <div class="skeleton-flex">
+          <ng-container *ngFor="let i of sitems; let x = index">
+            <div class="skeleton-flex-column">
+              <div class="skeleton-square"></div>
+              <div class="skeleton-bar col col-xs-11 skeleton-margin-bottom"></div>
+              <div class="skeleton-bar col col-xs-11 skeleton-margin-bottom-20"></div>
+              <div class="skeleton-bar col col-xs-6 skeleton-margin-bottom-20"></div>
+              <div class="skeleton-bar col col-xs-5"></div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+
+      <div class="visible-sm skeleton-margin-bottom-40">
+        <div class="skeleton-flex">
+          <ng-container *ngFor="let i of sitems; let x = index">
+            <div class="skeleton-flex-column" *ngIf="x < 4">
+              <div class="skeleton-square"></div>
+              <div class="skeleton-bar col col-xs-11 skeleton-margin-bottom"></div>
+              <div class="skeleton-bar col col-xs-11 skeleton-margin-bottom-20"></div>
+              <div class="skeleton-bar col col-xs-6 skeleton-margin-bottom-20"></div>
+              <div class="skeleton-bar col col-xs-5"></div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+
+      <div class="visible-xs skeleton-margin-bottom-40">
+        <div class="skeleton-flex">
+          <ng-container *ngFor="let i of sitems; let x = index">
+            <div class="skeleton-flex-column" *ngIf="x < 3">
+              <div class="skeleton-square"></div>
+              <div class="skeleton-bar col col-xs-11 skeleton-margin-bottom"></div>
+              <div class="skeleton-bar col col-xs-11 skeleton-margin-bottom-20"></div>
+              <div class="skeleton-bar col col-xs-6 skeleton-margin-bottom-20"></div>
+              <div class="skeleton-bar col col-xs-5"></div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</div>

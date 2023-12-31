@@ -1,0 +1,72 @@
+<div class="product__reviews__module" *ngIf="data">
+  <div class="row">
+    <div class="col col-md-3">
+      <div class="product__reviews__module__sidebar">
+
+        <h2 class="product__reviews__module__sidebar-title">
+          <a routerLink="./reviews">2 customer reviews</a>
+        </h2>
+        <div class="product__reviews__module__sidebar__rating">
+          <div class="product__reviews__module__sidebar__rating__average">
+            <bar-rating [(rate)]="data.rating" [max]="5" readOnly="true" theme="fontawesome-o"></bar-rating>
+          </div>
+          <div class="product__reviews__module__sidebar__rating-text">
+            {{data.rating}} out of 5 stars
+          </div>
+        </div>
+        <div class="product__reviews__module__sidebar__rating__bars">
+          <div class="product__reviews__module__sidebar__rating__bars">
+            <a class="product__reviews__module__sidebar__rating__bars-name" routerLink="">5 star</a>
+            <bar-rating [rate]="76" [max]="100" readOnly="true" [theme]="'horizontal'"></bar-rating>
+            <div class="product__reviews__module__sidebar__rating__bars-per">76%</div>
+          </div>
+          <div class="product__reviews__module__sidebar__rating__bars">
+            <a class="product__reviews__module__sidebar__rating__bars-name" routerLink="">4 star</a>
+            <bar-rating [rate]="34" [max]="100" readOnly="true" [theme]="'horizontal'"></bar-rating>
+            <div class="product__reviews__module__sidebar__rating__bars-per">34%</div>
+          </div>
+          <div class="product__reviews__module__sidebar__rating__bars">
+            <a class="product__reviews__module__sidebar__rating__bars-name" routerLink="">3 star</a>
+            <bar-rating [rate]="86" [max]="100" readOnly="true" [theme]="'horizontal'"></bar-rating>
+            <div class="product__reviews__module__sidebar__rating__bars-per">86%</div>
+          </div>
+          <div class="product__reviews__module__sidebar__rating__bars">
+            <a class="product__reviews__module__sidebar__rating__bars-name" routerLink="">2 star</a>
+            <bar-rating [rate]="56" [max]="100" readOnly="true" [theme]="'horizontal'"></bar-rating>
+            <div class="product__reviews__module__sidebar__rating__bars-per">56%</div>
+          </div>
+          <div class="product__reviews__module__sidebar__rating__bars">
+            <a class="product__reviews__module__sidebar__rating__bars-name" routerLink="">1 star</a>
+            <bar-rating [rate]="23" [max]="100" readOnly="true" [theme]="'horizontal'"></bar-rating>
+            <div class="product__reviews__module__sidebar__rating__bars-per">23%</div>
+          </div>
+        </div>
+
+        <hr />
+
+        <div class="product__reviews__module__sidebar__review">
+          <h3 class="product__reviews__module__sidebar__review-title">Review this product</h3>
+          <p class="product__reviews__module__sidebar__review-desc">Share your thoughts with other customers</p>
+          <a [routerLink]="['./reviews/create', data.sem3_id]" class="product__reviews__module__sidebar__review-btn btn">Write a customer
+            review</a>
+        </div>
+
+        <hr />
+
+        <div class="ad-box"></div>
+      </div>
+    </div>
+    <div class="col col-md-9">
+      <div class="product__reviews__module__content">
+        <div class="product__reviews__module__content__images" *ngIf="images">
+          <h3 class="product__reviews__module__content-title">Customer Images</h3>
+          <reviews-module-images [id]="data.sem3_id"></reviews-module-images>
+        </div>
+
+        <section class="product__reviews__module__content__single">
+          <reviews-module-review></reviews-module-review>
+        </section>
+      </div>
+    </div>
+  </div>
+</div>

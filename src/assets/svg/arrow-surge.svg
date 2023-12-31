@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<svg height="512" id="svg2" version="1.1" width="512" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg">
+    <defs id="defs4"/>
+    <g id="layer1" transform="translate(0,-540.36218)">
+        <g fill="#48B56A" id="g3761" transform="translate(27.305402,-44.033375)">
+            <path
+                d="M 472.40625 103.96875 L 381.0625 142.75 L 397.3125 157.8125 L 227.03125 328.09375 L 172.59375 274.84375 L 161.96875 264.46875 L 151.5 274.9375 L 44 382.4375 L 65.21875 403.625 L 162.1875 306.65625 L 216.65625 359.90625 L 227.28125 370.28125 L 237.75 359.8125 L 419.3125 178.25 L 440.46875 197.875 L 472.40625 103.96875 z " id="path3803" style="fill:#000;stroke:none" transform="translate(-27.305402,584.39555)"/>
+        </g>
+    </g>
+</svg>

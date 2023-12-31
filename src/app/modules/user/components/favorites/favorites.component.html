@@ -1,0 +1,116 @@
+<div class="visible-xs">
+  <div class="header__mobile">
+    <h1>Your Favorites</h1>
+    <div class="header__mobile-dropdown" dropdown [isDisabled]="favorites.length < 2 || favorites == undefined">
+      <a dropdownToggle id="dropdown1" data-toggle="dropdown" aria-haspopup="true" aria- expanded="true">
+        <img alt="dots" src="assets/svg/dots.svg" />
+      </a>
+      <ul *dropdownMenu id="dropdown1" class="header__mobile-dropdown-menu dropdown-menu" role="menu"
+        aria-labelledby="menu1">
+        <li role="presentation">
+          <a role="menuitem" tabindex="-1" [class.active]="SS.activeSort === 'brand'"
+            (click)="SS.sortIt('brand', 0, 4, 1)">
+            Brand
+          </a>
+          <a role="menuitem" tabindex="-1" [class.active]="SS.activeSort === 'rating'"
+            (click)="SS.sortIt('rating', 1, 4, 1)">
+            Rating
+          </a>
+          <a role="menuitem" tabindex="-1" [class.active]="SS.activeSort === 'price'"
+            (click)="SS.sortIt('price', 2, 4, 1)">
+            Price
+          </a>
+          <a role="menuitem" tabindex="-1" [class.active]="SS.activeSort === 'title'"
+            (click)="SS.sortIt('title', 3, 4, 1)">
+            Title
+          </a>
+          <a role="menuitem" tabindex="-1" [class.active]="SS.activeSort === 'vendor'"
+            (click)="SS.sortIt('vendor', 4, 4, 1)">
+            Vendor
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<section class="favorites">
+  <div class="container">
+    <div class="favorites__header hidden-xs">
+      <h1 class="favorites__header-title">Your Favorites</h1>
+      <div class="dropdown-sort" dropdown [isDisabled]="favorites.length < 2 || favorites == undefined">
+        <a dropdownToggle id="dropdown2" data-toggle="dropdown" aria-haspopup="true" aria- expanded="true">
+          Sort by Category <i class="fa fa-angle-down"></i>
+        </a>
+        <ul *dropdownMenu id="dropdown2" role="menu" aria-labelledby="menu1">
+          <li role="presentation">
+            <a role="menuitem" tabindex="-1" [class.active]="SS.activeSort === 'brand'"
+              (click)="SS.sortIt('brand', 0, 4, 1)">
+              Brand
+            </a>
+            <a role="menuitem" tabindex="-1" [class.active]="SS.activeSort === 'rating'"
+              (click)="SS.sortIt('rating', 1, 4, 1)">
+              Rating
+            </a>
+            <a role="menuitem" tabindex="-1" [class.active]="SS.activeSort === 'price'"
+              (click)="SS.sortIt('price', 2, 4, 1)">
+              Price
+            </a>
+            <a role="menuitem" tabindex="-1" [class.active]="SS.activeSort === 'title'"
+              (click)="SS.sortIt('title', 3, 4, 1)">
+              Title
+            </a>
+            <a role="menuitem" tabindex="-1" [class.active]="SS.activeSort === 'vendor'"
+              (click)="SS.sortIt('vendor', 4, 4, 1)">
+              Vendor
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="favorites-container" *ngIf="favorites.length !== 0; else skeleton">
+      <div class="favorites-container">
+        <ng-container *ngFor="let i of favorites">
+          <div class="favorites-container__item">
+            <item [productID]="i.productId" [cat]="i.category" [upc]="i.upc" [rating]="i.rating"
+              [ratingC]="i.ratingCount" [name]="i.title" [images]="i.productImages.sizes.mobile" [Hprice]="i.price"
+              [Lprice]="i.price">
+            </item>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+    <ng-template #skeleton>
+      <ng-container *ngIf="loading; else empty">
+        <div class="row">
+          <ng-container *ngFor="let i of nitems">
+            <div class="col col-md-3 col-sm-4 col-xs-6">
+              <div class="skeleton-box">
+                <div class="skeleton-square skeleton-margin-bottom-20"></div>
+                <div class="skeleton-bar skeleton-margin-bottom-20"></div>
+                <div class="row">
+                  <div class="col col-md-5 col-sm-5 col-md-5 col-xs-5">
+                    <div class=" skeleton-bar skeleton-margin-bottom"></div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col col-md-3 col-sm-3 col-md-3 col-xs-3">
+                    <div class="skeleton-bar"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </ng-container>
+      <ng-template #empty>
+        <div class="favorites__empty">
+          <div class="favorites__empty-ball">
+            <i class="fa fa-list-ol"></i>
+            <h3>You haven't added any favorites yet.</h3>
+          </div>
+        </div>
+      </ng-template>
+    </ng-template>
+  </div>
+</section>

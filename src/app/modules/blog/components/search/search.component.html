@@ -1,0 +1,49 @@
+<div class="container">
+  <section class="blog__section">
+
+    <div class="blog__section__search">
+      <div class="blog__section__search">
+        <div class="blog__section__search-search">
+          <input placeholder="Search the blog..." type="text" (keyup.enter)="searchUpdate($event.target.value)" />
+        </div>
+        <div class="blog__section__search__content">
+          <div class="blog__section__search__content__lists">
+            <h2 class="blog__section__search__content__lists-title">
+              Showing results for: '{{search}}'
+            </h2>
+            <ng-container *ngFor="let i of posts; let x = index">
+              <article class="blog__section__search__content__lists__list">
+                <figure>
+                  <a [routerLink]="['/blog/', lower(i.tags[0]), i.slugs[0]]">
+                    <img  [src]="i.data.image.mobile.url" [alt]="i.data.title[0].text" />
+                  </a>
+                </figure>
+                <section>
+                  <h3 class="blog__section__search__content__lists__list-title">
+                    <a [routerLink]="['/blog/', lower(i.tags[0]), i.slugs[0]]">
+                      {{ i.data.title[0].text}}
+                    </a>
+                  </h3>
+                  <p>{{ i.data.summary[0].text}}</p>
+                </section>
+              </article>
+            </ng-container>
+            <ng-container *ngIf="posts == 0">
+              <p>Oh dear! Unfortunately, we couldn’t find anything using the terms you search for.</p>
+              <p>Please try and refine your search to something like “health”, “tips”, or “news” or check out the
+                tags to the right!</p>
+            </ng-container>
+          </div>
+          <aside class="blog__section__search__content__sidebar">
+            <div class="blog__section__search__sidebar__tags">
+              <h3 class="blog__section__search__sidebar__tags-title">Most Popular Tags</h3>
+              <div class="blog__section__search__sidebar__tags">
+                <a class="blog__section__search__sidebar__tags-tag"></a>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

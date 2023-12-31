@@ -1,0 +1,151 @@
+<div class="list__meta">
+  <div class="list__meta-followers">
+    {{ listService.single['followersCount'] !== null ? listService.single['followersCount'] : 0 }} Followers
+  </div>
+  <div class="list__meta-updated">
+    <time [dateTime]="listService.single['updatedAt']">
+      Last Updated {{ listService.single['updatedAt'] | date: 'short' }}
+    </time>
+  </div>
+</div>
+<form [formGroup]="editDesktopListGroup">
+  <div class="list__header">
+    <h1 *ngIf="!editDesktopListInfo; else editdesktoplisttitle" class="list__header-title">
+      {{ listService.single['title'] }}</h1>
+    <ng-template #editdesktoplisttitle>
+      <input type="text" minlength="1" maxlength="50" formControlName="desktopListTitle">
+    </ng-template>
+    <div *ngIf="editDesktopListInfo" class="list__header-btns">
+      <button class="btn btn-primary" type="button" (click)="updateDesktopUserListInfo()">Save</button>
+      <button class="btn" type="button" (click)="resetDesktopEditList()">Cancel</button>
+    </div>
+    <div class="dropdown-sort" dropdown>
+      <a dropdownToggle data-toggle="dropdown" aria-haspopup="true" aria- expanded="true">
+        List Options
+        <i class="fa fa-angle-down"></i>
+      </a>
+      <ul *dropdownMenu role="menu" aria-labelledby="menu1">
+        <li role="presentation"
+          *ngIf="listService.single['visibility'] !== null || listService.single['visibility'] !== 'private'">
+          <a (click)="$event.preventDefault();listService.shareList()" role="menuitem" tabindex="-1">Share List</a>
+        </li>
+        <li role="presentation">
+          <a (click)="editInfo($event)" role="menuitem" tabindex="-1">Edit Info</a>
+        </li>
+        <li role="presentation">
+          <a (click)="listService.deleteList()" role="menuitem" tabindex="-1">Delete List</a>
+        </li>
+        <li role="presentation"
+          *ngIf="(listService.single['list'] && listService.single['list']?.length > 0) || listService.checked?.length > 0">
+          <a (click)="$event.preventDefault();listService.exportList()" role="menuitem" tabindex="-1">Export List</a>
+        </li>
+        <li role="presentation">
+          <a (click)="MS.openChangeLabelModal(config)">Change Labels</a>
+        </li>
+      </ul>
+    </div>
+    <div class="list__header-dropdown" dropdown>
+      <a dropdownToggle data-toggle="dropdown" aria-haspopup="true" aria- expanded="true">
+        <img alt="dots" src="assets/svg/dots.svg" />
+      </a>
+      <ul *dropdownMenu class="list__header-dropdown-menu dropdown-menu" role="menu" aria-labelledby="menu1">
+        <li role="presentation">
+          <a role="menuitem" (click)="$event.preventDefault();listService.deleteAllItems()"
+            (keydown.enter)="listService.checked?.length > 0" [class.isDisabled]="listService.checked?.length <= 1"
+            tabindex="-1">Delete All</a>
+        </li>
+        <li role="presentation">
+          <a role="menuitem" (click)="$event.preventDefault();listService.selectAll()"
+            (keydown.enter)="listService.checked?.length === 0"
+            [class.isDisabled]="listService.single['list'] && listService.single['list']?.length <= 0"
+            tabindex="-1">Select All</a>
+        </li>
+        <li role="presentation">
+          <a role="menuitem" (click)="$event.preventDefault();listService.deleteCompleted()"
+            (keydown.enter)="listService.checked?.length > 0" [class.isDisabled]="listService.checked?.length < 1"
+            tabindex="-1">Delete Completed</a>
+        </li>
+        <li role="presentation">
+          <a role="menuitem" (click)="$event.preventDefault();listService.uncheckAll()"
+            (keydown.enter)="listService.checked?.length > 0" [class.isDisabled]="listService.checked?.length <= 1"
+            tabindex="-1">Uncheck All</a>
+        </li>
+        <li role="presentation">
+          <a role="menuitem" (click)="$event.preventDefault();listService.moveCopyItems()"
+            (keydown.enter)="listService.checked?.length > 0" [class.isDisabled]="listService.checked?.length === 0"
+            tabindex="-1">Move / Copy Items</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="list__body">
+    <div class="row">
+      <div class="col col-md-8">
+        <div *ngIf="listService.single['description']" class="list__body-desc">
+          <ng-container *ngIf="!editDesktopListInfo; else editdesktoplistdescription">
+            {{ listService.single['description'] }}
+          </ng-container>
+          <ng-template #editdesktoplistdescription>
+            <textarea maxlength="200" formControlName="desktopListDescription" rows="4" cols="20"></textarea>
+          </ng-template>
+        </div>
+
+        <ng-container *ngIf="listLabels && listLabels.length > 0">
+          <ul class="list__body-labels">
+            <li *ngFor="let label of listLabels">{{ label }}</li>
+          </ul>
+        </ng-container>
+
+        <ng-container
+          *ngIf="(listService.single['list'] && listService.single['list']?.length > 0) || listService.checked?.length > 0; else empty">
+          <ul class="list__body__items" *ngIf="listService.single['list']">
+            <li class="item" *ngFor="let list of listService.single['list']">
+              <input [checked]="listService.toggleItemChecked(list.productId)" [id]="list.productId" type="checkbox"
+                (change)="listService.updateProductList($event, list)" />
+              <a [routerLink]="['/grocery/', commonService.product(list.title), list.productId]">
+                <strong class="list__body__items__text-title">{{ list.title }}</strong>
+                <div class="list__body__items__text-details">
+                  <span>${{ list.vendorPrice | number : '1.2' }}</span> {{ list.brand }} - {{ list.vendor }}
+                </div>
+              </a>
+              <img [defaultImage]="load" [lazyLoad]="list.productImages.sizes.mobile" [alt]="list.title" />
+            </li>
+          </ul>
+          <div *ngIf="listService.checked?.length > 0" class="list__body__items__completed">
+            <div class="list__body__items__completed-title">
+              <p (click)="listService.toggleShowCompleted()">{{ listService.hideCompleted ? 'Show': 'Hide' }}
+                {{ listService.checked.length }} completed
+              </p>
+            </div>
+            <ul *ngIf="!listService.hideCompleted">
+              <li *ngFor="let list of listService.checked">
+                <input [id]="list.productId" type="checkbox"
+                  (change)="listService.removeChecked($event, list.productId)" checked />
+                <label [attr.for]="list.productId" class="list__body__items__completed__text">
+                  {{ list.title }}
+                </label>
+              </li>
+            </ul>
+          </div>
+        </ng-container>
+        <ng-template #empty>
+          <div class="list__empty">
+            <div class="list__empty-ball">
+              <i class="fa fa-list-ol"></i>
+              <h3>There are no items yet.</h3>
+            </div>
+          </div>
+        </ng-template>
+      </div>
+      <div class="col col-md-4">
+        <div *ngIf="!DS.isMobile" class="box-advertisement">
+          <ng-adsense [adClient]="'ca-pub-3783664105032363'" [adFormat]="'auto'" [adSlot]="7797307814">
+          </ng-adsense>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+
+<app-change-label [listId]="listId" [userLabels]="userLabels" (labelAction)="desktopLabelActions($event)">
+</app-change-label>

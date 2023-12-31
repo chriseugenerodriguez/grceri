@@ -1,0 +1,39 @@
+<div class="tile__container">
+  <div class="tile__container__actions">
+    <div *ngIf="data.latestPrice != data.lastSeenPrice" class="tile__container__actions-change">
+      <div *ngIf="data.latestPrice > data.lastSeenPrice" class="tile__container__actions-change-down">
+        <img src="assets/svg/arrow-surge.svg" alt="" class="hidden-xs" />
+        <span>${{ data.latestPrice - data.lastSeenPrice | number : '1.2' }}</span>
+      </div>
+      <div *ngIf="data.latestPrice < data.lastSeenPrice" class="tile__container__actions-change-up">
+        <img src="assets/svg/arrow-surge.svg" alt="" class="hidden-xs" />
+        <span>${{ data.lastSeenPrice - data.latestPrice | number : '1.2' }}</span>
+      </div>
+    </div>
+    <div class="tile__container__actions-btns">
+      <i (click)="bookmark()" [class.fa-bookmark]="productAddedToBookmark"
+        [class.isDisabled]="productAddedToBookmark === undefined" [class.fa-bookmark-o]="!productAddedToBookmark"
+        class="tile__container__actions-btns-bookmark fa">
+      </i>
+      <img (click)="delete()" class="tile__container__actions-btns-close hidden-xs" src="assets/svg/close.svg" alt="" />
+    </div>
+  </div>
+
+  <img (click)="MS.watchList$.next(data); MS.openWatchListsModal(config)" class="tile__container-img"
+    [defaultImage]="load" [lazyLoad]="data.images.sizes.mobile" [alt]="data.title" />
+  <h3 class="tile__container-title">
+    {{data.title}}
+  </h3>
+  <div class="tile__container__prices">
+    <div class="tile__container__prices-price">
+      <div class="tile__container__prices-price-title">Latest Price</div>
+      <div [class.tile__container__prices-price-plus]="data.latestPrice < data.lastSeenPrice"
+        class="tile__container__prices-price-number">${{ data.latestPrice | number : '1.2' }}</div>
+    </div>
+    <div class="tile__container__prices-price hidden-xs">
+      <div class="tile__container__prices-price-title">Last Seen Price</div>
+      <div class="tile__container__prices-price-number tile__container__prices-price-last">
+        ${{ data.lastSeenPrice | number : '1.2' }}</div>
+    </div>
+  </div>
+</div>

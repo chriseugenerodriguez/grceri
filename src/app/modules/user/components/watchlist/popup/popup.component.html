@@ -1,0 +1,59 @@
+<ng-template #popup>
+  <div class="modal-body modal__info">
+    <img (click)="MS.close()" class="modal__info-close" src="assets/svg/close.svg" />
+    <div class="modal__info-section">
+      <img class="modal-img" [defaultImage]="load" [lazyLoad]="data.images.sizes.mobile" [alt]="data.title" />
+      <div class="modal__info__price">
+        <div class="modal__info__price-title">
+          <h2>{{ data.title }}</h2>
+        </div>
+        <div class="modal__info__price__prices">
+          <h5 class="modal__info__price__prices-title">Latest Price</h5>
+          <h2 [class.modal__info__price__prices-green]="data.latestPrice <= data.lastSeenPrice"
+            [class.modal__info__price__prices-regular]="data.latestPrice >= data.lastSeenPrice">
+            ${{ data.latestPrice | number : '1.2' }}
+          </h2>
+          <h5 class="modal__info__price__prices-time">
+            Updated {{ date[0] }}
+          </h5>
+        </div>
+        <div class="modal__info__price__prices">
+          <h5 class="modal__info__price__prices-title">Last Seen Price</h5>
+          <h2 class="modal__info__price__prices-cross">
+            ${{ data.lastSeenPrice | number : '1.2' }}
+          </h2>
+          <h5 class="modal__info__price__prices-time">
+            Last Viewed {{ date[1] }}
+          </h5>
+        </div>
+      </div>
+    </div>
+
+    <table class="modal__info__table table">
+      <thead>
+        <tr>
+          <td>Seller</td>
+          <td>Price</td>
+          <td>Purchase</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let v of data.vendors">
+          <td>{{ v.vendor }}</td>
+          <td>${{ v.vendorPrice | number : '1.2' }}</td>
+          <td>
+            <a class="btn small" [class.btn-primary]="v.vendorPrice < data.latestPrice"
+              [class.btn-secondary]="v.vendorPrice >= data.latestPrice" [href]="v.vendorUrl" target="_blank">
+              <ng-container *ngIf="v.vendorPrice < data.latestPrice; else other">
+                Save ${{ (v.vendorPrice | number : '1.0') - (data.latestPrice | number : '1.0') }}
+              </ng-container>
+              <ng-template #other>
+                View Offer
+              </ng-template>
+            </a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</ng-template>

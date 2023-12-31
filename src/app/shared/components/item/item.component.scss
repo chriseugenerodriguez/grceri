@@ -1,0 +1,110 @@
+@import "../../../../assets/css/abstracts/_mixins.scss";
+@import "../../../../assets/css/abstracts/_variables.scss";
+
+$font-size: 1rem;
+$line-height: 1.4;
+$lines-to-show: 2;
+
+:host {
+  width: 100%;
+  display: block;
+
+  a {
+    color: #333;
+
+    .image {
+      margin: 0 0 15px 0;
+      text-align: center;
+
+      &-container {
+        padding-bottom: 100%;
+        height: 0px;
+        width: 100%;
+        position: relative;
+
+        img {
+          @include transform(translate(-50%, -50%));
+          position: absolute;
+          max-height: 180px;
+          max-width: 180px;
+          height: auto;
+          width: auto;
+          top: 50%;
+          left: 50%;
+          margin-right: -50%;
+
+          @media screen and (max-width: $screen-xl) {
+            max-height: 150px;
+            max-width: 150px;
+          }
+
+          @media screen and (max-width: $screen-lg) {
+            max-height: 120px;
+            max-width: 120px;
+          }
+
+          @media screen and (max-width: $screen-sm) {
+            max-height: 100px;
+            max-width: 100px;
+          }
+
+          @media screen and (max-width: $screen-xs) {
+            max-height: 80px;
+            max-width: 80px;
+          }
+        }
+      }
+    }
+
+    h4 {
+      margin: 0 0 10px 0;
+
+      .meta-content {
+        @include font-size(16px);
+        display: block;
+        max-width: 400px;
+        height: $font-size * $line-height * $lines-to-show;
+        margin: 0 auto;
+        line-height: $line-height;
+        -webkit-line-clamp: $lines-to-show;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+        text-overflow: ellipsis;
+
+        @media screen and (max-width: $screen-xs) {
+          height: 37px;
+        }
+      }
+    }
+
+    .rating {
+      span {
+        @include font-size(12px);
+        margin-left: 6px;
+        position: relative;
+        top: -1px;
+
+        @media screen and (max-width: $screen-xs) {
+          display: none;
+        }
+      }
+    }
+
+    &:visited {
+      color: #333;
+    }
+  }
+
+  .price {
+    @include font-size(16px);
+    color: $black;
+    display: block;
+    font-family: 'AB', serif;
+    font-weight: 700;
+    padding-top: 10px;
+  }
+
+  &:nth-last-child(-n + 5) {
+    border: none;
+  }
+}

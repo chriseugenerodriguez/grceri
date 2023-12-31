@@ -1,0 +1,44 @@
+@import "../../../../../../../../assets/css/abstracts/_mixins.scss";
+@import "../../../../../../../../assets/css/abstracts/_variables.scss";
+
+:host {
+  .card-header {
+    @media screen and (max-width: $screen-sm) {
+      button {
+        width: 25px;
+        padding: 0;
+        height: 25px;
+
+        img {
+          width: 19px;
+          filter: invert(1);
+          margin: auto;
+        }
+      }
+    }
+  }
+
+  .card-body {
+    &__empty {
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &-ball {
+        i {
+          @include border-radius(50%);
+          @include font-size(40px);
+          padding: 25px;
+          background: #fafafa;
+        }
+
+        h4 {
+          font-family: 'AL', sans-serif;
+          font-weight: 400;
+          margin: 20px 0 0;
+        }
+      }
+    }
+  }
+}

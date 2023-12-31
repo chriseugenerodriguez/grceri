@@ -1,0 +1,25 @@
+<div class="voice-popup" *ngIf="!VS.voiceActiveSectionDisabled">
+  <div id="voicepopup" class="voice-popup__container">
+    <img [class.error]="VS.voiceActiveSectionError" [class.success]="VS.voiceActiveSectionSuccess"
+      src="assets/svg/search/mic.svg" alt="mic" />
+    <ng-container *ngIf="!VS.voiceActiveSectionError; else failure">
+      <ng-container *ngIf="VS.voiceText; else start">
+        <span>{{VS.voiceText}}</span>
+      </ng-container>
+      <ng-template #start>
+        <ng-container *ngIf="VS.voiceActiveSectionListening; else beginning">
+          <span>...</span>
+        </ng-container>
+        <ng-template #beginning>
+          <span>Listening...</span>
+        </ng-template>
+      </ng-template>
+    </ng-container>
+    <ng-template #failure>
+      <span>Didn't catch that. Try speaking again.</span>
+      <button class="btn btn-secondary small" (click)="VS.openVoiceRecognition()">Try again</button>
+    </ng-template>
+  </div>
+  <div #voiceReq class="voice-popup-bg" (click)="VS.closeVoiceRecognition()">
+  </div>
+</div>

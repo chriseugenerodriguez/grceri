@@ -1,0 +1,64 @@
+@import "../../../../../../assets/css/abstracts/_mixins.scss";
+
+.dropdown-menu {
+  @include border-radius(0);
+  @include box-shadow(0 0 3px 0 rgba(57, 73, 76, 0.35));
+  border: none;
+  right: 0;
+  top: 50px;
+  left: inherit;
+
+  li {
+    @include font-size(16px);
+
+    a {
+      padding: 3px 20px;
+      cursor: pointer;
+    }
+  }
+}
+
+.filter {
+  &-dropdown {
+    position: relative;
+    display: flex;
+
+    i {
+      @include font-size(13px);
+      padding: 9px 10px;
+      cursor: pointer;
+      color: #fff;
+    }
+
+    .dropdown-menu {
+      @include border-radius(2px);
+      @include box-shadow(0 2px 6px 0px rgba(60, 64, 67, 0.302));
+      padding: 6px 0;
+      border: none;
+      max-height: 200px;
+      overflow-y: scroll;
+
+      li {
+        padding: 5px 12px;
+
+        label {
+          @include font-size(16px);
+          cursor: pointer;
+          display: flex;
+          align-items: center;
+          font-family: 'AL', sans-serif;
+          font-weight: 400;
+          padding: 0px;
+        }
+
+        input {
+          margin: 0 8px 0 0;
+        }
+
+        &:hover {
+          background: #fafafa;
+        }
+      }
+    }
+  }
+}

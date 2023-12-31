@@ -1,0 +1,71 @@
+/**
+ * Basic typography style for copy text
+ */
+
+textarea, 
+input, 
+button { 
+	 outline: none; 
+}
+
+label {
+	color: #484848;
+    font-weight: 600;
+    display: block;
+    max-width: 635px;
+    padding-bottom: .8em;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+}
+
+textarea, input[type="text"], input[type="password"], input[type="file"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .faux-file {
+	@include border-radius(3px);
+	display: inline-block;
+	padding: 7px 12px;
+	min-width: 50px;
+	width: 100%;
+	min-height: 32px;
+	background-color: #ffffff;
+	border: 2px solid #d0d0d0;
+	resize: vertical;
+}
+
+// KENDO
+kendo-popup {
+	.k-list {
+		@include font-size(15px);
+		font-family: 'AL', serif;
+		letter-spacing: .5px;
+		font-weight: 400;		
+	}
+
+	.k-state-selected, .k-state-selected:link, .k-list>.k-state-selected, .k-list>.k-state-highlight, .k-panel>.k-state-selected, .k-button:active, .k-ghost-splitbar-vertical, .k-ghost-splitbar-horizontal, .k-draghandle.k-state-selected:hover {
+		background-color: $green !important;
+	}
+}
+
+// RATING
+bar-rating {
+	display: inline-block;
+	margin-right: 4px;
+
+	.br {
+		margin: 0px !important;
+
+		.br-unit {
+			@include font-size(13px);
+			width: 13px;
+			height: 13px;
+			margin-right: 2px;
+		}
+
+		.br-selected,
+		.br-fraction {
+			&:after {
+				color: #ffce00 !important;
+			}
+		}
+	}
+}

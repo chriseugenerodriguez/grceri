@@ -1,0 +1,12 @@
+<div class="card-header">
+  <h2>Balance due</h2>
+</div>
+<div class="card-body">
+  <p>
+    <span>Your balance is <strong>${{due ? due: 0.00}}</strong></span> 
+    <button [disabled]="!due" (click)="pay()"
+      class="btn btn-primary small visible-sm hidden-xs visible-md visible-lg">Pay</button>
+  </p>
+  <button [disabled]="!due" (click)="pay()"
+      class="btn btn-primary small hidden-sm visible-xs hidden-md hidden-lg">Pay</button>
+</div>

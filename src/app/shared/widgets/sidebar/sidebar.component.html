@@ -1,0 +1,57 @@
+  <ng-container *ngIf="sSections?.length > 0; else sidebarContent">
+    <section *ngIf="sSections?.length > 0 && appliedFilters?.length > 0">
+        <div class="applied__filters">
+          <h4 class="applied__filters-title">Applied Filters
+            <span (click)="clearAllFilters()">Clear All</span>
+          </h4>
+          <ng-container *ngFor="let inputObject of appliedFilters, let i = index">
+            <span class="applied__filters-filter" (click)="removeInputField(inputObject.name, inputObject.value, i)">
+              <span>{{inputObject.title}}</span>
+              <img  src="assets/svg/close.svg" width="9" />
+            </span>
+          </ng-container>
+        </div>
+    </section>
+
+    <ng-container *ngIf="sSections?.length > 0">
+        <section *ngIf="sCategories?.length > 0">
+          <h4 (click)="toggle[0] = !toggle[0]; changeDetector.detectChanges()">Departments
+            <i class="fa" [ngClass]="toggle[0] ? 'fa-angle-up': 'fa-angle-down'" aria-hidden="true"></i>
+          </h4>
+          <department *ngIf="!toggle[0]" [aDepartments]="sCategories"></department>
+        </section>
+
+        <ng-container *ngFor="let a of sSections, let i = index">
+          <section *ngIf="a.Value.length">
+            <h4 (click)="toggle[2 + i] = !toggle[2 + i]; changeDetector.detectChanges()">{{a.Name}}
+              <i class="fa" [ngClass]="toggle[2 + i] ? 'fa-angle-up': 'fa-angle-down'" aria-hidden="true"></i>
+            </h4>
+            <dynamic *ngIf="!toggle[2 + i]" [dataIn]="[a.Type, a.Value, a.Name]" #dynamiccomponent
+              [sidebarCache]="getSidebarCacheData(a.Name)" (activeFilters)="changeFilterStatus($event, a.Name)">
+            </dynamic>
+          </section>
+        </ng-container>
+        <div *ngIf="!DS.isMobile" class="vertical-advertisement">
+          <ng-adsense [adClient]="'ca-pub-3783664105032363'" [adFormat]="'auto'" [adSlot]="7689496609">
+          </ng-adsense>
+        </div>
+    </ng-container>
+  </ng-container>
+
+  <ng-template #sidebarContent>
+    <ng-container *ngFor="let i of nSections">
+      <section>
+        <div class="row">
+          <div class="col col-md-5">
+            <div class="skeleton-bar skeleton-margin-bottom"></div>
+          </div>
+        </div>
+        <div class="skeleton-bar skeleton-margin-bottom"></div>
+        <div class="skeleton-bar skeleton-margin-bottom"></div>
+        <div class="skeleton-bar skeleton-margin-bottom"></div>
+        <div class="skeleton-bar skeleton-margin-bottom"></div>
+        <div class="skeleton-bar skeleton-margin-bottom"></div>
+        <div class="skeleton-bar skeleton-margin-bottom"></div>
+      </section>
+    </ng-container>
+  </ng-template>

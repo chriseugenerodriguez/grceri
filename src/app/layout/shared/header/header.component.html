@@ -1,0 +1,131 @@
+<header class="main" [class.home]="isStripe(router.url)">
+	<div class="container">
+		<div class="nowrap arrange">
+			<div class="arrange_unit middle logo">
+				<a [routerLink]="['/']">
+					<img src="./assets/svg/logo.svg" />
+				</a>
+			</div>
+
+			<nav class="account arrange_unit">
+				<li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+					<a class="dropdown" [routerLink]="['/groceries']">Categories
+						<i class="fa fa-angle-down"></i>
+					</a>
+					<ul>
+						<li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" *ngFor="let a of lists">
+							<a [routerLink]="['/groceries/', url(a)]">{{a.name}}
+								<i *ngIf="a.category !== ''" class="fa fa-angle-right"></i>
+							</a>
+							<ul class="sub" *ngIf="a.category">
+								<li *ngFor="let b of a.category">
+									<a [routerLink]="['/groceries/', url(a), url(b)]">{{b.name}}
+										<i *ngIf="b.sub" class="fa fa-angle-right"></i>
+									</a>
+									<ul *ngIf="b.sub">
+										<li *ngFor="let c of b.sub">
+											<a [routerLink]="['/groceries/', url(a), url(b), url(c)]">{{c.name}}</a>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</li>
+			</nav>
+			<div class="arrange_unit">
+				<search *ngIf="login()"></search>
+			</div>
+
+			<div class="arrange_unit middle user-nav">
+				<aside class="arrange middle">
+					<section class="arrange_unit middle loggedIn" *ngIf="login()">
+						<nav class="user">
+							<li class="btn-group profile" dropdown>
+								<div class="profile-content" *ngIf="profile" dropdownToggle>
+									<img class="user img" [src]="photoURL(profile.picture)" />
+									<div class="account-name">
+										<span class="name"> {{ profile.nickname }} </span>
+										<span> {{ profile.name }} </span>
+									</div>
+									<span class="sr-only">Toggle Dropdown</span>
+									<i class="fa fa-angle-down"></i>
+								</div>
+								<div class="dropdown" *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu">
+									<ul>
+										<li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+											<a [routerLink]="['/user']">Your Account</a>
+										</li>
+										<li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+											<a [routerLink]="['/user/lists']">Your Lists</a>
+										</li>
+										<li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+											<a [routerLink]="['/user/reports']">Your Recommendations</a>
+										</li>
+										<li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+											<a [routerLink]="['/user/favorites']">Your Saved Items</a>
+										</li>
+										<li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+											<a [routerLink]="['/user/lists/create']">Create a List</a>
+										</li>
+										<li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+											<a [routerLink]="['/user/lists/find']">Find a List or Registry</a>
+										</li>
+										<li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+											<a [routerLink]="['/user/settings/subscriptions']">Membership and Subscriptions</a>
+										</li>
+										<li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+											<a [routerLink]="['/user/settings']">Your Settings</a>
+										</li>
+										<li role="menuitem">
+											<a class="dropdown-item" (click)="logOut()">Log Out</a>
+										</li>
+									</ul>
+								</div>
+							</li>
+						</nav>
+					</section>
+					<nav class="account arrange_unit" *ngIf="!login()">
+						<li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+							<a>Solutions</a>
+							<ul>
+								<li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+									<a [routerLink]="['/solutions/parents']">For Parents</a>
+								</li>
+								<li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+									<a [routerLink]="['/solutions/cooks']">For Cooks</a>
+								</li>
+								<li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+									<a [routerLink]="['/solutions/hosts']">For Hosts</a>
+								</li>
+								<li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+									<a [routerLink]="['/solutions/students']">For Students</a>
+								</li>
+							</ul>
+						</li>
+						<li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+							<a>Resources</a>
+							<ul>
+								<li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+									<a [routerLink]="['/blog']">Blog</a>
+								</li>
+								<li>
+									<a target="_blank" href="https://grceri.zendesk.com/hc/en-us">Help Center</a>
+								</li>
+							</ul>
+						</li>
+						<li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+							<a [routerLink]="['/pricing']">Pricing</a>
+						</li>
+						<li class="login" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+							<a [routerLink]="['/login']">Log In</a>
+						</li>
+					</nav>
+					<div class="arrange_unit middle cart">
+						<shopping-cart></shopping-cart>
+					</div>
+				</aside>
+			</div>
+		</div>
+	</div>
+</header>

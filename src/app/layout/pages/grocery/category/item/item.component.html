@@ -1,0 +1,21 @@
+<a [routerLink]="['/grocery/', product(cat), product(name)]">
+  <img [src]="images[0]" [alt]="name" />
+</a>
+<div class="meta">
+  <a [routerLink]="['/grocery/', product(cat), product(name)]">
+
+    <h4>{{name}}</h4>
+    <p *ngIf="desc">{{ desc }}</p>
+
+    <div class="rating">
+      <ng-container *ngIf="rating">
+        <bar-rating [(rate)]="rating" [max]="5" readOnly="true" theme="fontawesome-o"></bar-rating>
+        {{product.rating}} (100)
+      </ng-container>
+    </div>
+
+    <div class="price">
+      ${{price}}
+    </div>
+  </a>
+</div>

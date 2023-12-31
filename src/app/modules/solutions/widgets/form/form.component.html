@@ -1,0 +1,10 @@
+<div *ngIf="success" class="alert alert-success">Awesome! More information will be sent to your email address.</div>
+<div *ngIf="error" class="alert alert-danger" [innerHTML]="error"></div>
+
+<form [formGroup]="Solutions">
+  <input formControlName="Email" type="text" placeholder="Email Address" />
+  <button (click)="onSubmit()" type="submit" [disabled]="!Solutions.valid || success">
+    <img  *ngIf="submit" src="assets/svg/three-dots.svg" />
+    <span *ngIf="!submit">Learn More</span>
+  </button>
+</form>

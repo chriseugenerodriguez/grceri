@@ -1,0 +1,135 @@
+<div class="cat hidden-xs">
+  <div class="container">
+    <p>Search results for: {{queryText}}</p>
+  </div>
+</div>
+<div class="visible-xs">
+  <mobile-breadcrumb *ngIf="items?.length > 0 && sidebarData !== []" [breadcrumbHeader]="queryText"
+    (triggerSortValue)="updateProductsBySort($event)">
+  </mobile-breadcrumb>
+</div>
+
+<div class="container">
+  <div class="sidebar col col-md-2 col-sm-3 col-xs-12 hidden-xs">
+    <sidebar #searchpagesidebar [ssections]="sections" [sidebarcache]="sidebarData"
+      (activeFilters)="getSidebarData($event)">
+    </sidebar>
+  </div>
+  <div [class.mobile-loaded-margin]="items?.length > 0 && sidebarData !== []"
+    class="content col col-md-10 col-sm-9 col-xs-12">
+    <div class="hidden-xs">
+      <ng-container *ngIf="!noProductFound">
+        <div class="filters arrange" *ngIf="items?.length > 0; else headerBarSkeleton">
+          <div class="arrange_unit middle count">
+            <ng-container *ngIf="total > 50; else less">
+              Showing {{page == 1 ? page : ((count * (page - 1)) + 1)}} - {{page == 1 ? count : (count * page)}} of
+              {{total}} results
+            </ng-container>
+            <ng-template #less>
+              Showing 1 - {{total}} of {{total}} results
+            </ng-template>
+          </div>
+          <div class="arrange_unit filter">
+            <sort [sortBy]="sortBy" (sortData)="sortDataChange($event)">
+            </sort>
+          </div>
+        </div>
+        <ng-template #headerBarSkeleton>
+          <div class="skeleton-margin-bottom">
+            <div class="col col-xs-3">
+              <div class="skeleton-bar"></div>
+            </div>
+            <div class="col col-xs-3 col-xs-offset-6">
+              <div class="skeleton-bar"></div>
+            </div>
+          </div>
+        </ng-template>
+      </ng-container>
+    </div>
+
+    <section class="mobile-applied__filters visible-xs"
+      *ngIf="sections?.length > 0 && mobileAppliedFilters?.length > 0 && items?.length > 0 && sidebarData !== []">
+      <ng-container *ngFor="let inputObject of mobileAppliedFilters, let i = index">
+        <span class="mobile-applied__filters-filter"
+          (click)="removeMobileAppliedFilter(inputObject.name, inputObject.value, i)">
+          <span>{{inputObject.title}}</span>
+          <img src="assets/svg/close.svg" width="9" />
+        </span>
+      </ng-container>
+    </section>
+
+    <div class="row">
+      <div class="col col-md-12">
+        <div class="search-results">
+          <div class="search-results__items" *ngIf="!noProductFound">
+            <ng-container *ngIf="items?.length > 0; else mainContentSkeleton">
+              <ng-container
+                *ngFor="let i of items | paginate: { itemsPerPage: count, currentPage: page, totalItems: total }">
+                <div class="search-results__items-item">
+                  <item [productID]="i.productId" [cat]="i.category" [upc]="i.upc" [rating]="i.rating"
+                    [ratingC]="i.ratingCount" [name]="i.title" [images]="i.productThumbnailUrl"
+                    [Hprice]="i.highestVendorPrice" [Lprice]="i.lowestVendorPrice">
+                  </item>
+                </div>
+              </ng-container>
+            </ng-container>
+            <ng-template #mainContentSkeleton>
+              <div class="skeleton-margin-top-20">
+                <ng-container *ngFor="let i of nitems">
+                  <div class="skeleton-box">
+                    <div class="skeleton-square"></div>
+                    <div class="skeleton-bar skeleton-margin-bottom"></div>
+                    <div class="skeleton-bar skeleton-margin-bottom col col-md-10"></div>
+                    <div class="row col col-md-12 skeleton-margin-bottom">
+                      <div class="skeleton-bar col-md-5 col"></div>
+                    </div>
+                    <div class="row col col-md-12">
+                      <div class="skeleton-bar col-xs-8 col-md-3 col"></div>
+                    </div>
+                  </div>
+                </ng-container>
+              </div>
+            </ng-template>
+          </div>
+          <div class="search-results__none" *ngIf="noProductFound">
+            <div class="search-results__none-item">
+              <img src="assets/svg/cart.svg" alt="No Results" />
+              <h4>No products found</h4>
+              <span>Sorry, that filter combination has no results. Please try different criteria.</span>
+            </div>
+          </div>
+        </div>
+        <ng-container *ngIf="items?.length > 0 && !noProductFound">
+          <pagination-controls (pageChange)="setPagination($event)">
+          </pagination-controls>
+          <div *ngIf="!DS.isMobile" class="horizontal-advertisement hidden-sm hidden-xs">
+            <ng-adsense [adClient]="'ca-pub-3783664105032363'" [adFormat]="'auto'" [adSlot]="3858062809">
+            </ng-adsense>
+          </div>
+          <div *ngIf="!DS.isMobile" class="box-advertisement visible-sm visible-xs">
+            <ng-adsense [adClient]="'ca-pub-3783664105032363'" [adFormat]="'auto'" [adSlot]="7797307814">
+            </ng-adsense>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+  <div [class.visible]="filter && items?.length > 0 && sidebarData !== []" class="visible-xs mobile-filter"
+    [class.not-visible]="!filter">
+    <i #swipefiltericon (click)="openSidebar()" class="fa fa-filter"></i>
+
+    <div class="mobile-sidebar">
+      <div class="mobile-title" #swipefilter>
+        {{total}} results
+        <div class="mobile-buttons">
+          <button [disabled]="mobileAppliedFilters?.length <= 0" (click)="resetMobileSidebar()">Reset</button>
+          <button [disabled]="resetMobileFilter()" (click)="applyFilterRequest()" class="btn btn-primary">Done</button>
+        </div>
+      </div>
+      <mobile-filter #mobilefilter [ssections]="sections" [sidebarcache]="sidebarData" [scategories]="categories"
+        (activeMobileFilters)="getMobileSidebarData($event)">
+      </mobile-filter>
+    </div>
+  </div>
+</div>
+<div (click)="openSidebar()" *ngIf="filter" class="mobile-bg visible-xs"></div>

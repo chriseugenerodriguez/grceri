@@ -1,0 +1,257 @@
+<header [class.mobile]="env.mobile" [class.home]="isStripe(router.url)" [class.main]="!isStripe(router.url)">
+  <ng-container *ngIf="isStripe(router.url); else other">
+    <div class="container">
+      <ul class="hidden-xs account align-left">
+        <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+          <a class="dropdown" (mouseover)="isCategoriesDropdownHidden = false"
+            (click)="GS.event('link', 'Header - Categories', 'click', 0); resetNav();" [routerLink]="['/groceries']">
+            Categories <i class="fa fa-angle-down"></i>
+          </a>
+          <ul *ngIf="isCategoriesDropdownHidden !== true">
+            <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" *ngFor="let a of lists">
+              <a [routerLink]="['/groceries/', url(a)]" (click)="isCategoriesDropdownHidden=true; gEvent(a.name)">
+                {{a.name}} <i *ngIf="a.categories.length" class="fa fa-angle-right"></i>
+              </a>
+              <ul class="sub" *ngIf="a.categories.length">
+                <li *ngFor="let b of a.categories">
+                  <a [routerLink]="['/groceries/', url(a), url(b)]"
+                    (click)="isCategoriesDropdownHidden=true; gEvent(b.name)">
+                    {{b.name}} <i *ngIf="b.categories.length" class="fa fa-angle-right"></i>
+                  </a>
+                  <ul class="sub-sub" *ngIf="b.categories.length">
+                    <li *ngFor="let c of b.categories">
+                      <a [routerLink]="['/groceries/', url(a), url(b), url(c)]">{{c.name}}
+                        <!-- <i *ngIf="c.subsub" class="fa fa-angle-right"></i> -->
+                      </a>
+                      <!-- <ul class="sub-sub-sub" *ngIf="c.subsub">
+                                      <li *ngFor="let d of c.subsub">
+                                        <a [routerLink]="['/groceries/', url(a), url(b), url(c), url(d)]">{{d.name}}</a>
+                                      </li>
+                                    </ul> -->
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <!-- <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+          <a [routerLink]="['/lists/discover']">Discover</a>
+        </li> -->
+      </ul>
+      <div class="visible-xs mobile-menu">
+        <button class="hamburger hamburger--squeeze" type="button" (click)="addNav();" aria-label="hamburger">
+          <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+          </span>
+        </button>
+      </div>
+      <div class="user-nav">
+        <aside class="arrange middle">
+          <section class="arrange_unit middle loggedIn" *ngIf="login()">
+            <ul class="user">
+              <li class="btn-group profile" dropdown>
+                <div class="profile-content" *ngIf="profile" dropdownToggle>
+                  <img class="user img" [defaultImage]="load" [lazyLoad]="profile.picture" />
+                  <div class="account-name">
+                    <span class="name"> {{ profile.firstName }} </span>
+                    <span> {{ profile.lastName }} </span>
+                  </div>
+                  <span class="sr-only">Toggle Dropdown</span>
+                  <i class="fa fa-angle-down"></i>
+                </div>
+                <div class="dropdown" *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu">
+                  <ul>
+                    <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+                      <a (click)="GS.event('link', 'Header - Your Account', 'click', 0); resetNav();"
+                        [routerLink]="['/user']">Your Account</a>
+                    </li>
+                    <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+                      <a (click)="GS.event('link', 'Header - Your Watchlists', 'click', 0); resetNav();"
+                        [routerLink]="['/watchlists']">Your Watchlists</a>
+                    </li>
+                    <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+                      <a (click)="GS.event('link', 'Header - Your Lists', 'click', 0); resetNav();"
+                        [routerLink]="['/lists']">Your Lists</a>
+                    </li>
+                    <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+                      <a (click)="GS.event('link', 'Header - Your Favorites', 'click', 0); resetNav();"
+                        [routerLink]="['/user/favorites']">Your Favorites</a>
+                    </li>
+                    <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+                      <a (click)="GS.event('link', 'Header - Your Settings', 'click', 0); resetNav();"
+                        [routerLink]="['/user/settings']">Your Settings</a>
+                    </li>
+                    <li role="menuitem">
+                      <a class="dropdown-item" (click)="logOut()">Log Out</a>
+                    </li>
+                  </ul>
+                </div>
+              </li>
+            </ul>
+          </section>
+          <ul class="account arrange_unit" *ngIf="!login()">
+            <li class="login" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+              <a (click)="GS.event('link', 'Header - Log In', 'click', 0); resetNav();" [routerLink]="['/login']">Sign
+                In</a>
+            </li>
+            <li class="signup" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+              <a (click)="GS.event('link', 'Header - Sign Up', 'click', 0); resetNav();"
+                [routerLink]="['/sign-up']">Sign
+                Up</a>
+            </li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #other>
+    <div class="container">
+      <div class="nowrap arrange">
+        <div class="mobile-menu arrange_unit middle">
+          <button class="visible-sm hamburger hamburger--squeeze" type="button" (click)="addNav();"
+            aria-label="hamburger">
+            <span class="hamburger-box">
+              <span class="hamburger-inner"></span>
+            </span>
+          </button>
+        </div>
+        <div class="arrange_unit middle logo">
+          <a (click)="GS.event('image', 'Header - Logo', 'click', 0); resetNav();" [routerLink]="['/']">
+            <img src="./assets/svg/logo.svg" alt="Grceri" />
+          </a>
+        </div>
+        <ul class="account arrange_unit hidden-sm">
+          <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+            <a class="dropdown" (mouseover)="isCategoriesDropdownHidden = false"
+              (click)="GS.event('link', 'Header - Categories', 'click', 0); resetNav();" [routerLink]="['/groceries']">
+              Categories <i class="fa fa-angle-down"></i>
+            </a>
+            <ul *ngIf="isCategoriesDropdownHidden !== true">
+              <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}" *ngFor="let a of lists">
+                <a [routerLink]="['/groceries/', url(a)]" (click)="isCategoriesDropdownHidden=true; gEvent(a.name)">
+                  {{a.name}} <i *ngIf="a.categories.length" class="fa fa-angle-right"></i>
+                </a>
+                <ul class="sub" *ngIf="a.categories.length">
+                  <li *ngFor="let b of a.categories">
+                    <a [routerLink]="['/groceries/', url(a), url(b)]"
+                      (click)="isCategoriesDropdownHidden=true; gEvent(b.name)">
+                      {{b.name}} <i *ngIf="b.categories.length" class="fa fa-angle-right"></i>
+                    </a>
+                    <ul class="sub-sub" *ngIf="b.categories.length">
+                      <li *ngFor="let c of b.categories">
+                        <a [routerLink]="['/groceries/', url(a), url(b), url(c)]">{{c.name}}
+                          <!-- <i *ngIf="c.subsub" class="fa fa-angle-right"></i> -->
+                        </a>
+                        <!-- <ul class="sub-sub-sub" *ngIf="c.subsub">
+                                      <li *ngFor="let d of c.subsub">
+                                        <a [routerLink]="['/groceries/', url(a), url(b), url(c), url(d)]">{{d.name}}</a>
+                                      </li>
+                                    </ul> -->
+                      </li>
+                    </ul>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </li>
+          <!-- <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+            <a [routerLink]="['/lists/discover']">Discover</a>
+          </li> -->
+        </ul>
+        <div class="arrange_unit align-right">
+          <search-input [search]="searchInputText" (inputValue)="onNewInput($event)"></search-input>
+        </div>
+
+        <div class="arrange_unit middle user-nav">
+          <aside class="arrange middle">
+            <section class="arrange_unit middle loggedIn" *ngIf="login()">
+              <ul class="user">
+                <li class="btn-group profile" dropdown>
+                  <div class="profile-content" *ngIf="profile" dropdownToggle>
+                    <img class="user img" [defaultImage]="load" [lazyLoad]="profile.picture" />
+                    <div class="account-name">
+                      <span class="name"> {{ profile.firstName }} </span>
+                      <span> {{ profile.lastName }} </span>
+                    </div>
+                    <span class="sr-only">Toggle Dropdown</span>
+                    <i class="fa fa-angle-down"></i>
+                  </div>
+                  <div class="dropdown" *dropdownMenu class="dropdown-menu dropdown-menu-right" role="menu">
+                    <ul>
+                      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+                        <a (click)="GS.event('link', 'Header - Your Account', 'click', 0); resetNav();"
+                          [routerLink]="['/user']">Your Account</a>
+                      </li>
+                      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+                        <a (click)="GS.event('link', 'Header - Your Watchlists', 'click', 0); resetNav();"
+                          [routerLink]="['/watchlists']">Your Watchlists</a>
+                      </li>
+                      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+                        <a (click)="GS.event('link', 'Header - Your Lists', 'click', 0); resetNav();"
+                          [routerLink]="['/lists']">Your Lists</a>
+                      </li>
+                      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+                        <a (click)="GS.event('link', 'Header - Your Favorites', 'click', 0); resetNav();"
+                          [routerLink]="['/user/favorites']">Your Favorites</a>
+                      </li>
+                      <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+                        <a (click)="GS.event('link', 'Header - Your Settings', 'click', 0); resetNav();"
+                          [routerLink]="['/user/settings']">Your Settings</a>
+                      </li>
+                      <li role="menuitem">
+                        <a class="dropdown-item" (click)="logOut()">Log Out</a>
+                      </li>
+                    </ul>
+                  </div>
+                </li>
+              </ul>
+            </section>
+            <ul class="account arrange_unit" *ngIf="!login()">
+              <!-- <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+                  <a>Solutions</a>
+                  <ul>
+                    <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+                      <a [routerLink]="['/solutions/parents']">For Parents</a>
+                    </li>
+                    <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+                      <a [routerLink]="['/solutions/cooks']">For Cooks</a>
+                    </li>
+                    <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+                      <a [routerLink]="['/solutions/hosts']">For Hosts</a>
+                    </li>
+                    <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+                      <a [routerLink]="['/solutions/students']">For Students</a>
+                    </li>
+                  </ul>
+                </li>
+                <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+                  <a>Resources</a>
+                  <ul>
+                    <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+                      <a [routerLink]="['/blog']">Blog</a>
+                    </li>
+                    <li>
+                      <a target="_blank" href="https://grceri.zendesk.com/hc/en-us">Help Center</a>
+                    </li>
+                  </ul>
+                </li>
+                <li [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+                  <a [routerLink]="['/pricing']">Pricing</a>
+                </li> -->
+              <li class="login" [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact:true}">
+                <a (click)="GS.event('link', 'Header - Log In', 'click', 0); resetNav();" [routerLink]="['/login']">Log
+                  In</a>
+              </li>
+            </ul>
+          </aside>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</header>
+
+<header-sidebar-app [data]="lists" [class.is-active]="sideNav" [class.is-not-active]="!sideNav"
+  (close)="sideNav = $event"></header-sidebar-app>
+
+<div #swipeNav class="visible-xs swipeArea"></div>

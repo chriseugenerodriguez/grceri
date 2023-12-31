@@ -1,0 +1,49 @@
+<ng-template #searchbarpopup>
+  <div class="modal-body">
+    <div id="searchbar" class="search">
+      <img  class="back" src="assets/svg/mobile/arrow-left.svg" alt="" (click)="SBS.disableSeachPopup()" />
+
+      <input
+      maxlength="100"
+      placeholder="search for products"
+      (keydown.enter)="search($event)">
+
+      <div class="icons">
+        <img  src="assets/svg/search/mic.svg" alt="mic" aria-hidden="true" (click)="VS.openVoiceRecognition(); SBS.disableSeachPopup()" />
+        <img  src="assets/svg/search/barcode.svg" alt="barcode" aria-hidden="true" (click)="BS.openScanner(); SBS.disableSeachPopup()" />
+      </div>
+    </div>
+    <div class="recently-viewed" *ngIf="SBS.viewedProducts?.length > 0">
+      <h3>Recently viewed</h3>
+      <ul>
+        <li *ngFor="let product of SBS.viewedProducts">
+          <a [routerLink]="['/grocery/', url(product.title), product.productId]">
+            <img 
+              *ngIf="product.productImages; else alternateimage" 
+              [defaultImage]="load"
+              [lazyLoad]="product.productImages.sizes.mobile"
+              [alt]="product.title" />
+            <ng-template #alternateimage>
+              <img 
+                [defaultImage]="load"
+                [lazyLoad]="product.images[0].thumbnail" 
+                [alt]="product.title" />
+            </ng-template>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="recently-searched" *ngIf="SBS.recentlySearched?.length > 0">
+      <h3>Recently searched <a (click)="removeAllRecentlySearchedText()">Clear</a></h3>
+      <ul>
+        <li *ngFor="let searchObject of SBS.recentlySearched">
+          <a (click)="SBS.disableSeachPopup()" [routerLink]="['/search']"
+            [queryParams]="{ cat_id: '', query: searchObject.searchText }">
+            {{searchObject.searchText}}
+            <img  src="assets/svg/mobile/arrow-left.svg" alt="" />
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</ng-template>

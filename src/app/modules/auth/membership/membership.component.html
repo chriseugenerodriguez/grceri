@@ -1,0 +1,251 @@
+<!-- <div class="register-stripe"></div>
+<div class="register container">
+  <div class="register__content">
+    <div class="register__content__header hidden-md hidden-sm hidden-xs">
+      <a class="register__content__header-logo" [routerLink]="['/']">
+        <img  src="assets/svg/logo.svg" alt="Grceri" />
+      </a>
+      <a [routerLink]="['/login']" class="register__content__header-link">Login</a>
+    </div>
+    <div class="register__content__form">
+      <div [formGroup]="register">
+        <div class="row">
+          <div class="col col-md-8">
+            <div class="register__content__form-padding">
+              <ng-container *ngFor="let i of message">
+                <alert *ngIf="i" [type]="i.type" (onClosed)="_close(i)" [dismissOnTimeout]="4000" [dismissible]="true">
+                  {{ i.value }}
+                </alert>
+              </ng-container>
+
+              <h1 class="register__content__form-title">Create an Account</h1>
+              <p>One click away from accessing over 400,000 food products! Always find the cheaping price, and save those
+                products to a shopping list! Convienence at your fingertips, all in one place.</p>
+
+
+
+                <section
+                  [class.step0]="step === 0"
+                  [class.mobile]="mobile">
+                  <h3>Account Credentials</h3>
+                  <alert *ngIf="register.get('email').errors && register.get('email').errors.emailTaken" type="danger"
+                    (onClosed)="_close(i)" [dismissOnTimeout]="4000" [dismissible]="true">
+                    {{register.get('email').errors.emailTaken}}
+                  </alert>
+                  <div class="form-group">
+                    <label for="email">Email</label>
+                    <input #email type="email" class="form-control"
+                    name="email" formControlName="email" />
+                  </div>
+                  <div class="form-group">
+                    <label for="password" class="float-left">Password</label>
+                    <div class="float-right">
+                      <label class="show" (click)="_password()">
+                        <i [class]="!show ? 'fa fa-eye' : 'fa fa-eye-slash'"></i>
+                        {{ !show ? 'Show' : 'Hide' }}
+                      </label>
+                    </div>
+                    <input #pass [type]="show ? 'text' : 'password'" class="form-control" maxlength="50" name="password"
+                      (input)="_passwordChange($event.target.value)" formControlName="password" />
+                  </div>
+
+                  <div class="register__content__form__password-requirements">
+                    <div *ngIf="!passwordRequirements" class="form-group row">
+                      <div class="col col-xs-6">
+                        <ul class="register__content__form__password-requirements-meta">
+                          <li [class.active]='lowercase'>One lowercase character</li>
+                          <li [class.active]='uppercase'>One uppercase character</li>
+                          <li [class.active]='number'>One number</li>
+                        </ul>
+                      </div>
+                      <div class="col col-xs-6">
+                        <ul class="register__content__form__password-requirements-meta selfclear">
+                          <li [class.active]='special'>One special character</li>
+                          <li [class.active]='eight'>8 characters minimum</li>
+                          <li [class.active]='plus50' class="error">50 characters maximum</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="buttons">
+                    <button
+                      class="back fa btn btn-primary"
+                      (click)="step = 1"
+                      [disabled]="!passwordRequirements && !emailValid">
+                      <span>View Plans</span>
+                      <i class="fa fa-angle-right"></i>
+                  </button>
+                  </div>
+                </section>
+
+                <section
+                  [class.mobile]="mobile"
+                  [class.step1]="step === 1"
+                  *ngIf="plansLoaded || addOns">
+                  <ng-container *ngIf="plansLoaded">
+                    <h3>Plan</h3>
+                    <div class="plan__container">
+                      <div class="plan__container-section">
+                        <input type="radio" class="custom-control-input" (change)="handlePlanChange($event)"
+                          formControlName="plan" value="free" [checked]="this.plan == 'free'" id="free">
+                        <label class="custom-control-label" for="free">Free</label>
+                      </div>
+                      <div class="plan__container-section">
+                        <input type="radio" class="custom-control-input" (change)="handlePlanChange($event)"
+                          formControlName="plan" value="basic" [checked]="this.plan == 'basic'" id="basic">
+                        <label class="custom-control-label" for="basic">Basic</label>
+                      </div>
+                      <div class="plan__container-section">
+                        <input type="radio" class="custom-control-input" (change)="handlePlanChange($event)"
+                          formControlName="plan" value="elite" id="elite" [checked]="this.plan == 'elite'">
+                        <label class="custom-control-label" for="elite">Elite</label>
+                      </div>
+                    </div>
+
+                    <div *ngIf="plan === 'basic' || plan === 'elite'" class="plan__container">
+                      <ng-container *ngIf="plan === 'basic'">
+                        <div class="plan__container-section" *ngFor="let planObject of basicMonthlyPlan">
+                          <input type="radio" id="basic-mo"
+                            (change)="handleQuarterPlanChange($event, planObject)" formControlName="quarterPlan"
+                            [value]="planObject.amount">
+                          <label for="basic-mo">{{ planObject.planDescription }}</label>
+                        </div>
+                        <div class="plan__container-section" *ngFor="let planObject of basicYearlyPlan">
+                          <input type="radio" id="basic-yr"
+                            (change)="handleQuarterPlanChange($event, planObject)" formControlName="quarterPlan"
+                            [value]="planObject.amount">
+                          <label for="basic-yr">{{ planObject.planDescription }}</label>
+                        </div>
+                      </ng-container>
+
+                      <ng-container *ngIf="plan === 'elite'">
+                        <div class="plan__container-section" *ngFor="let planObject of eliteMonthlyPlan">
+                          <input type="radio" id="elite-mo"
+                            (change)="handleQuarterPlanChange($event, planObject)" formControlName="quarterPlan"
+                            [value]="planObject.amount">
+                          <label for="elite-mo">{{ planObject.planDescription }}</label>
+                        </div>
+                        <div class="plan__container-section" *ngFor="let planObject of eliteYearlyPlan">
+                          <input type="radio" id="elite-yr"
+                            (change)="handleQuarterPlanChange($event, planObject)" formControlName="quarterPlan"
+                            [value]="planObject.amount">
+                          <label for="elite-yr">{{ planObject.planDescription }}</label>
+                        </div>
+                      </ng-container>
+                    </div>
+                  </ng-container>
+
+                  <ng-container *ngIf="addOns">
+                    <h3>Add Ons</h3>
+                    <div class="add__container">
+                      <div class="add__container-section" *ngFor="let addOn of addOns">
+                        <input [id]="addOn.planDescription" formControlName="addOns" (change)="handleAddOnsChange($event, addOn)"
+                          type="checkbox" [value]="addOn.amount">
+                        <label [for]="addOn.planDescription">
+                          {{addOn.planDescription}}
+                        </label>
+                      </div>
+                    </div>
+                  </ng-container>
+
+                  <div class="buttons">
+                    <button class="back fa fa-angle-left btn btn-ternary" (click)="step = 0"></button>
+                    <button
+                      class="back fa btn btn-primary"
+                      (click)="step = plan !== 'free' || extraPay > 0 ? 2 : 3">
+                      <span>Pay Now </span>
+                      <i class="fa fa-angle-right"></i>
+                    </button>
+                  </div>
+                </section>
+
+                <section
+                  [class.mobile]="mobile"
+                  [class.step1]="step === 2"
+                  *ngIf="plan !== 'free' || extraPay > 0">
+                  <h3>Credit Card Information</h3>
+
+                  <credit-card #creditCard (creditCardValidate)="getCreditCardValidationInformation($event)" [email]="register.value.email.value" [password]="register.value.password.value">
+                  </credit-card>
+                  <div class="buttons">
+                      <button class="back fa fa-angle-left btn btn-ternary" (click)="step = 1"></button>
+                      <button
+                        [disabled]="register.get('creditCard') && !register.get('creditCard').valid"
+                        class="back fa btn btn-primary"
+                        (click)="step = 3">
+                        <span>Confirm</span>
+                        <i class="fa fa-angle-right"></i>
+                      </button>
+                    </div>
+                </section>
+
+            </div>
+          </div>
+          <div
+            class="col col-md-4"
+            [class.mobile]="mobile"
+            [class.step3]="step === 3"
+            >
+            <div class="register__content__subscription">
+              <h2>Summary</h2>
+
+              <div class="register__content__subscription__details">
+                <h3><i class="fa fa-check-circle-o"></i> {{plan}} <span *ngIf="summaryPlan && plan !== 'free'">$ {{summaryPlan.amount}} / {{summaryPlan.planInterval}}</span></h3>
+                <div class="register__content__subscription__details-blurb">
+                  <p>{{ pType }}</p> <i (click)="details = !details" class="fa fa-angle-down"></i>
+                </div>
+                <div *ngIf="details" class="register__content__subscription__details-accordion">
+                  <h4 class="register__content__subscription__details-plan"><strong>{{plan }} includes</strong><span>All of these great features:</span></h4>
+                  <ul>
+                    <li *ngFor="let key of features | keys">
+                      {{features[key]}}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+
+              <div class="register__content__subscription__details">
+                <ng-container *ngIf="selectedAddOns">
+                  <h4 *ngFor="let addOn of selectedAddOns">{{addOn.planDescription}} <span>${{addOn.amount}}</span></h4>
+                </ng-container>
+              </div>
+
+              <div class="register__content__subscription__details">
+                <ng-container *ngIf="monthlyPay > 0">
+                  <h3>Monthly: <span>${{monthlyPay}}</span></h3>
+                </ng-container>
+                <ng-container *ngIf="yearlyPay > 0">
+                  <h3>Yearly: <span>${{yearlyPay}}</span></h3>
+                </ng-container>
+              </div>
+
+
+              <label class="register__content__subscription__details-small">
+                <div class="register__content__subscription__details-checkbox">
+                  <input [formControl]="register.controls['terms']" id="terms" type="checkbox"  />
+                  <label for="terms"></label>
+                </div>
+                I agree to grceri's <a routerLink="/policies/terms-of-use" target="_blank">Terms of Use & Privacy
+                  Policy</a>.
+              </label>
+
+              <div class="buttons">
+                <button class="back fa fa-angle-left btn btn-ternary" (click)="step = plan !== 'free' || extraPay > 0 ? 2 : 1"></button>
+                <button type="submit" [disabled]="!register.valid" class="register__content__form-btn btn btn-primary"
+                  (click)="signup();">
+                  <span *ngIf="!submit; else : spin">
+                    Create Account
+                  </span>
+                  <ng-template #spin>
+                    <img  class="spinner" src="assets/svg/three-dots.svg" width="35" alt="" />
+                  </ng-template>
+                </button>
+              </div>
+            </div>
+          </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div> -->

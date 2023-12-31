@@ -1,0 +1,27 @@
+<!-- <kendo-dialog class="product__popup-feedback" [width]="450" [formGroup]="Feedback"> -->
+  <a (click)="feedback('cancel')" class="product__popup-feedback-close"><img  src="assets/svg/close.svg" /></a>
+  <h1 class="product__popup-feedback-title">Please tell us about the issue.</h1>
+  <div class="form-group">
+    <label>Where is the issue?</label>
+    <!-- <kendo-dropdownlist formControlName="Where" [data]="whereData" [valuePrimitive]="true" [textField]="'value'"
+      [valueField]="'id'" (valueChange)="change($event)"></kendo-dropdownlist> -->
+  </div>
+  <div class="form-group">
+    <label>What is the issue?</label>
+    <!-- <kendo-dropdownlist formControlName="What" [data]="whatData" [valuePrimitive]="true" [textField]="'value'"
+      [valueField]="'id'"></kendo-dropdownlist> -->
+  </div>
+  <div class="form-group">
+    <label>Tell us more (300 characters or less)</label>
+    <textarea formControlName="Info" maxlength="300"></textarea>
+  </div>
+  <div class="form-group product__popup-feedback-btn">
+    <button class=" product__popup-feedback-btn-clear btn" (click)="feedback('cancel')">Cancel</button>
+    <button class="product__popup-feedback-btn-main btn" [disabled]="!Feedback.valid" (click)="feedback(Feedback.value)">Submit</button>
+  </div>
+  <div class="form-group">
+    <p>Sorry, but we can't respond to individual comments.</p>
+    <p>If you need immediate assistance, please contact <a href="https://grceri.zendesk.com/hc/en-us" rel="_blank">Customer
+        Care.</a></p>
+  </div>
+<!-- </kendo-dialog> -->

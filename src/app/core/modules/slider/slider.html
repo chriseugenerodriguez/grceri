@@ -1,0 +1,17 @@
+<section class="slider-wrapper" [ngStyle]="style">
+  <ul class="slider-wrapper__inner" #slider [ngStyle]="width">
+    <li *ngFor="let item of items;" class="slider-wrapper__inner__item">
+      <ng-container [ngTemplateOutlet]="item.tpl"></ng-container>
+    </li>
+  </ul>
+  <ul *ngIf="showPagination" class="slider-wrapper__pag">
+    <li *ngFor="let item of (multiple ? getPagination(items) : items); let i = index" [attr.data-index]="i" class="slider-wrapper__pag-item"
+      [ngClass]="{'active': i== currentSlide}" >
+      <i (click)="goToSlide(i)"></i>
+    </li>
+  </ul>
+  <nav *ngIf="showControls" class="slider-wrapper__arrows">
+    <i *ngIf="left" class="fa fa-angle-left slider-wrapper__arrows-left" (click)="prev()"></i>
+    <i *ngIf="right" class="fa fa-angle-right slider-wrapper__arrows-right" (click)="next()"></i>
+  </nav>
+</section>

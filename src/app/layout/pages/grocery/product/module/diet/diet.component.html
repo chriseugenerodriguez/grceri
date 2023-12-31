@@ -1,0 +1,22 @@
+<div class="product__details__section__diet">
+		<div class="product__details__section__diet__container">
+			<div class="product__details__section__diet__container-plus" [class.active]="dietPlus">
+				<span class="number">
+					<span class="number-click" *ngIf="!dietPlus" (click)="diet('plus')"> 3 </span>
+					<span *ngIf="dietPlus"> 3 </span>
+				</span>
+				<span class="text">Majority of dietary requirements met.</span>
+			</div>
+			<div class="product__details__section__diet__container-minus" [class.active]="dietMinus">
+				<span class="number">
+					<span class="number-click" *ngIf="!dietMinus" (click)="diet('minus')"> 1 </span>
+					<span *ngIf="dietMinus"> 1 </span>
+				</span>
+				<span class="text">Majority of dietary requirements weren't met.</span>
+			</div>
+		</div>
+		<ol class="product__details__section__diet__details">
+			<li>This is a reason one.</li>
+			<li>This is a reason two.</li>
+		</ol>
+	</div>

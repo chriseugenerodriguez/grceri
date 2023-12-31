@@ -1,0 +1,84 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the header of the site/application.
+// -----------------------------------------------------------------------------
+
+//  BEM - Block Element Modifier
+//  This is how our code is structured. Please follow this layout and format.
+//  More Info: https://css-tricks.com/bem-101/
+//
+//  .steps {
+//	    &__item {		
+//		    &--first {}
+//		    &--last {}
+//		    &--active {}
+//		    &--done {}
+//	    }
+//	    &__link {}
+//  }
+
+@import "../../../assets/css/abstracts/_mixins.scss";
+@import "../../../assets/css/abstracts/_variables.scss";
+
+:host {
+  .policies {
+    &__header {
+      background-color: #fafafa;
+      padding: 3rem 0;
+
+      @media (max-width: $screen-xs) {
+        padding: 2rem 0;
+      }
+
+      &-title {
+        @include font-size(45px);
+        margin: 0;
+        text-align: center;
+        font-family: 'AB', sans-serif;
+        letter-spacing: 1px;
+        color: #333;
+
+        @media (max-width: $screen-md) {
+          margin: 0 20px;
+        }
+
+        @media (max-width: $screen-xs) {
+          @include font-size(30px);
+        }
+      }
+    }
+
+    &__container {
+      display: grid;
+      grid-column-gap: 10.97560976%;
+      grid-template-columns: 20.73170732% 65.85365854%;
+
+      @media (max-width: $screen-md) {
+        grid-column-gap: 4.97561%;
+        grid-template-columns: 28.731707% 65.85365854%;
+      }
+
+      @media (max-width: $screen-sm) {
+        grid-column-gap: inherit;
+        grid-template-columns: inherit;
+      }
+
+      &__content {
+        display: block;
+        padding: 5rem;
+        max-width: 90%;
+
+        @media (max-width: $screen-lg) {
+          max-width: inherit;
+        }
+
+        @media (max-width: $screen-md) {
+          padding: 5rem 0;
+        }
+
+        @media (max-width: $screen-sm) {
+          padding: 2rem 0 0;
+        }
+      }
+    }
+  }
+}

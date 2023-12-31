@@ -1,0 +1,6 @@
+  <ol class="category-list" [class.overflow]="dispCategories.length > 12">
+    <li *ngFor="let category of dispCategories, let i = index;" class="category-list-item">
+      <input type="checkbox" name="category-filter" [checked]="filterActive(category)" (click)="changeFilterStatus($event, category)">
+      <span>{{ category.name }} <span class="count">({{ category.num ? category.num : 0 }})</span></span>
+    </li>
+  </ol>

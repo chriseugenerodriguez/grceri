@@ -1,0 +1,26 @@
+<div class="row" *ngIf="data">
+  <div class="product__section__overview">
+    <div class="col col-md-3">
+      <h3 class="product__section__overview-title">Product Details</h3>
+      <hr/>
+      <ul class="product__section__overview-list">
+        <li *ngIf="data.manufacturer"><strong>Manufacturer:</strong> <a>{{ data.manufacturer}}</a></li>
+        <li *ngIf="data.brand"><strong>Brand:</strong> <a>{{ data.brand}}</a></li>
+        <li *ngIf="data.category"><strong>Category:</strong> <a>{{ data.category}}</a></li>
+        <li *ngIf="data.color"><strong>Color:</strong> {{ data.color}}</li>
+        <li *ngIf="data.size"><strong>Size:</strong> {{ data.size}}</li>
+        <li *ngIf="data.dimension"><strong>Dimension:</strong> {{ data.dimension}}</li>
+        <li *ngIf="data.weight"><strong>Weight:</strong> {{ data.weight}}</li>
+        <li *ngIf="data.rating"><strong>Customer Rating:</strong> <a (click)="scrollReview()">{{ data.rating}} (100)</a></li>
+      </ul>
+    </div>
+    <div class="col col-md-9">
+      <h3 class="product__section__overview-title">Description</h3>
+      <hr/>
+      <p class="product__section__overview-desc">
+        {{ data.description }}
+      </p>
+    </div>
+  </div>
+
+</div>

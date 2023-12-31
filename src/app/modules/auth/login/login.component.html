@@ -1,0 +1,94 @@
+<div class="module">
+  <a class="module-logo" [routerLink]="['/']">
+    <img src="assets/svg/cart.svg" alt="Grceri" />
+  </a>
+
+  <div class="module__content col col-lg-8 col-md-6 col-sm-7 col-xs-10">
+    <form [formGroup]="login">
+      <ng-container *ngFor="let i of message">
+        <alert *ngIf="i" [type]="i.type" (onClosed)="_close(i)" [dismissOnTimeout]="8000" [dismissible]="true">
+          {{ i.value }} </alert>
+      </ng-container>
+      <div *ngIf="first" class="module__content__header visible-lg visible-md">
+        <h2 class="module__content__header-title">Hello! Nice to see you back.</h2>
+        <h3 class="module__content__header-subtitle">Enter your information to login.</h3>
+      </div>
+      <h1>Log in</h1>
+
+      <ng-container *ngIf="first; else two">
+        <div class="module__content__fields">
+          <div class="module__content__fields__form-group form-group">
+            <input #email type="email" class="form-control" name="email" formControlName="email"
+              placeholder="Email Address" autofocus />
+          </div>
+        </div>
+
+        <button [disabled]="(!validateEmail(login.controls.email.value) || icon) || googleSignInLoading"
+          (click)="checkEmail()" class="btn btn-primary">
+          <span [class.hidden]="icon == true">Continue</span>
+          <span [class.hidden]="icon != true" class="spinner">
+            <img src="assets/svg/three-dots.svg" width="35" alt="" />
+          </span>
+        </button>
+      </ng-container>
+      <ng-template #two>
+        <h3 class="module__content__fields-email">{{ login.controls.email.value }}</h3>
+        <div class="module__content__fields__form-group form-group">
+          <div class="module__content__fields__form-group-password">
+            <a class="module__content__fields__form-group-show" (click)="show = !show">
+              <i [class.fa-eye-slash]="show" [class.fa-eye]="!show" class="fa">
+              </i>
+              <span *ngIf="!show">Show</span>
+              <span *ngIf="show">Hide</span>
+            </a>
+          </div>
+          <input #pass [type]="show ? 'text' : 'password'"
+            class="form-control module__content__fields__form-group-padding-right" name="password"
+            formControlName="password" placeholder="Password" autofocus />
+          <div class="module__content-buttons">
+            <div class="col col-xs-6">
+              <label class="module__content__switch">
+                <div class="module__content__switch-label">
+                  <input type='checkbox' id='switch' formControlName='remember' />
+                  <label for="switch"></label>
+                </div>
+                <span>Remember me</span>
+              </label>
+            </div>
+            <a class="module__content-forgot col col-xs-6" [routerLink]="['/forgot-password']">Forgot Password</a>
+          </div>
+        </div>
+        <button type="submit" [disabled]="!login.valid || loginLoading" class="btn btn-primary"
+          (click)="submit(login.controls.email.value, login.controls.password.value, login.controls.remember.value);">
+          <span [class.hidden]="icon == true">Log In</span>
+          <span [class.hidden]="icon != true" class="spinner">
+            <img src="assets/svg/three-dots.svg" width="35" alt="" />
+          </span>
+        </button>
+      </ng-template>
+
+      <div class="seperator"></div>
+
+      <button id="google-sign-in-button" [disabled]="googleSignInLoading" (click)="onGoogleSignIn()">
+        Sign in with Google
+      </button>
+
+      <p *ngIf="first" class="module__content-desc visible-md visible-lg">
+        <a [routerLink]="['/policies/privacy-policy']">Privacy Policy</a>
+      </p>
+      <p *ngIf="first" class="module__content-acct">Don't have a Grceri account?
+        <a [routerLink]="['/sign-up']">Sign Up</a>
+      </p>
+    </form>
+    <div *ngIf="IS.deferredPrompt" class="visible-sm visible-xs">
+      <div class="get__app get__app-bg">
+        <div class="get__app-text">
+          Get the best Grceri Experience
+        </div>
+        <a (click)="IS.clickPrompt('Login')" class="btn btn-primary">Get the app</a>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="billboard hidden-md hidden-xs hidden-sm">
+</div>

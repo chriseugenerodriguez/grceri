@@ -1,0 +1,16 @@
+
+  <input #searchTextbox type="text" class="tt-input" [formControl]="brandSearchControl" placeholder="Search brands" (focus)="onFocusSearchbox()" />
+  <input *ngIf="searchFilters.length > 0 && isTextActive" type="text" class="tt-hint" [placeholder]="hintPlaceHolder" />
+  <div class="dropdown" *ngIf="searchFilters.length > 0 && isTextActive">
+      <ol class="brands-list">
+        <li *ngFor="let brand of searchFilters; let i = index;" (mousedown)="onFilterListItemClick(brand)">          
+          <span>{{ brand.name }} <span class="count">({{ brand.num }})</span></span>
+        </li>
+      </ol>
+  </div>
+  <ol class="brands-list" [class.overflow]="availableFilters.length > 12">
+    <li *ngFor="let brand of availableFilters; let i = index;">
+      <input type="checkbox" name="brand-filter" [checked]="filterActive(brand)" (click)="changeFilterStatus($event, brand)">
+      <span>{{ brand.name }} <span class="count">({{ brand.num }})</span></span>
+    </li>
+  </ol>

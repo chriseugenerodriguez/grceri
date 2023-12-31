@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<sitemapindex
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="
+            http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/siteindex.xsd">
+
+
+<sitemap>
+	<loc>https://grceri.com/assets/sitemap/mobile/sitemap_mobile1.xml</loc>
+	<lastmod>2019-10-13T00:55:15+00:00</lastmod>
+</sitemap>
+<sitemap>
+	<loc>https://grceri.com/assets/sitemap/mobile/sitemap_mobile2.xml</loc>
+	<lastmod>2019-10-13T00:55:15+00:00</lastmod>
+</sitemap>
+<sitemap>
+	<loc>https://grceri.com/assets/sitemap/mobile/sitemap_mobile3.xml</loc>
+	<lastmod>2019-10-13T00:55:15+00:00</lastmod>
+</sitemap>
+<sitemap>
+	<loc>https://grceri.com/assets/sitemap/mobile/sitemap_mobile4.xml</loc>
+	<lastmod>2019-10-13T00:55:15+00:00</lastmod>
+</sitemap>
+<sitemap>
+	<loc>https://grceri.com/assets/sitemap/mobile/sitemap_mobile5.xml</loc>
+	<lastmod>2019-10-13T00:55:15+00:00</lastmod>
+</sitemap>
+<sitemap>
+	<loc>https://grceri.com/assets/sitemap/mobile/sitemap_mobile6.xml</loc>
+	<lastmod>2019-10-13T00:55:15+00:00</lastmod>
+</sitemap>
+<sitemap>
+	<loc>https://grceri.com/assets/sitemap/mobile/sitemap_mobile7.xml</loc>
+	<lastmod>2019-10-13T00:55:15+00:00</lastmod>
+</sitemap>
+<sitemap>
+	<loc>https://grceri.com/assets/sitemap/mobile/sitemap_mobile8.xml</loc>
+	<lastmod>2019-10-13T00:55:15+00:00</lastmod>
+</sitemap>
+<sitemap>
+	<loc>https://grceri.com/assets/sitemap/mobile/sitemap_mobile9.xml</loc>
+	<lastmod>2019-10-13T00:55:15+00:00</lastmod>
+</sitemap>
+<sitemap>
+	<loc>https://grceri.com/assets/sitemap/mobile/sitemap_mobile10.xml</loc>
+	<lastmod>2019-10-13T00:55:15+00:00</lastmod>
+</sitemap>
+</sitemapindex>

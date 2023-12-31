@@ -1,0 +1,29 @@
+<div class="container">
+  <section class="blog__section">
+    <h2 class="blog__section-title blog__section-title-category">
+      {{b.title}}: <span>{{b.desc}}</span>
+    </h2>
+
+    <div class="blog__section__container">
+      <article class="blog__section__container__main">
+        <ng-container *ngFor="let i of newA; let x = index">
+          <ng-container *ngIf="x < 1">
+            <figure class="blog__section__container__main__section-img">
+              <a [routerLink]="['/blog/', lower(i.tags[0]), i.slugs[0]]">
+                <img  [src]="i.data.image.tablet.url" />
+              </a>
+            </figure>
+            <section class="blog__section__container__main__section">
+              <h2 class="blog__section__container__main__section-title">
+                <a [routerLink]="['/blog/', lower(i.tags[0]), i.slugs[0]]">
+                  {{ i.data.title[0].text}}
+                </a>
+              </h2>
+              <p>{{ i.data.summary[0].text}}</p>
+            </section>
+          </ng-container>
+        </ng-container>
+      </article>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,74 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the header of the site/application.
+// -----------------------------------------------------------------------------
+
+//  BEM - Block Element Modifier
+//  This is how our code is structured. Please follow this layout and format.
+//  More Info: https://css-tricks.com/bem-101/
+//
+//  .steps {
+//	    &__item {		
+//		    &--first {}
+//		    &--last {}
+//		    &--active {}
+//		    &--done {}
+//	    }
+//	    &__link {}
+//  }
+
+@import "../../../../../assets/css/abstracts/_mixins.scss";
+@import "../../../../../assets/css/abstracts/_variables.scss";
+
+:host ::ng-deep {
+  .content {
+    p {
+      @include font-size(18px);
+      font-family: 'AL', serif;
+      letter-spacing: .5px;
+      margin-bottom: 1rem;
+      color: #777;
+    }
+
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-family: 'AB', sans-serif;
+      font-weight: 500;
+      letter-spacing: .5px;
+      letter-spacing: normal;
+      margin-bottom: 1rem;
+
+      &:first-child {
+        margin-top: 0px;
+      }
+    }
+
+    strong {
+      font-family: 'AM', serif;
+      font-weight: 400;
+    }
+
+    h2 {
+      @include font-size(24px);
+    }
+
+    h3 {
+      @include font-size(18px);
+      font-style: italic;
+      line-height: 1.45;
+    }
+
+    ul,
+    ol {
+      margin: 20px 0;
+      list-style-type: disc;
+      padding-left: 1rem;
+
+      li:not(:last-child) {
+        margin-bottom: .5rem;
+      }
+    }
+  }
+}

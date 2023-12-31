@@ -1,0 +1,15 @@
+<div class="card-header">
+  <h2>Avatar
+    <button class="btn btn-primary small" (click)="editAvatar($event)">
+      Edit
+    </button>
+  </h2>
+</div>
+<div class="card-body">
+  <ng-container *ngIf="avatarUrl; else loading">
+    <img class="settings__content-section-avatar" [src]="avatarUrl"  alt="User Image" />
+  </ng-container>
+  <ng-template #loading>
+    <div class="skeleton-circle"></div>
+  </ng-template>
+</div>

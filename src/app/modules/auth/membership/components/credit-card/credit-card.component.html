@@ -1,0 +1,40 @@
+<div class="error feedback-block" role="alert" *ngIf="error">{{ error }}</div>
+
+<form [formGroup]="billing" class="billing" #form>
+  <div id="express"></div>
+
+  <div class="form-group">
+    <div class="form-group">
+      <label for="name">Name on Card</label>
+      <input type="text" class="form-control" name="text" formControlName="name" />
+    </div>
+
+    <div class="card">
+      <div class="form-group">
+        <label>Card number</label>
+        <div #cardNumberElement class="form-control input-style"></div>
+      </div>
+
+      <div class="row">
+        <div class="col col-xs-4">
+          <div class="form-group">
+            <label>Expiry Date</label>
+            <div #cardExpiryElement class="form-control input-style"></div>
+          </div>
+        </div>
+        <div class="col col-xs-4">
+          <div class="form-group">
+            <label>CVC</label>
+            <div #cardCVCElement class="form-control input-style"></div>
+          </div>
+        </div>
+        <div class="col col-xs-4">
+          <div class="form-group">
+            <label>Zip Code</label>
+            <input #zip type="number" placeholder="Zip Code" class="form-control" name="text" formControlName="zip" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

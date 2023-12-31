@@ -1,0 +1,25 @@
+<div class="product__image-carousal" *ngIf="product">
+    <img *ngIf="product.images_total == 1" [src]="activeProduct" [alt]="product.name" />
+    <ng-container *ngIf="product.images_total > 1">
+      <div class="product__image-carousal__gallery">
+        <div class="product__image-carousal__gallery-thumbnails">
+          <div class="product__image-carousal__gallery-thumbnails__container">
+            <ul #pag>
+              <ng-container *ngFor="let i of product.images; let x = index">
+                <li #item [class.active]="activeProduct == product.images[x]" (click)="_activeProducts(product.images[x])">
+                  <img [src]="product.images[x]" [alt]="product.name" />
+                </li>
+              </ng-container>
+            </ul>
+          </div>
+          <div class="product__image-carousal__gallery-thumbnails__pagination">
+            <i #left class="product__image-carousal__gallery-thumbnails__pagination-left fa fa-angle-left"></i>
+            <i #right class="product__image-carousal__gallery-thumbnails__pagination-right fa fa-angle-right"></i>
+          </div>
+        </div>
+        <div class="product__image-carousal__gallery-image">
+          <img [src]="activeProduct" [alt]="product.name" />
+        </div>
+      </div>
+    </ng-container>
+  </div>
