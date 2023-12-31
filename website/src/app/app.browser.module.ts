@@ -1,8 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-import { TransferHttpCacheModule } from '@nguniversal/common';
-
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 
@@ -47,9 +45,7 @@ import { ProductsService } from './core/services/product.service';
 		AppComponent
 	],
 	imports: [
-		BrowserModule.withServerTransition({ appId: 'grceri' }),
 		AppRoutingModule,
-		TransferHttpCacheModule,
 		BrowserAnimationsModule,
 
 		// PAGES
