@@ -8,7 +8,7 @@
     "sass-lint": "sass-lint -c sass-lint.yml -v -q",
     "ts-lint": "ng lint --type-check --force",
     "lint": "npm run sass-lint && npm run ts-lint",
-    "build": "ng build"
+    "build": "ng build --configuration production --aot"
   },
   "private": true,
   "dependencies": {
