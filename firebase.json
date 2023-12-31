@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "public": "dist",
     "source": "website",
     "ignore": [
       "firebase.json",
@@ -8,6 +9,16 @@
     ],
     "frameworksBackend": {
       "region": "us-central1"
-    }
+    },
+    "rewrites": [
+      {
+        "source": "/public/**",
+        "destination": "/public.html"
+      },
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
   }
 }
