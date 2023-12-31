@@ -39,6 +39,7 @@
     "@angular/cli": "~15.2.7",
     "@angular/compiler-cli": "^15.2.0",
     "@angular/localize": "^15.2.10",
+    "@angular/service-worker": "^15.2.10",
     "@ngx-loading-bar/core": "^6.0.2",
     "@progress/kendo-angular-dialog": "^14.3.0",
     "@progress/kendo-angular-dropdowns": "^14.3.0",
