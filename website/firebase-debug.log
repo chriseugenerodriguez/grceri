@@ -112,3 +112,130 @@ Require stack:
     at async init (C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\init\index.js:37:9)
 [error] 
 [error] Error: An unexpected error has occurred.
+[debug] [2023-12-31T08:37:57.947Z] ----------------------------------------------------------------------
+[debug] [2023-12-31T08:37:57.949Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2023-12-31T08:37:57.950Z] CLI Version:   11.29.1
+[debug] [2023-12-31T08:37:57.950Z] Platform:      win32
+[debug] [2023-12-31T08:37:57.950Z] Node Version:  v18.16.0
+[debug] [2023-12-31T08:37:57.952Z] Time:          Sun Dec 31 2023 00:37:57 GMT-0800 (Pacific Standard Time)
+[debug] [2023-12-31T08:37:57.952Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-12-31T08:37:58.063Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-12-31T08:37:58.063Z] > authorizing via signed-in user (christopher.eugene.rodriguez@gmail.com)
+[debug] [2023-12-31T08:37:58.064Z] [iam] checking project grceri-c3702 for permissions ["cloudconfig.configs.get","cloudconfig.configs.update","cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update"]
+[debug] [2023-12-31T08:37:58.067Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/grceri-c3702:testIamPermissions [none]
+[debug] [2023-12-31T08:37:58.068Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/grceri-c3702:testIamPermissions x-goog-quota-user=projects/grceri-c3702
+[debug] [2023-12-31T08:37:58.068Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/grceri-c3702:testIamPermissions {"permissions":["cloudconfig.configs.get","cloudconfig.configs.update","cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update"]}
+[debug] [2023-12-31T08:37:58.850Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/grceri-c3702:testIamPermissions 200
+[debug] [2023-12-31T08:37:58.851Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/grceri-c3702:testIamPermissions {"permissions":["cloudconfig.configs.get","cloudconfig.configs.update","cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update"]}
+[debug] [2023-12-31T08:37:58.852Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/grceri-c3702/serviceAccounts/grceri-c3702@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2023-12-31T08:37:58.852Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/grceri-c3702/serviceAccounts/grceri-c3702@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2023-12-31T08:37:59.371Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/grceri-c3702/serviceAccounts/grceri-c3702@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2023-12-31T08:37:59.371Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/grceri-c3702/serviceAccounts/grceri-c3702@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2023-12-31T08:37:59.372Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/grceri-c3702 [none]
+[debug] [2023-12-31T08:37:59.839Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/grceri-c3702 200
+[debug] [2023-12-31T08:37:59.839Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/grceri-c3702 {"projectId":"grceri-c3702","projectNumber":"1059626737335","displayName":"grceri","name":"projects/grceri-c3702","resources":{"hostingSite":"grceri-c3702","realtimeDatabaseInstance":"grceri-c3702-default-rtdb"},"state":"ACTIVE","etag":"1_7aadbe82-a8fc-418d-aab6-cba631ec0b3d"}
+[debug] [2023-12-31T08:37:59.840Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/grceri-c3702 [none]
+[debug] [2023-12-31T08:38:00.246Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/grceri-c3702 200
+[debug] [2023-12-31T08:38:00.247Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/grceri-c3702 {"projectId":"grceri-c3702","projectNumber":"1059626737335","displayName":"grceri","name":"projects/grceri-c3702","resources":{"hostingSite":"grceri-c3702","realtimeDatabaseInstance":"grceri-c3702-default-rtdb"},"state":"ACTIVE","etag":"1_7aadbe82-a8fc-418d-aab6-cba631ec0b3d"}
+[debug] [2023-12-31T08:38:41.312Z] Error: Unable to detirmine the application to deploy, you should use `ng deploy` via @angular/fire.
+    at getContext (C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\angular\index.js:173:15)
+    at async discover (C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\angular\index.js:21:30)
+    at async discover (C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\index.js:92:32)
+    at async prepareFrameworks (C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\index.js:266:25)
+    at async deploy (C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\index.js:53:13)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2023-12-31T08:44:33.055Z] ----------------------------------------------------------------------
+[debug] [2023-12-31T08:44:33.058Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
+[debug] [2023-12-31T08:44:33.058Z] CLI Version:   11.29.1
+[debug] [2023-12-31T08:44:33.059Z] Platform:      win32
+[debug] [2023-12-31T08:44:33.059Z] Node Version:  v18.16.0
+[debug] [2023-12-31T08:44:33.060Z] Time:          Sun Dec 31 2023 00:44:33 GMT-0800 (Pacific Standard Time)
+[debug] [2023-12-31T08:44:33.060Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-12-31T08:44:33.137Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-12-31T08:44:33.137Z] > authorizing via signed-in user (christopher.eugene.rodriguez@gmail.com)
+[debug] [2023-12-31T08:44:33.137Z] [iam] checking project grceri-c3702 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-12-31T08:44:33.139Z] > refreshing access token with scopes: []
+[debug] [2023-12-31T08:44:33.141Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2023-12-31T08:44:33.141Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-12-31T08:44:33.613Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2023-12-31T08:44:33.614Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2023-12-31T08:44:33.630Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/grceri-c3702:testIamPermissions [none]
+[debug] [2023-12-31T08:44:33.630Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/grceri-c3702:testIamPermissions x-goog-quota-user=projects/grceri-c3702
+[debug] [2023-12-31T08:44:33.631Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/grceri-c3702:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-12-31T08:44:34.247Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/grceri-c3702:testIamPermissions 200
+[debug] [2023-12-31T08:44:34.247Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/grceri-c3702:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-12-31T08:44:34.249Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/grceri-c3702 [none]
+[debug] [2023-12-31T08:44:34.939Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/grceri-c3702 200
+[debug] [2023-12-31T08:44:34.940Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/grceri-c3702 {"projectId":"grceri-c3702","projectNumber":"1059626737335","displayName":"grceri","name":"projects/grceri-c3702","resources":{"hostingSite":"grceri-c3702","realtimeDatabaseInstance":"grceri-c3702-default-rtdb"},"state":"ACTIVE","etag":"1_7aadbe82-a8fc-418d-aab6-cba631ec0b3d"}
+[debug] [2023-12-31T08:45:15.600Z] Error: Unable to detirmine the application to deploy, you should use `ng deploy` via @angular/fire.
+    at getContext (C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\angular\index.js:173:15)
+    at async discover (C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\angular\index.js:21:30)
+    at async discover (C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\index.js:92:32)
+    at async prepareFrameworks (C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\index.js:266:25)
+    at async deploy (C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\index.js:53:13)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2023-12-31T09:01:14.907Z] ----------------------------------------------------------------------
+[debug] [2023-12-31T09:01:14.909Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy --only hosting
+[debug] [2023-12-31T09:01:14.910Z] CLI Version:   11.29.1
+[debug] [2023-12-31T09:01:14.910Z] Platform:      win32
+[debug] [2023-12-31T09:01:14.910Z] Node Version:  v18.16.0
+[debug] [2023-12-31T09:01:14.912Z] Time:          Sun Dec 31 2023 01:01:14 GMT-0800 (Pacific Standard Time)
+[debug] [2023-12-31T09:01:14.912Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-12-31T09:01:14.986Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-12-31T09:01:14.987Z] > authorizing via signed-in user (christopher.eugene.rodriguez@gmail.com)
+[debug] [2023-12-31T09:01:14.987Z] [iam] checking project grceri-c3702 for permissions ["firebase.projects.get","firebasehosting.sites.update"]
+[debug] [2023-12-31T09:01:14.989Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/grceri-c3702:testIamPermissions [none]
+[debug] [2023-12-31T09:01:14.990Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/grceri-c3702:testIamPermissions x-goog-quota-user=projects/grceri-c3702
+[debug] [2023-12-31T09:01:14.990Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/grceri-c3702:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-12-31T09:01:15.696Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/grceri-c3702:testIamPermissions 200
+[debug] [2023-12-31T09:01:15.696Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/grceri-c3702:testIamPermissions {"permissions":["firebase.projects.get","firebasehosting.sites.update"]}
+[debug] [2023-12-31T09:01:15.697Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/grceri-c3702 [none]
+[debug] [2023-12-31T09:01:16.100Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/grceri-c3702 200
+[debug] [2023-12-31T09:01:16.100Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/grceri-c3702 {"projectId":"grceri-c3702","projectNumber":"1059626737335","displayName":"grceri","name":"projects/grceri-c3702","resources":{"hostingSite":"grceri-c3702","realtimeDatabaseInstance":"grceri-c3702-default-rtdb"},"state":"ACTIVE","etag":"1_7aadbe82-a8fc-418d-aab6-cba631ec0b3d"}
+[debug] [2023-12-31T09:01:53.778Z] Error: Unable to detirmine the application to deploy, you should use `ng deploy` via @angular/fire.
+    at getContext (C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\angular\index.js:173:15)
+    at async discover (C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\angular\index.js:21:30)
+    at async discover (C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\index.js:92:32)
+    at async prepareFrameworks (C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\index.js:266:25)
+    at async deploy (C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\index.js:53:13)
+[error] 
+[error] Error: An unexpected error has occurred.
+[debug] [2023-12-31T09:13:30.979Z] ----------------------------------------------------------------------
+[debug] [2023-12-31T09:13:30.981Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js deploy
+[debug] [2023-12-31T09:13:30.982Z] CLI Version:   11.29.1
+[debug] [2023-12-31T09:13:30.982Z] Platform:      win32
+[debug] [2023-12-31T09:13:30.982Z] Node Version:  v18.16.0
+[debug] [2023-12-31T09:13:30.984Z] Time:          Sun Dec 31 2023 01:13:30 GMT-0800 (Pacific Standard Time)
+[debug] [2023-12-31T09:13:30.984Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-12-31T09:13:31.057Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-12-31T09:13:31.058Z] > authorizing via signed-in user (christopher.eugene.rodriguez@gmail.com)
+[debug] [2023-12-31T09:13:31.058Z] [iam] checking project grceri-c3702 for permissions ["cloudconfig.configs.get","cloudconfig.configs.update","cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update"]
+[debug] [2023-12-31T09:13:31.061Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects/grceri-c3702:testIamPermissions [none]
+[debug] [2023-12-31T09:13:31.061Z] >>> [apiv2][(partial)header] POST https://cloudresourcemanager.googleapis.com/v1/projects/grceri-c3702:testIamPermissions x-goog-quota-user=projects/grceri-c3702
+[debug] [2023-12-31T09:13:31.061Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/grceri-c3702:testIamPermissions {"permissions":["cloudconfig.configs.get","cloudconfig.configs.update","cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update"]}
+[debug] [2023-12-31T09:13:31.806Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects/grceri-c3702:testIamPermissions 200
+[debug] [2023-12-31T09:13:31.806Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects/grceri-c3702:testIamPermissions {"permissions":["cloudconfig.configs.get","cloudconfig.configs.update","cloudfunctions.functions.create","cloudfunctions.functions.delete","cloudfunctions.functions.get","cloudfunctions.functions.list","cloudfunctions.functions.update","cloudfunctions.operations.get","firebase.projects.get","firebasedatabase.instances.update","firebasehosting.sites.update"]}
+[debug] [2023-12-31T09:13:31.806Z] >>> [apiv2][query] POST https://iam.googleapis.com/v1/projects/grceri-c3702/serviceAccounts/grceri-c3702@appspot.gserviceaccount.com:testIamPermissions [none]
+[debug] [2023-12-31T09:13:31.807Z] >>> [apiv2][body] POST https://iam.googleapis.com/v1/projects/grceri-c3702/serviceAccounts/grceri-c3702@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2023-12-31T09:13:32.447Z] <<< [apiv2][status] POST https://iam.googleapis.com/v1/projects/grceri-c3702/serviceAccounts/grceri-c3702@appspot.gserviceaccount.com:testIamPermissions 200
+[debug] [2023-12-31T09:13:32.447Z] <<< [apiv2][body] POST https://iam.googleapis.com/v1/projects/grceri-c3702/serviceAccounts/grceri-c3702@appspot.gserviceaccount.com:testIamPermissions {"permissions":["iam.serviceAccounts.actAs"]}
+[debug] [2023-12-31T09:13:32.448Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/grceri-c3702 [none]
+[debug] [2023-12-31T09:13:32.851Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/grceri-c3702 200
+[debug] [2023-12-31T09:13:32.852Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/grceri-c3702 {"projectId":"grceri-c3702","projectNumber":"1059626737335","displayName":"grceri","name":"projects/grceri-c3702","resources":{"hostingSite":"grceri-c3702","realtimeDatabaseInstance":"grceri-c3702-default-rtdb"},"state":"ACTIVE","etag":"1_7aadbe82-a8fc-418d-aab6-cba631ec0b3d"}
+[debug] [2023-12-31T09:13:32.852Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/grceri-c3702 [none]
+[debug] [2023-12-31T09:13:33.380Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/grceri-c3702 200
+[debug] [2023-12-31T09:13:33.381Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/grceri-c3702 {"projectId":"grceri-c3702","projectNumber":"1059626737335","displayName":"grceri","name":"projects/grceri-c3702","resources":{"hostingSite":"grceri-c3702","realtimeDatabaseInstance":"grceri-c3702-default-rtdb"},"state":"ACTIVE","etag":"1_7aadbe82-a8fc-418d-aab6-cba631ec0b3d"}
+[debug] [2023-12-31T09:14:08.698Z] Error: Unable to detirmine the application to deploy, you should use `ng deploy` via @angular/fire.
+    at getContext (C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\angular\index.js:173:15)
+    at async discover (C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\angular\index.js:21:30)
+    at async discover (C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\index.js:92:32)
+    at async prepareFrameworks (C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\index.js:266:25)
+    at async deploy (C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\deploy\index.js:53:13)
+[error] 
+[error] Error: An unexpected error has occurred.

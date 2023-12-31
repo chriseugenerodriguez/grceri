@@ -1,0 +1,47 @@
+[debug] [2023-12-31T08:31:16.439Z] ----------------------------------------------------------------------
+[debug] [2023-12-31T08:31:16.441Z] Command:       C:\Program Files\nodejs\node.exe C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\bin\firebase.js init
+[debug] [2023-12-31T08:31:16.441Z] CLI Version:   11.29.1
+[debug] [2023-12-31T08:31:16.442Z] Platform:      win32
+[debug] [2023-12-31T08:31:16.442Z] Node Version:  v18.16.0
+[debug] [2023-12-31T08:31:16.444Z] Time:          Sun Dec 31 2023 00:31:16 GMT-0800 (Pacific Standard Time)
+[debug] [2023-12-31T08:31:16.444Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2023-12-31T08:31:16.522Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2023-12-31T08:31:16.523Z] > authorizing via signed-in user (christopher.eugene.rodriguez@gmail.com)
+[info] 
+     ######## #### ########  ######## ########     ###     ######  ########
+     ##        ##  ##     ## ##       ##     ##  ##   ##  ##       ##
+     ######    ##  ########  ######   ########  #########  ######  ######
+     ##        ##  ##    ##  ##       ##     ## ##     ##       ## ##
+     ##       #### ##     ## ######## ########  ##     ##  ######  ########
+
+You're about to initialize a Firebase project in this directory:
+
+  D:\Work\grceri
+
+Before we get started, keep in mind:
+
+  * You are initializing within an existing Firebase project directory
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2023-12-31T08:31:28.405Z] Using project from CLI flag: grceri-c3702
+[debug] [2023-12-31T08:31:28.408Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects/grceri-c3702 [none]
+[debug] [2023-12-31T08:31:29.102Z] <<< [apiv2][status] GET https://firebase.googleapis.com/v1beta1/projects/grceri-c3702 200
+[debug] [2023-12-31T08:31:29.102Z] <<< [apiv2][body] GET https://firebase.googleapis.com/v1beta1/projects/grceri-c3702 {"projectId":"grceri-c3702","projectNumber":"1059626737335","displayName":"grceri","name":"projects/grceri-c3702","resources":{"hostingSite":"grceri-c3702","realtimeDatabaseInstance":"grceri-c3702-default-rtdb"},"state":"ACTIVE","etag":"1_7aadbe82-a8fc-418d-aab6-cba631ec0b3d"}
+[info] i  Using project grceri-c3702 (grceri) 
+[info] 
+=== Hosting Setup
+[debug] [2023-12-31T08:32:13.335Z] Error: Unable to detirmine the application to deploy, you should use `ng deploy` via @angular/fire.
+    at getContext (C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\angular\index.js:173:15)
+    at async discover (C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\angular\index.js:21:30)
+    at async discover (C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\frameworks\index.js:92:32)
+    at async doSetup (C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\init\features\hosting\index.js:55:31)
+    at async init (C:\Users\User\AppData\Roaming\npm\node_modules\firebase-tools\lib\init\index.js:37:9)
+[error] 
+[error] Error: An unexpected error has occurred.
