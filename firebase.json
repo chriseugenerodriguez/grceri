@@ -27,18 +27,15 @@
     ],
     "targets": {
       "production": {
-        // Configuration for the production build target
         "frameworksBackend": {
           "region": "us-central1"
         }
       },
       "staging": {
-        // Configuration for the staging build target
         "frameworksBackend": {
           "region": "us-central1"
         }
-      },
-      // Add more targets as needed
+      }
     }
   },
   "remoteconfig": {
