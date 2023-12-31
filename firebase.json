@@ -19,7 +19,7 @@
     "rules": "database.rules.json"
   },
   "hosting": {
-    "source": "website",
+    "source": "hosting",
     "ignore": [
       "firebase.json",
       "**/.*",
