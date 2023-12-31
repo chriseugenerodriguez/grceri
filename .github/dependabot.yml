@@ -4,4 +4,26 @@ updates:
     directory: "/" 
     schedule:
       interval: "weekly"
-  
+
+name: Dependabot fetch metadata
+'on':
+  push:
+    branches:
+      - master
+
+permissions:
+  pull-requests: write
+  issues: write
+  repository-projects: write
+  checks: write
+  contents: read
+
+name: Dependabot fetch metadata
+on: pull_request
+
+permissions:
+  pull-requests: write
+  issues: write
+  repository-projects: write
+  checks: write
+  contents: read
