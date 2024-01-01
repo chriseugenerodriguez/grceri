@@ -58,7 +58,8 @@
                 "src/robots.txt",
                 "src/ads.txt",
                 "src/sitemap.xml",
-                "src/manifest.json"
+                "src/manifest.json",
+                "src/assets"
               ],
               "ngswConfigPath": "ngsw-config.json"
             },
@@ -85,7 +86,8 @@
                 "src/robots.txt",
                 "src/ads.txt",
                 "src/sitemap.xml",
-                "src/manifest.json"
+                "src/manifest.json",
+                "src/assets"
               ],
               "ngswConfigPath": "ngsw-config.json"
             }
