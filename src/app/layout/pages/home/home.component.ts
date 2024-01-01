@@ -9,6 +9,7 @@ import { ItemComponent } from '../grocery/category/item/item.component';
 
 // SERVICES
 import { API, AuthService, CMSService } from '../../../core/index'
+import { environment } from '../../../../environments/environment';
 
 // COMPONENT
 @Component({
@@ -57,8 +58,9 @@ export class HomeComponent implements OnInit {
 		});
 	}
 
+	productPath = environment.production ? 'products.json' : 'products-local.json';
 	public products() {
-		this.http.get('/assets/json/products.json').subscribe(r => {
+		this.http.get('/assets/json/' + this.productPath).subscribe(r => {
 			this.items = r;
 		});
 	}

@@ -7,6 +7,7 @@ import { Meta, Title } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
 
 import { isPlatformBrowser } from '@angular/common';
+import { environment } from '../../../../../environments/environment';
 
 @Component({
 	selector: 'product',
@@ -100,7 +101,7 @@ export class ProductComponent implements OnInit {
 	}
 
 	public products() {
-		this.http.get('/assets/json/products.json').subscribe(r => {
+		this.http.get('/assets/json/' + this.productPath).subscribe(r => {
 			this.items = r;
 		});
 	}
@@ -127,8 +128,9 @@ export class ProductComponent implements OnInit {
 		}
 	}
 
+	productPath = environment.production ? 'products.json' : 'products-local.json';
 	save(i) {
-		this.http.post('/assets/json/products.json', i).subscribe(r => {
+		this.http.post('/assets/json/' + this.productPath, i).subscribe(r => {
 			this.saved = true;
 		});
 	}

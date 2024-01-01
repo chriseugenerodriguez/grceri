@@ -4,6 +4,7 @@ import { Product } from '../../core/interfaces/product.interface';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map, of } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class ProductsService {
@@ -41,7 +42,8 @@ export class ProductsService {
 			.join(' ');
 	}
 
+	productPath = environment.production ? 'products.json' : 'products-local.json';
 	products(id?: number): Observable<any[]> {
-		return this.http.get<any[]>('/assets/json/products.json');
+		return this.http.get<any[]>('/assets/json/' + this.productPath);
 	}
 }

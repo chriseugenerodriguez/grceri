@@ -39,8 +39,6 @@
               "src/assets/js/annyang.min.js",
               "src/assets/js/hammer.min.js",
               "src/assets/js/quagga.min.js",
-              "src/assets/js/prismic-javascript.min.js",
-              "src/assets/js/json-easy-filter.min.js",
               "src/assets/js/googlelogin.js"
             ]
           },
@@ -73,8 +71,6 @@
                 "src/assets/js/annyang.min.js",
                 "src/assets/js/hammer.min.js",
                 "src/assets/js/quagga.min.js",
-                "src/assets/js/prismic-javascript.min.js",
-                "src/assets/js/json-easy-filter.min.js",
                 "src/assets/js/googlelogin.js"
               ],
               "ngswConfigPath": "ngsw-config.json"
@@ -111,8 +107,6 @@
                 "src/assets/js/annyang.min.js",
                 "src/assets/js/hammer.min.js",
                 "src/assets/js/quagga.min.js",
-                "src/assets/js/prismic-javascript.min.js",
-                "src/assets/js/json-easy-filter.min.js",
                 "src/assets/js/googlelogin.js"
               ],
               "ngswConfigPath": "ngsw-config.json"
@@ -155,8 +149,6 @@
               "src/assets/js/annyang.min.js",
               "src/assets/js/hammer.min.js",
               "src/assets/js/quagga.min.js",
-              "src/assets/js/prismic-javascript.min.js",
-              "src/assets/js/json-easy-filter.min.js",
               "src/assets/js/googlelogin.js"
             ]
           },

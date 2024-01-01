@@ -2,8 +2,11 @@ import { Injectable } from '@angular/core';
 
 // CMS
 // let Prismic = require('prismic-javascript');
-declare const Prismic;
+// declare const Prismic;
+// let api = 'https://grceri.cdn.prismic.io/api/v2';
 let api = 'https://grceri.cdn.prismic.io/api/v2';
+import * as prismic from "@prismicio/client";
+const Prismic = prismic.default;
 
 // HTML FORMATTER
 // let PrismicDOM = require('prismic-dom');

@@ -25,9 +25,9 @@ export class SocialService {
 			meta.summary = product.summary;
 		}
 
-		let pinterest = 'http://pinterest.com/pin/create/button/?url=' + this.url + '&media=' + meta.image + '&description=' + meta.title;
+		let pinterest = 'https://pinterest.com/pin/create/button/?url=' + this.url + '&media=' + meta.image + '&description=' + meta.title;
 		let facebook = 'https://facebook.com/dialog/share?app_id=606146619721383&href=' + this.url + '&redirect_uri=' + this.url;
-		let twitter = 'http://twitter.com/share?text=' + meta.title + '&url=' + this.url + '&hashtags=' + meta.category + ',' + meta.brand;
+		let twitter = 'https://twitter.com/share?text=' + meta.title + '&url=' + this.url + '&hashtags=' + meta.category + ',' + meta.brand;
 		let linkedin = 'https://www.linkedin.com/shareArticle?mini=true&url=' + this.url + '&title=' + meta.title + '&summary=' + meta.summary + '&source=Grceri'
 
 		let b = '';

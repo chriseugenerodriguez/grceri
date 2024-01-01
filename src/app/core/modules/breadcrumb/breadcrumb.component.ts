@@ -4,7 +4,7 @@ import { HttpClient } from "@angular/common/http";
 
 // let fi = require('json-easy-filter').JefNode;
 
-declare var JefNode;
+// declare var JefNode;
 
 @Component({
 	selector: 'breadcrumb',
@@ -73,11 +73,18 @@ export class BreadcrumbComponent implements OnInit {
 					let e;
 					let g;
 
-					const b = new JefNode(res).filter((node) => {
-						if (node.has('name') && this.formatted(node.value.name) === this.cat) {
-							return node.pathArray;
+					// const b = new JefNode(res).filter((node) => {
+					// 	if (node.has('name') && this.formatted(node.value.name) === this.cat) {
+					// 		return node.pathArray;
+					// 	}
+					// });
+
+					console.log("res", res);
+					const b = res.filter((v) => {
+						if (v.has('name') && this.formatted(v.value.name) === this.cat) {
+							return v.pathArray;
 						}
-					});
+					})
 
 					for (let i = 0; i < b.length; i++) {
 						c.push(b[i]);

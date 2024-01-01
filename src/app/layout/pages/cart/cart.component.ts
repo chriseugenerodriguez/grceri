@@ -7,6 +7,7 @@ import { Product, CartService, AuthService } from '../../../core/index';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { isPlatformBrowser } from '@angular/common';
+import { environment } from '../../../../environments/environment';
 
 // COMPONENT
 @Component({
@@ -109,21 +110,22 @@ export class CartComponent implements OnInit {
 		this.userSaved(i);
 	}
 
+	productPath = environment.production ? 'products.json' : 'products-local.json';
 	public userSaved(i?) {
 		if (i == null) {
-			this.http.get('/assets/json/products.json').subscribe(r => {
+			this.http.get('/assets/json/' + this.productPath).subscribe(r => {
 				this.items = r;
 				this.recs = r;
 			});
 		}
 		if (i === 'viewed') {
-			this.http.get('/assets/json/products.json').subscribe(r => {
+			this.http.get('/assets/json/' + this.productPath).subscribe(r => {
 				this.items = r;
 			});
 		}
 		if (i === 'saved') {
 			if (this.AS.isAuthenticated()) {
-				this.http.get('/assets/json/products.json').subscribe(r => {
+				this.http.get('/assets/json/' + this.productPath).subscribe(r => {
 					this.items = r;
 				});
 			}

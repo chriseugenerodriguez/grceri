@@ -48,7 +48,7 @@ export class SeoService {
 			this.meta.updateTag({ property: 'og:image', content: config.image });
 		}
 		if (config.url !== undefined) {
-			this.meta.updateTag({ property: 'og:url', content: `http://grceri.com/${config.url}` });
+			this.meta.updateTag({ property: 'og:url', content: `https://grceri.com/${config.url}` });
 		}
 	}
 
@@ -92,7 +92,7 @@ export class SeoService {
 		this.meta.updateTag({ property: 'og:title', content: config.title });
 		this.meta.updateTag({ property: 'og:description', content: config.description });
 		this.meta.updateTag({ property: 'og:image', content: config.image });
-		this.meta.updateTag({ property: 'og:url', content: `http://grceri.com${config.url}` });
+		this.meta.updateTag({ property: 'og:url', content: `https://grceri.com${config.url}` });
 
 		// let description: HTMLMetaElement = this.meta.getTag('name = "description"');
 		// console.log(description);

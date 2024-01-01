@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 // INTERFACE
 import { Product, CartService } from '../../../../../../core';
+import { environment } from '../../../../../../../environments/environment';
 
 @Component({
 	selector: 'product-added',
@@ -34,8 +35,9 @@ export class ProductAddedComponent implements OnInit {
 		this.products();
 	}
 
+	productPath = environment.production ? 'products.json' : 'products-local.json';
 	public products() {
-		this.http.get('/assets/json/products.json').subscribe(r => {
+		this.http.get('/assets/json/' + this.productPath).subscribe(r => {
 			this.items = r;
 		});
 	}
