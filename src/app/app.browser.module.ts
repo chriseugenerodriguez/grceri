@@ -78,3 +78,4 @@ import { ProductsService } from './core/services/product.service';
 })
 
 export class AppBrowserModule { }
+
