@@ -34,8 +34,12 @@
               "src/assets/css/main.scss"
             ],
             "scripts": [
+              "node_modules/chart.js/dist/chart.min.js",
+              "node_modules/quagga/dist/quagga.min.js",
+              "node_modules/prismic-javascript/umd/prismic-javascript.min.js",
               "src/assets/js/annyang.min.js",
-              "src/assets/js/hammer.min.js"
+              "src/assets/js/hammer.min.js",
+              "src/assets/js/googlelogin.js"
             ]
           },
           "configurations": {
@@ -60,6 +64,14 @@
                 "src/sitemap.xml",
                 "src/manifest.json",
                 "src/assets"
+              ],
+              "scripts": [
+                "node_modules/chart.js/dist/chart.min.js",
+                "src/assets/js/annyang.min.js",
+                "src/assets/js/hammer.min.js",
+                "src/assets/js/quagga.min.js",
+                "src/assets/js/prismic-javascript.min.js",
+                "src/assets/js/googlelogin.js"
               ],
               "ngswConfigPath": "ngsw-config.json"
             },
@@ -88,6 +100,14 @@
                 "src/sitemap.xml",
                 "src/manifest.json",
                 "src/assets"
+              ],
+              "scripts": [
+                "node_modules/chart.js/dist/chart.min.js",
+                "src/assets/js/annyang.min.js",
+                "src/assets/js/hammer.min.js",
+                "src/assets/js/quagga.min.js",
+                "src/assets/js/prismic-javascript.min.js",
+                "src/assets/js/googlelogin.js"
               ],
               "ngswConfigPath": "ngsw-config.json"
             }
@@ -124,10 +144,11 @@
               "src/assets/css/main.scss"
             ],
             "scripts": [
-              "node_modules/chart.js/dist/Chart.min.js",
-              "node_modules/quagga/dist/quagga.min.js",
+              "node_modules/chart.js/dist/chart.min.js",
               "src/assets/js/annyang.min.js",
               "src/assets/js/hammer.min.js",
+              "src/assets/js/quagga.min.js",
+              "src/assets/js/prismic-javascript.min.js",
               "src/assets/js/googlelogin.js"
             ]
           },
