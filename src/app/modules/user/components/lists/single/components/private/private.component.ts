@@ -34,7 +34,8 @@ export class PrivateListComponent implements OnInit, OnDestroy {
 	listLabels: string[] = [];
 
 	// STRING
-	load = require('../../../../../../../../assets/img/blank.jpg');
+	// load = require('../../../../../../../../assets/img/blank.jpg');
+	load = './assets/img/blank.jpg';
 
 	// SUBSCRIPTIONS
 	private _subscriptions: any = new Subscription();

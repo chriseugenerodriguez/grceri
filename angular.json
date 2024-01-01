@@ -35,10 +35,12 @@
             ],
             "scripts": [
               "node_modules/chart.js/dist/chart.min.js",
-              "node_modules/quagga/dist/quagga.min.js",
-              "node_modules/prismic-javascript/umd/prismic-javascript.min.js",
+              "node_modules/prismic-dom/dist/prismic-dom.min.js",
               "src/assets/js/annyang.min.js",
               "src/assets/js/hammer.min.js",
+              "src/assets/js/quagga.min.js",
+              "src/assets/js/prismic-javascript.min.js",
+              "src/assets/js/json-easy-filter.min.js",
               "src/assets/js/googlelogin.js"
             ]
           },
@@ -67,10 +69,12 @@
               ],
               "scripts": [
                 "node_modules/chart.js/dist/chart.min.js",
+                "node_modules/prismic-dom/dist/prismic-dom.min.js",
                 "src/assets/js/annyang.min.js",
                 "src/assets/js/hammer.min.js",
                 "src/assets/js/quagga.min.js",
                 "src/assets/js/prismic-javascript.min.js",
+                "src/assets/js/json-easy-filter.min.js",
                 "src/assets/js/googlelogin.js"
               ],
               "ngswConfigPath": "ngsw-config.json"
@@ -103,10 +107,12 @@
               ],
               "scripts": [
                 "node_modules/chart.js/dist/chart.min.js",
+                "node_modules/prismic-dom/dist/prismic-dom.min.js",
                 "src/assets/js/annyang.min.js",
                 "src/assets/js/hammer.min.js",
                 "src/assets/js/quagga.min.js",
                 "src/assets/js/prismic-javascript.min.js",
+                "src/assets/js/json-easy-filter.min.js",
                 "src/assets/js/googlelogin.js"
               ],
               "ngswConfigPath": "ngsw-config.json"
@@ -145,10 +151,12 @@
             ],
             "scripts": [
               "node_modules/chart.js/dist/chart.min.js",
+              "node_modules/prismic-dom/dist/prismic-dom.min.js",
               "src/assets/js/annyang.min.js",
               "src/assets/js/hammer.min.js",
               "src/assets/js/quagga.min.js",
               "src/assets/js/prismic-javascript.min.js",
+              "src/assets/js/json-easy-filter.min.js",
               "src/assets/js/googlelogin.js"
             ]
           },

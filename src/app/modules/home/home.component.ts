@@ -29,7 +29,8 @@ export class HomeComponent implements OnInit, OnDestroy {
 
 	searchInputText: any;
 	category: any;
-	load = require('../../../assets/img/blank.jpg');
+	// load = require('../../../assets/img/blank.jpg');
+	load = './assets/img/blank.jpg';
 
 	// CMS
 	latest: any;

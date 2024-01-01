@@ -45,8 +45,10 @@ export class SettingsBillingPaymentAccountComponent implements OnInit, OnChanges
 	loading = false;
 
 	// STRING
-	cardIconDirectory = '../../../../../../../../assets/svg/credit-card/';
-	load = require('../../../../../../../../assets/img/blank.jpg');
+	// cardIconDirectory = '../../../../../../../../assets/svg/credit-card/';
+	// load = require('../../../../../../../../assets/img/blank.jpg');
+	load = './assets/img/blank.jpg';
+	cardIconDirectory = './assets/svg/credit-card/';
 
 	constructor(private MS: ModalService,
 		private router: Router,

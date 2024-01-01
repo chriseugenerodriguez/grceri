@@ -38,7 +38,8 @@ export class ListsSelectComponent implements OnInit, AfterViewInit, OnDestroy {
 	shoppingListSubscription: Subscription;
 
 	// STRING
-	load = require('../../../../../assets/img/blank.jpg');
+	// load = require('../../../../../assets/img/blank.jpg');
+	load = './assets/img/blank.jpg';
 
 	updating = false;
 	type: any;

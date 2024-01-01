@@ -36,7 +36,8 @@ export class ListsCreateComponent implements AfterViewInit {
 	saving = false;
 
 	// STRING
-	load = require('../../../../../assets/img/blank.jpg');
+	// load = require('../../../../../assets/img/blank.jpg');
+	load = './assets/img/blank.jpg';
 
 	constructor(
 		private LS: LocalStorage,

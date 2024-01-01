@@ -1,11 +1,13 @@
 import { Injectable } from "@angular/core";
 
 // CMS
-let Prismic = require('prismic-javascript');
+// let Prismic = require('prismic-javascript');
+declare var Prismic;
 let api = 'https://grceri.cdn.prismic.io/api/v2';
 
 // HTML FORMATTER
-let PrismicDOM = require('prismic-dom');
+// let PrismicDOM = require('prismic-dom');
+declare var PrismicDOM;
 let Elements = PrismicDOM.RichText.Elements;
 
 

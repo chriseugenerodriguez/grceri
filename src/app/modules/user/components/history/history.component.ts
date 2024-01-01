@@ -31,7 +31,8 @@ export class HistoryComponent implements OnInit, OnDestroy {
 	historyCloseLimit: number;
 
 	// STRING
-	load = require('../../../../../assets/img/blank.jpg');
+	// load = require('../../../../../assets/img/blank.jpg');
+	load = './assets/img/blank.jpg';
 
 	// BOOLEAN
 	loading = false;

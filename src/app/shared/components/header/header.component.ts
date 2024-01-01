@@ -47,7 +47,8 @@ export class HeaderComponent implements OnInit, AfterViewInit, OnDestroy {
 	currentUrl: any = '';
 	searchInputText: string;
 	env = environment;
-	load: string = require('../../../../assets/img/blank.jpg');
+	// load: string = require('../../../../assets/img/blank.jpg');
+	load = './assets/img/blank.jpg';
 
 	// MOBILE
 	mobile: boolean;

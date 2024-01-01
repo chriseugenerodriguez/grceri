@@ -86,7 +86,8 @@ export class ProductDetailsComponent implements OnInit, OnChanges, AfterViewInit
 	};
 
 	// STRING
-	load = require('../../../../../../../assets/img/blank.jpg');
+	// load = require('../../../../../../../assets/img/blank.jpg');
+	load = './assets/img/blank.jpg';
 
 	constructor(
 		public GS: GoogleAnalyticsService,

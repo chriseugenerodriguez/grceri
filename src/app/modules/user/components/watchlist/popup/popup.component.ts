@@ -20,7 +20,8 @@ export class WatchlistPopupComponent implements AfterViewInit {
 	date: any = {};
 
 	// STRING
-	load = require('../../../../../../assets/img/blank.jpg');
+	// load = require('../../../../../../assets/img/blank.jpg');
+	load = './assets/img/blank.jpg';
 
 	constructor(
 		private MS: ModalService

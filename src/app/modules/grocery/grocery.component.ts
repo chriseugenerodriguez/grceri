@@ -28,7 +28,8 @@ export class GroceryComponent implements OnInit, OnDestroy {
 	sort = {};
 
 	// STRING
-	load = require('../../../assets/img/blank.jpg');
+	// load = require('../../../assets/img/blank.jpg');
+	load = './assets/img/blank.jpg';
 
 	constructor(
 		public location: Location,

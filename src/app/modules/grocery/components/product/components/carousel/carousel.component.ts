@@ -64,7 +64,8 @@ export class ProductCarouselComponent implements OnInit, OnDestroy, AfterViewIni
 	productImagesSubscription: Subscription;
 
 	// STRING
-	load = require('../../../../../../../assets/img/blank.jpg');
+	// load = require('../../../../../../../assets/img/blank.jpg');
+	load = './assets/img/blank.jpg';
 
 	constructor(private productAPI: ProductAPIService, private changeDetector: ChangeDetectorRef, private renderer: Renderer2, public sanitizer: DomSanitizer) {
 		this.shownItems = 5;

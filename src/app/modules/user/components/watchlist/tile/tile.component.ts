@@ -19,7 +19,8 @@ export class WatchlistTileComponent implements OnInit, OnChanges, OnDestroy {
 	@Input('bookmarked') productAddedToBookmark: boolean;
 
 	// STRING
-	load = require('../../../../../../assets/img/blank.jpg');
+	// load = require('../../../../../../assets/img/blank.jpg');
+	load = './assets/img/blank.jpg';
 
 	// OBJECT
 	config = {

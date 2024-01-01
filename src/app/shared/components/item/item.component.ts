@@ -36,8 +36,8 @@ export class ItemComponent {
 		private _router: Router,
 		public sanitizer: DomSanitizer
 	) {
-		this.load = require('../../../../assets/img/blank.jpg');
-		this.noImage = require('../../../../assets/img/no-thumbnail.jpg');
+		this.load = './assets/img/blank.jpg';
+		this.noImage = './assets/img/no-thumbnail.jpg';
 	}
 
 	product(i) {

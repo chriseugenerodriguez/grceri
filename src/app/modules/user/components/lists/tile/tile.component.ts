@@ -35,7 +35,8 @@ export class ListsTileComponent implements OnChanges, OnInit, OnDestroy {
 	id: number = this._localStorage.get('userId');
 
 	// STRING
-	load = require('../../../../../../assets/img/blank.jpg');
+	// load = require('../../../../../../assets/img/blank.jpg');
+	load = './assets/img/blank.jpg';
 
 	// DATE
 	date: Date = new Date();

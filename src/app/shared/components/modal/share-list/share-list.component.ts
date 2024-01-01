@@ -43,7 +43,8 @@ export class ShareListComponent implements OnInit, AfterViewInit, OnDestroy {
 	// STRING
 	listImage: string;
 	listUrl: string;
-	load = require('../../../../../assets/img/blank.jpg');
+	// load = require('../../../../../assets/img/blank.jpg');
+	load = './assets/img/blank.jpg';
 
 	@HostListener('window:resize', ['$event'])
 	onResize(event) {

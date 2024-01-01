@@ -70,7 +70,8 @@ export class MobilePrivateListComponent implements OnInit, AfterViewInit {
 	rloading = false;
 
 	// STRING
-	load = require('../../../../../../../../../assets/img/blank.jpg');
+	// load = require('../../../../../../../../../assets/img/blank.jpg');
+	load = './assets/img/blank.jpg';
 	listId: string;
 
 	@HostListener('window:resize', ['$event'])

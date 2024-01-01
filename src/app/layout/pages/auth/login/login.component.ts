@@ -8,8 +8,8 @@ import { AuthService } from '../../../../core/index';
 import { FormGroup, FormControl, Validators, FormBuilder } from '@angular/forms';
 
 // CMS
-var Prismic = require('prismic-javascript');
-var api = "https://grceri.cdn.prismic.io/api/v2";
+// var Prismic = require('prismic-javascript');
+// var api = "https://grceri.cdn.prismic.io/api/v2";
 
 @Component({
 	selector: 'login',

@@ -53,7 +53,8 @@ export class ListsSingleComponent implements OnInit, OnDestroy {
 	id: number = this.LS.get('userId') === null || this.LS.get('userId') === undefined ? 0 : this.LS.get('userId');;
 
 	// STRING
-	load = require('../../../../../../assets/img/blank.jpg');
+	// load = require('../../../../../../assets/img/blank.jpg');
+	load = './assets/img/blank.jpg';
 	listId: any;
 
 	// ARRAY

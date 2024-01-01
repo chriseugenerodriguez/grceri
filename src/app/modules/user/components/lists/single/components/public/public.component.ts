@@ -24,7 +24,8 @@ export class PublicListComponent implements OnInit {
 	};
 
 	// STRING
-	load = require('../../../../../../../../assets/img/blank.jpg');
+	// load = require('../../../../../../../../assets/img/blank.jpg');
+	load = './assets/img/blank.jpg';
 
 	constructor(
 		public DS: DeviceService,
