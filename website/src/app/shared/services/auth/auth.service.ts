@@ -23,9 +23,7 @@ import { Subscription } from 'rxjs';
 // SERVICES
 import { LocalStorage } from '../local-storage/local-storage.service';
 import { SessionStorage } from '../session-storage/session-storage.service';
-
-// AUTH
-import * as auth0 from 'auth0-js';
+import { AuthenticationService } from './authentication.service';
 
 // ENVIRONMENT
 const api = `${environment.host}/api/`;
@@ -37,16 +35,7 @@ export class AuthService implements OnDestroy {
 	refreshSubscription: any;
 	private _subscriptions: any = new Subscription();
 	renew: boolean;
-	url = this.document.location.origin;
-
-	auth0 = new auth0.WebAuth({
-		clientID: '96b0aXJKxvJRK4gYKR0YuJnEnXN8cJsE',
-		domain: 'grceri-auth.auth0.com',
-		audience: `https://grceri-auth.auth0.com/userinfo`,
-		redirectUri: this.url + '/callback',
-		responseType: 'token id_token',
-		scope: 'openid profile user_metadata'
-	});
+	url: any;
 
 	constructor(
 		@Inject(PLATFORM_ID) private platform: any,
@@ -55,7 +44,9 @@ export class AuthService implements OnDestroy {
 		private _sessionStorage: SessionStorage,
 		private router: Router,
 		private sanitizer: DomSanitizer,
+		private AuthenticationService: AuthenticationService,
 		private http: HttpClient) {
+		this.url = this.document.location.origin;
 	}
 
 	ngOnDestroy() {
@@ -96,16 +87,7 @@ export class AuthService implements OnDestroy {
 
 	public resetPassword(email: string) {
 		let a = new Promise((resolve, reject) => {
-			this.auth0.changePassword({
-				connection: 'mssql',
-				email
-			}, function (err, resp) {
-				if (err) {
-					reject(err.message);
-				} else {
-					resolve(resp);
-				}
-			});
+			this.AuthenticationService.resetPassword(email);
 		})
 
 		return a;
