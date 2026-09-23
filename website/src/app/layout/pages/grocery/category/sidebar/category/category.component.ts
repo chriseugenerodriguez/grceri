@@ -34,25 +34,12 @@ export class CategoryComponent implements OnInit, OnChanges {
 
 	public changeFilterStatus(event, category) {
 		if (event.target.checked) {
-			this.activatedFilters.push(category);
+			this.activatedFilters = [...this.activatedFilters.filter(c => c.id !== category.id), category];
 		} else {
 			this.activatedFilters = this.activatedFilters.filter(i => i !== category);
 		}
 
 		this.activeFilters.emit(this.activatedFilters);
-		if (category) {
-			this.activatedFilters = category;
-			if (parent) {
-				this.parentCategories.pop();
-			} else {
-				this.parentCategories.push(category);
-			}
-			this.dispCategories = category.sub ? category.sub : category.category;
-		} else {
-			this.activatedFilters = [];
-			this.parentCategories = [];
-			this.dispCategories = this.availableFilters;
-		}
 	}
 
 	ngOnDestroy() {

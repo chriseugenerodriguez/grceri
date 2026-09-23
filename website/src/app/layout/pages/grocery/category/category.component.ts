@@ -45,6 +45,7 @@ export class CategoryComponent implements OnInit, OnDestroy {
 	];
 	private setItems = new Subject<Product[]>();
 	private subs: Subscription[] = [];
+	private activeSort: number = null;
 
 	constructor(
 		private PS: ProductsService,
@@ -54,7 +55,7 @@ export class CategoryComponent implements OnInit, OnDestroy {
 		private route: ActivatedRoute,
 		private http: HttpClient,
 	) {
-		this.sub = [
+		this.subs = [
 			this.setItems.subscribe(res => {
 				this.items = res;
 				this.getFilters(res);
@@ -148,6 +149,10 @@ export class CategoryComponent implements OnInit, OnDestroy {
 
 	private getFilters(r) {
 		this.setCategory();
+		this.availableFilters.brand = [];
+		this.availableFilters.category.forEach(c => c.num = 0);
+		this.availableFilters.rating.forEach(rate => rate.num = 0);
+		this.preSelectedPrices.forEach(price => price.num = 0);
 		r.forEach(item => {
 			this.availableFilters.category.forEach(c => {
 				if (this.findProductsInCategory(c, item)) {
@@ -162,8 +167,10 @@ export class CategoryComponent implements OnInit, OnDestroy {
 				this.availableFilters.brand[brandIndex].num++;
 			}
 
-			// this.availableFilters.rating[5 - Math.round(item.rating)].num ++;
-			let prePriceItem = this.preSelectedPrices.find(i => i.from <= item.price && i.to >= item.price);
+			this.availableFilters.rating.forEach(rate => {
+				if (Number(item.rating) >= rate.rate) rate.num++;
+			});
+			let prePriceItem = this.preSelectedPrices.find(i => i.from <= item.price && (i.to === null || i.to >= item.price));
 			if (prePriceItem) {
 				prePriceItem.num++;
 			}
@@ -205,6 +212,7 @@ export class CategoryComponent implements OnInit, OnDestroy {
 	}
 
 	changeFilterStatus(event: Filter, init: boolean = false) {
+		this.activatedFilters = event;
 		if (init) {
 			this.dispItems = this.items;
 		} else {
@@ -212,19 +220,36 @@ export class CategoryComponent implements OnInit, OnDestroy {
 				(event.brand.length === 0 || event.brand.findIndex(i => i.name === item.brand) >= 0)
 				&& (event.category.length === 0 || event.category.findIndex(c => this.findProductsInCategory(c, item)) >= 0)
 				&& this.compareWithPrice(item.price, event.price)
-				&& (event.rating.length === 0 || event.rating.findIndex(i => i.rate === Math.round(item.rating)) >= 0)
+				&& (event.rating.length === 0 || event.rating.some(i => Number(item.rating) >= i.rate))
 			);
 		}
+		this.sortVisible();
+	}
+
+	applySort(value: number) {
+		this.activeSort = value;
+		this.changeFilterStatus(this.activatedFilters);
+	}
+
+	private sortVisible() {
+		const value = this.activeSort;
+		if (value === null || value === undefined) return;
+		this.dispItems = [...this.dispItems].sort((a, b) => {
+			if (value === 2) return Number(b.rating || 0) - Number(a.rating || 0);
+			if (value === 3) return Number(b.price) - Number(a.price);
+			if (value === 4) return Number(a.price) - Number(b.price);
+			return (a.name || '').localeCompare(b.name || '');
+		});
 	}
 
 	private compareWithPrice(value: number, filter: PriceFilter[]): boolean {
-		if (filter.length > 0 && filter.findIndex(i => i.from <= value && (!i.to || i.to >= value)) < 0) { return false; }
+		if (filter.length > 0 && filter.findIndex(i => i.from <= value && (i.to === null || i.to === undefined || i.to >= value)) < 0) { return false; }
 		return true;
 	}
 
 	private findProductsInCategory(category, item) {
 
-		if (category.id === item['cat_id']) { return true; }
+		if (String(category.id) === String(item['cat_id'])) { return true; }
 		let children = category.sub ? category.sub : category.category ? category.category : [];
 		for (let i = 0; i < children.length; i++) {
 			if (this.findProductsInCategory(children[i], item)) { return true; }

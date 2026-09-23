@@ -2,7 +2,7 @@
     <div class="compare__page">
       <h1 class="compare__page-title">Compare Groceries</h1>
       <div class="compare__page__container">
-        <ng-container *ngIf="items == ''">
+        <ng-container *ngIf="!items?.length">
           <div class="compare__page__container__no-items">
             <div class="compare__page__container__no-items__content">
                 <div class="compare__page__container__no-items__content__text">
@@ -13,7 +13,7 @@
             </div>
           </div>
         </ng-container>
-        <ng-container *ngIf="items > ''">
+        <ng-container *ngIf="items?.length">
           <div class="compare__page__container__sidebar">
             <div class="compare__page__container__sidebar__header">
               <h1 class="compare__page__container__sidebar__header-title">
@@ -37,8 +37,8 @@
             </div>
           </div>
           <div class="compare__page__container__content">
-            <div class="compare__page__container__content__item" *ngFor="let i of items; let x of index;">
-              <img (click)="close(x)" class="compare__page__container__content__item-close" src="./assets/svg/close.svg" />
+            <div class="compare__page__container__content__item" *ngFor="let i of items; let x = index;">
+              <img (click)="close(i)" class="compare__page__container__content__item-close" src="./assets/svg/close.svg" />
               <div class="compare__page__container__content__item__header">
                 <h3 class="compare__page__container__content__item__header-cat">{{i.category}}</h3>
                 <h2 class="compare__page__container__content__item__header-title">{{i.name}}</h2>
@@ -48,7 +48,7 @@
               <div class="compare__page__container__content__item__items">
                 <div class="compare__page__container__content__item__items-desc">{{i.description}}</div>
               </div>
-              <a (click)="add(i)" class="compare__page__container__content__item-btn btn btn-primary">Add to Cart</a>
+
             </div>
           </div>
         </ng-container>

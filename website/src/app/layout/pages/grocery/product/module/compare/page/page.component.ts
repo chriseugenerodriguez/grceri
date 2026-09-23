@@ -14,14 +14,14 @@ export class ProductComparePageComponent implements OnInit {
 
 	items: any;
 
-	constructor(private LS: LocalStorage, private title: Title, private meta: Meta, private CS: CartService) {
+	constructor(private LS: LocalStorage, private title: Title, private meta: Meta) {
 		this.title.setTitle('Compare Groceries - Grceri');
 		this.meta.addTag({ name: 'description', content: 'See which groceries are the best for you with our compare tool. Easily add, analyse and make decisions faster.' });
 	}
 
 	ngOnInit(): void {
 		this.LS.get('compare').subscribe((r) => {
-			this.items = r;
+			this.items = Array.isArray(r) ? r : [];
 		})
 	}
 
@@ -30,12 +30,4 @@ export class ProductComparePageComponent implements OnInit {
 		this.LS.set('compare', a);
 	}
 
-	add(i: Product) {
-		let a = this.items.filter(r => r.sem3_id !== i.sem3_id);
-
-		if (i) {
-			this.CS.addToCart(i);
-			this.LS.set('compare', a);
-		}
-	}
 }

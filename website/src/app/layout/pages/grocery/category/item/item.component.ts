@@ -21,6 +21,11 @@ export class ItemComponent {
   constructor() {
   }
 
+  imageError(event: Event) {
+    const image = event.target as HTMLImageElement;
+    if (!image.src.endsWith('/assets/svg/cart.svg')) image.src = '/assets/svg/cart.svg';
+  }
+
   product(i) {
     return i.toString().toLowerCase().replace(/[^a-zA-Z0-9]/g, '-').replace(/-{2,}/g, '-')
   }

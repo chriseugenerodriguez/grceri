@@ -13,9 +13,7 @@ export class ProductCompareComponent {
 
 	constructor(private router: Router, private LS: LocalStorage) {
 		this.LS.get('compare').subscribe((r) => {
-			if (r) {
-				this.items = r;
-			}
+			this.items = Array.isArray(r) ? r : [];
 		});
 	}
 
@@ -25,7 +23,7 @@ export class ProductCompareComponent {
 	}
 
 	remove(i) {
-		let a = this.items.filter(r => r !== i);
+		let a = this.items.filter(r => r.sem3_id !== i.sem3_id);
 
 		this.LS.set('compare', a);
 	}

@@ -38,10 +38,6 @@ export class GroceryComponent implements OnInit {
 				this.lists = categories;
 			});
 
-		this.http.get('/assets/json/new-tree.json')
-			.subscribe(response => {
-				console.log(response);
-			});
 	}
 
 	private url(i) {

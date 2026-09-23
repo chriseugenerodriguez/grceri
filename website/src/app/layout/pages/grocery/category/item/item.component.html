@@ -1,5 +1,5 @@
 <a [routerLink]="['/grocery/', product(cat), product(name)]">
-  <img [src]="images[0]" [alt]="name" />
+  <img loading="lazy" [src]="images?.[0] || '/assets/svg/cart.svg'" (error)="imageError($event)" [alt]="name" />
 </a>
 <div class="meta">
   <a [routerLink]="['/grocery/', product(cat), product(name)]">
@@ -10,7 +10,7 @@
     <div class="rating">
       <ng-container *ngIf="rating">
         <bar-rating [(rate)]="rating" [max]="5" readOnly="true" theme="fontawesome-o"></bar-rating>
-        {{product.rating}} (100)
+        {{rating}}
       </ng-container>
     </div>
 

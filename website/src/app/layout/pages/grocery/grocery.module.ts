@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 
 // RELATED
 import { GroceryComponent } from './grocery.component';
+import { DemoCatalogComponent } from './demo-catalog.component';
 
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HeaderModule } from '../../shared';
@@ -24,6 +25,7 @@ import { ProductModule } from './product/product.module';
 		ProductModule
 	],
 	declarations: [
+		DemoCatalogComponent,
 		GroceryComponent
 	],
 	exports: [

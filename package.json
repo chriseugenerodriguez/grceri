@@ -1,0 +1,31 @@
+{
+  "name": "grceri-demo-data",
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "data:collect": "node scripts/demo-data/collect.mjs",
+    "data:images": "node scripts/demo-data/images.mjs",
+    "hosting:build": "npm run data:images && npm --prefix frontend run build && node scripts/demo-data/validate-site.mjs",
+    "dev": "npm --prefix frontend run dev",
+    "test:browser": "node scripts/demo-data/preview-smoke.cjs",
+    "hosting:deploy": "npm run hosting:build && firebase deploy --config website/firebase.json --project grceri-c3702 --only hosting --non-interactive",
+    "data:migrate": "node scripts/demo-data/cli.mjs migrate",
+    "data:verify": "node scripts/demo-data/cli.mjs verify",
+    "data:classify": "node scripts/demo-data/classify.mjs",
+    "data:refresh": "npm run data:migrate && npm run data:collect && npm run data:import -- --input data/demo/storefront.json --source supermarketitaly && npm run data:verify && npm run data:snapshot && npm run data:images",
+    "data:snapshot": "node scripts/demo-data/cli.mjs snapshot",
+    "audit:repo": "node scripts/audit-repo.mjs",
+    "data:seed": "node scripts/demo-data/cli.mjs seed",
+    "data:import": "node scripts/demo-data/cli.mjs import",
+    "data:scrape": "node scripts/demo-data/cli.mjs scrape",
+    "data:export": "node scripts/demo-data/cli.mjs export",
+    "data:configure": "node scripts/demo-data/cli.mjs configure",
+    "test:data": "node --test scripts/demo-data/*.test.mjs",
+    "start": "npm run dev"
+  },
+  "dependencies": {
+    "pg": "^8.23.0"
+  }
+}

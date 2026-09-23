@@ -30,11 +30,10 @@ export class BrandComponent implements OnInit, OnDestroy {
 				this.getSearchFilters(res);
 			})
 		];
-		(this.searchTextbox.nativeElement as HTMLElement).focus()
 	}
 
 	get isTextActive() {
-		return document.activeElement === this.searchTextbox.nativeElement;
+		return this.searchTextbox && document.activeElement === this.searchTextbox.nativeElement;
 	}
 
 	onFocusSearchbox() {

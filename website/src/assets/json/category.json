@@ -499,8 +499,8 @@
       },
       {
         "name": "Wine, Beer & Spirits",
-        "class": "beer",
         "id": 11481,
+        "class": "beer",
         "category": [
           {
             "name": "Spirits",

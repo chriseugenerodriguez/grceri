@@ -1,161 +1,54 @@
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { NgModule, Component, Inject, PLATFORM_ID, OnInit } from '@angular/core';
+import { isPlatformBrowser, DOCUMENT } from '@angular/common';
+import { RouterModule, Routes } from '@angular/router';
+import { HomeComponent, NotFoundComponent, ProductComponent, GroceryComponent, CategoryComponent,
+  SolutionsComponent, SolutionsParentsComponent, SolutionsCooksComponent, SolutionsHostsComponent,
+  SolutionsStudentsComponent, ProductComparePageComponent } from './layout/pages/index';
+import { DemoCatalogComponent } from './layout/pages/grocery/demo-catalog.component';
 
-import {
-	HomeComponent,
-	NotFoundComponent,
-	CartComponent,
-	MobileAppComponent,
-	ProductComponent,
-	GroceryComponent,
-	CategoryComponent,
-	LoginComponent,
-	RegisterComponent,
-	SettingsComponent,
-	CallbackComponent,
-	FavoritesComponent,
-	HistoryComponent,
-	PasswordComponent,
-	PricingComponent,
-	ForgotPasswordComponent,
-	DashboardComponent,
-	UserComponent,
-	PricingFreeComponent,
-	PricingBasicComponent,
-	PricingEliteComponent,
-	PoliciesComponent,
-	PoliciesPageComponent,
-	ListsComponent,
-	SolutionsComponent,
-	SolutionsParentsComponent,
-	SolutionsCooksComponent,
-	SolutionsHostsComponent,
-	SolutionsStudentsComponent,
-	BlogHomeComponent,
-	BlogComponent,
-	BlogSingleComponent,
-	BlogCategoryComponent,
-	BlogSearchComponent,
-	ProductComparePageComponent,
-	ProductReviewsFormComponent,
-	ProductReviewsComponent,
-	ProductReviewsSingleComponent,
-	ProductSellersPageComponent
-} from './layout/pages/index';
+@Component({ selector: 'external-page', template: '<p class="container"><a href="https://chriseugenerodriguez.com/">Continue to Chris Rodriguez website</a></p>' })
+export class ExternalPageComponent implements OnInit {
+  constructor(@Inject(PLATFORM_ID) private platform: any, @Inject(DOCUMENT) private document: Document) { }
+  ngOnInit() {
+    if (isPlatformBrowser(this.platform)) this.document.location.replace('https://chriseugenerodriguez.com/');
+  }
+}
 
-import { AuthGuardService, LoggedInService } from './core/index';
+// Match descendants too, so old account and checkout deep links cannot activate legacy forms.
+export const DEMO_ROUTES: Routes = [
+  { path: '', component: HomeComponent, pathMatch: 'full' },
+  ...['login', 'register', 'sign-up', 'forgot-password', 'reset-password', 'callback', 'user',
+    'pricing', 'membership', 'checkout', 'payment', 'cart', 'lists', 'watchlists'].map(path =>
+    ({ path, children: [{ path: '**', redirectTo: '/groceries/all' }] })),
+  ...['blog', 'policies', 'mobile-app'].map(path =>
+    ({ path, children: [{ path: '**', component: ExternalPageComponent }] })),
+  { path: 'grocery/:cat/:product', children: [
+    { path: '', component: ProductComponent, pathMatch: 'full' },
+    { path: '**', redirectTo: '/groceries/all' }
+  ] },
+  { path: 'groceries', children: [
+    { path: '', component: GroceryComponent, pathMatch: 'full' },
+    { path: 'all', component: DemoCatalogComponent },
+    { path: 'search', component: DemoCatalogComponent },
+    { path: 'compare', component: ProductComparePageComponent },
+    { path: ':cat', component: CategoryComponent },
+    { path: ':cat/:sub', component: CategoryComponent },
+    { path: ':cat/:sub/:sub-sub', component: CategoryComponent }
+  ] },
+  { path: 'solutions', component: SolutionsComponent, children: [
+    { path: '', pathMatch: 'full', redirectTo: 'parents' },
+    { path: 'parents', component: SolutionsParentsComponent },
+    { path: 'cooks', component: SolutionsCooksComponent },
+    { path: 'hosts', component: SolutionsHostsComponent },
+    { path: 'students', component: SolutionsStudentsComponent }
+  ] },
+  { path: '404', component: NotFoundComponent },
+  { path: '**', component: NotFoundComponent }
+];
 
 @NgModule({
-	imports: [
-		RouterModule.forRoot([
-			{ path: '', component: HomeComponent, pathMatch: 'full' },
-			{ path: '404', component: NotFoundComponent },
-			{ path: 'cart', component: CartComponent },
-			{ path: 'callback', component: CallbackComponent },
-			{ path: 'mobile-app', component: MobileAppComponent },
-			{ path: 'policies', component: PoliciesComponent, children: [
-					{ path: '', pathMatch: 'full', redirectTo: 'terms-of-use' },
-					{ path: ':page', component: PoliciesPageComponent }
-				]
-			},
-			{ path: 'grocery/:cat/:product', children: [
-					{ path: '', component: ProductComponent },
-					{ path: 'vendors', component: ProductSellersPageComponent, canActivate: [AuthGuardService] },
-					{ path: 'reviews', children: [
-							{ path: '', component: ProductReviewsComponent },
-							{ path: ':id', component: ProductReviewsSingleComponent },
-							{ path: 'create/:id', component: ProductReviewsFormComponent, canActivate: [AuthGuardService] },
-						]
-					},
-				]
-			},
-			{ path: 'login', component: LoginComponent, canActivate: [LoggedInService] },
-			{ path: 'forgot-password', component: ForgotPasswordComponent, canActivate: [LoggedInService] },
-			{ path: 'sign-up', canActivate: [LoggedInService], children: [
-					{ path: '', component: RegisterComponent },
-					{ path: ':plan', component: RegisterComponent },
-				]
-			},
-			{ path: 'blog', component: BlogComponent,
-				children: [
-					{ path: '', pathMatch: 'full', component: BlogHomeComponent },
-					{ path: 'search/:query', component: BlogSearchComponent },
-					{ path: ':cat', component: BlogCategoryComponent },
-					{ path: ':cat/:name', component: BlogSingleComponent },
-				]
-			},
-			{ path: 'groceries',
-				children: [
-					{ path: '', component: GroceryComponent },
-					{ path: 'compare', component: ProductComparePageComponent },
-					{ path: ':cat', component: CategoryComponent },
-					{ path: ':cat/:sub', component: CategoryComponent },
-					{ path: ':cat/:sub/:sub-sub', component: CategoryComponent },
-				]
-			},
-			{ path: 'pricing',
-				children: [
-					{ path: '', component: PricingComponent },
-					{ path: 'free', component: PricingFreeComponent },
-					{ path: 'basic', component: PricingBasicComponent },
-					{ path: 'elite', component: PricingEliteComponent }
-				]
-			},
-			{ path: 'solutions', component: SolutionsComponent,
-				children: [
-					{ path: '', pathMatch: 'full', redirectTo: 'parents' },
-					{ path: 'parents', component: SolutionsParentsComponent },
-					{ path: 'cooks', component: SolutionsCooksComponent },
-					{ path: 'hosts', component: SolutionsHostsComponent },
-					{ path: 'students', component: SolutionsStudentsComponent }
-				]
-			},
-			{ path: 'user', component: UserComponent, canActivate: [AuthGuardService],
-				children: [
-					{ path: '', component: DashboardComponent },
-					{
-						path: 'settings', component: SettingsComponent,
-						children: [
-							{
-								path: 'account',
-								children: [
-									{ path: 'manage-data', component: PasswordComponent },
-									{ path: 'notifications', component: PasswordComponent },
-									{ path: 'password', component: PasswordComponent },
-									{ path: 'pause-delete', component: PasswordComponent },
-									{ path: 'profile', component: PasswordComponent },
-								]
-							},
-							{
-								path: 'billing', component: PasswordComponent,
-								children: [
-									{ path: 'history', component: PasswordComponent },
-									{ path: 'info', component: PasswordComponent },
-									{ path: 'subscription', component: PasswordComponent }
-								]
-							},
-							// { path: 'extras', component: PasswordComponent,
-							// 	children: [
-							// 		{ path: 'rewards', component: PasswordComponent },
-							// 	]
-							// },
-						]
-					},
-					{ path: 'history', component: HistoryComponent },
-					{ path: 'favorites', component: FavoritesComponent },
-					{
-						path: 'lists',
-						children: [
-							{ path: '', component: ListsComponent },
-							{ path: ':type', component: ListsComponent },
-						]
-					},
-					{ path: 'reports', component: FavoritesComponent },
-					{ path: 'support', component: PasswordComponent },
-				]
-			}
-		])
-	],
-	exports: [RouterModule]
+  declarations: [ExternalPageComponent],
+  imports: [RouterModule.forRoot(DEMO_ROUTES, { scrollPositionRestoration: 'enabled' })],
+  exports: [RouterModule]
 })
 export class AppRoutingModule { }

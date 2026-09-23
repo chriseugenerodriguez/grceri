@@ -1,13 +1,9 @@
-<div class="arrange">
-  <div class="arrange_unit middle sort">
-    <span>Sort by </span>
-    <kendo-dropdownlist [data]="sortList" [defaultItem]="defaultSort" [textField]="'text'" [valueField]="'value'"></kendo-dropdownlist>
-  </div>
-  <div class="arrange_unit middle view">
-
-    <div class="filter-group">
-      <img alt="Grid Product Layout" [class.active]="grid" (click)="switch(1)" src="./assets/svg/grid.svg" />
-      <img alt="List Product Layout" [class.active]="list" (click)="switch(2)" src="./assets/svg/list.svg" />
-    </div>
+<div class="demo-sort-controls">
+  <label>Sort by <select aria-label="Sort products" (change)="sortChanged.emit($any($event.target).value ? +$any($event.target).value : null)">
+    <option value="">Default Sorting</option><option *ngFor="let option of sortList" [value]="option.value">{{ option.text }}</option>
+  </select></label>
+  <div role="group" aria-label="Product layout">
+    <button type="button" aria-label="Grid view" [attr.aria-pressed]="grid" (click)="switch(1)"><img alt="" src="./assets/svg/grid.svg" /></button>
+    <button type="button" aria-label="List view" [attr.aria-pressed]="list" (click)="switch(2)"><img alt="" src="./assets/svg/list.svg" /></button>
   </div>
 </div>

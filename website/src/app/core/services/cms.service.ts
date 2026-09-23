@@ -9,7 +9,7 @@ const Prismic = prismic.default;
 
 // HTML FORMATTER
 // let PrismicDOM = require('prismic-dom');
-declare var PrismicDOM;
+import * as PrismicDOM from 'prismic-dom';
 let Elements = PrismicDOM.RichText.Elements;
 
 

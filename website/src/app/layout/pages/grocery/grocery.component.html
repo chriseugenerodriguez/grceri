@@ -1,4 +1,5 @@
 <div class="container">
+  <p><a routerLink="/groceries/all">Browse all sample products</a></p>
   <section class="grocery__categories" *ngFor="let a of lists">
 
     <a class="grocery__categories__header" [routerLink]="['/groceries/', url(a)]">

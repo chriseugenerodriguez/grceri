@@ -14,13 +14,13 @@
             <ng-container *ngFor="let i of posts; let x = index">
               <article class="blog__section__search__content__lists__list">
                 <figure>
-                  <a [routerLink]="['/blog/', lower(i.tags[0]), i.slugs[0]]">
+                  <a href="https://chriseugenerodriguez.com/">
                     <img [src]="i.data.image.mobile.url" [alt]="i.data.title[0].text" />
                   </a>
                 </figure>
                 <section>
                   <h3 class="blog__section__search__content__lists__list-title">
-                    <a [routerLink]="['/blog/', lower(i.tags[0]), i.slugs[0]]">
+                    <a href="https://chriseugenerodriguez.com/">
                       {{ i.data.title[0].text}}
                     </a>
                   </h3>

@@ -4,11 +4,13 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "npm --prefix ../frontend run dev",
     "sass-lint": "sass-lint -c sass-lint.yml -v -q",
     "ts-lint": "ng lint --type-check --force",
     "lint": "npm run sass-lint && npm run ts-lint",
-    "build": "ng build --configuration production --aot"
+    "build": "npm --prefix ../frontend run build",
+    "start:legacy": "ng serve",
+    "build:legacy": "ng build --configuration production --aot"
   },
   "private": true,
   "dependencies": {

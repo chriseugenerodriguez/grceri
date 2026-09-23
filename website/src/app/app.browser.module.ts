@@ -8,15 +8,8 @@ import { AppRoutingModule } from './app-routing.module';
 // PAGES
 import {
 	HomeModule,
-	CartModule,
-	MobileAppModule,
 	GroceryModule,
 	NotFoundModule,
-	UserModule,
-	PricingModule,
-	AuthModule,
-	PoliciesModule,
-	BlogModule,
 	SolutionsModule
 } from './layout/pages/index'
 
@@ -50,15 +43,8 @@ import { ProductsService } from './core/services/product.service';
 
 		// PAGES
 		HomeModule,
-		CartModule,
-		MobileAppModule,
 		GroceryModule,
 		NotFoundModule,
-		UserModule,
-		PricingModule,
-		AuthModule,
-		PoliciesModule,
-		BlogModule,
 		SolutionsModule,
 
 		// SHARED

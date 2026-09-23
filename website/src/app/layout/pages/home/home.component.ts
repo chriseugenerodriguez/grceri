@@ -8,7 +8,7 @@ import { Router } from '@angular/router';
 import { ItemComponent } from '../grocery/category/item/item.component';
 
 // SERVICES
-import { API, AuthService, CMSService } from '../../../core/index'
+import { API, AuthService, ProductsService } from '../../../core/index'
 import { environment } from '../../../../environments/environment';
 
 // COMPONENT
@@ -28,12 +28,13 @@ export class HomeComponent implements OnInit {
 	howListFour: boolean;
 
 	items: any;
+	popularItems: any[] = [];
 	category = [];
 
 	// CMS
 	latest: any;
 
-	constructor(meta: Meta, title: Title, private api: API, public router: Router, private AS: AuthService, private http: HttpClient, private IC: ItemComponent, private CMS: CMSService) {
+	constructor(meta: Meta, title: Title, private api: API, public router: Router, private AS: AuthService, private http: HttpClient, private IC: ItemComponent, private PS: ProductsService) {
 		title.setTitle('Find your favorite groceries - Grceri');
 		meta.addTags([
 			{ name: 'description', content: 'Making it simple and easy to find your grocery items without the hassle.' },
@@ -44,7 +45,7 @@ export class HomeComponent implements OnInit {
 	ngOnInit() {
 		this.list();
 		this.products();
-		this.latestPost();
+
 	}
 
 	public login() {
@@ -60,8 +61,11 @@ export class HomeComponent implements OnInit {
 
 	productPath = environment.production ? 'products.json' : 'products-local.json';
 	public products() {
-		this.http.get('/assets/json/' + this.productPath).subscribe(r => {
-			this.items = r;
+		this.PS.products().subscribe(r => {
+			// Show a bounded, varied selection; the full catalog remains searchable.
+			const featured = Array.from(new Map(r.map(p => [p.category, p])).values());
+			this.items = featured.slice(0, 14);
+			this.popularItems = featured.slice(14).concat(r).slice(0, 14);
 		});
 	}
 
@@ -73,11 +77,6 @@ export class HomeComponent implements OnInit {
 		this.moreC = !this.moreC;
 	}
 
-	public latestPost() {
-		this.CMS.latestPost().then((r) => {
-			this.latest = r[0];
-		})
-	}
 
 	public lower(i) {
 		return i.toLowerCase();

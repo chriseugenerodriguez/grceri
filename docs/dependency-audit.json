@@ -1,0 +1,954 @@
+{
+  "scannedAt": "2026-09-22T03:22:12.215Z",
+  "note": "npm advisory counts for lockfiles, not a proof of runtime exploitability. Ignored legacy code is included where present.",
+  "projects": [
+    {
+      "project": "api/auth",
+      "status": "No lockfile; dependency audit unavailable"
+    },
+    {
+      "project": "api/data-sync",
+      "counts": {
+        "info": 0,
+        "low": 14,
+        "moderate": 25,
+        "high": 123,
+        "critical": 63,
+        "total": 225
+      },
+      "directDependencies": [
+        {
+          "name": "azure",
+          "severity": "critical",
+          "fixAvailable": {
+            "name": "azure",
+            "version": "0.7.18",
+            "isSemVerMajor": true
+          },
+          "advisories": []
+        },
+        {
+          "name": "azure-functions-pack",
+          "severity": "high",
+          "fixAvailable": {
+            "name": "azure-functions-pack",
+            "version": "0.3.0",
+            "isSemVerMajor": true
+          },
+          "advisories": []
+        },
+        {
+          "name": "chai",
+          "severity": "high",
+          "fixAvailable": true,
+          "advisories": []
+        },
+        {
+          "name": "eslint",
+          "severity": "critical",
+          "fixAvailable": {
+            "name": "eslint",
+            "version": "10.11.0",
+            "isSemVerMajor": true
+          },
+          "advisories": []
+        },
+        {
+          "name": "eslint-plugin-import",
+          "severity": "high",
+          "fixAvailable": true,
+          "advisories": []
+        },
+        {
+          "name": "eslint-plugin-node",
+          "severity": "high",
+          "fixAvailable": {
+            "name": "eslint-plugin-node",
+            "version": "11.1.0",
+            "isSemVerMajor": true
+          },
+          "advisories": []
+        },
+        {
+          "name": "express",
+          "severity": "high",
+          "fixAvailable": true,
+          "advisories": [
+            {
+              "title": "express vulnerable to XSS via response.redirect()",
+              "url": "https://github.com/advisories/GHSA-qw6h-vgh9-j6wx"
+            },
+            {
+              "title": "Express.js Open Redirect in malformed URLs",
+              "url": "https://github.com/advisories/GHSA-rv95-896h-c2vc"
+            }
+          ]
+        },
+        {
+          "name": "indix-api-nodejs",
+          "severity": "moderate",
+          "fixAvailable": {
+            "name": "indix-api-nodejs",
+            "version": "0.1.2",
+            "isSemVerMajor": true
+          },
+          "advisories": []
+        },
+        {
+          "name": "mocha",
+          "severity": "critical",
+          "fixAvailable": {
+            "name": "mocha",
+            "version": "12.0.2",
+            "isSemVerMajor": true
+          },
+          "advisories": []
+        },
+        {
+          "name": "mocha-junit-reporter",
+          "severity": "critical",
+          "fixAvailable": true,
+          "advisories": []
+        },
+        {
+          "name": "nsp",
+          "severity": "high",
+          "fixAvailable": true,
+          "advisories": []
+        },
+        {
+          "name": "sinon",
+          "severity": "critical",
+          "fixAvailable": true,
+          "advisories": []
+        }
+      ]
+    },
+    {
+      "project": "api/functions",
+      "status": "No lockfile; dependency audit unavailable"
+    },
+    {
+      "project": "api/machine-learning",
+      "counts": {
+        "info": 0,
+        "low": 13,
+        "moderate": 21,
+        "high": 52,
+        "critical": 42,
+        "total": 128
+      },
+      "directDependencies": [
+        {
+          "name": "azure-functions-pack",
+          "severity": "high",
+          "fixAvailable": false,
+          "advisories": []
+        },
+        {
+          "name": "chai",
+          "severity": "high",
+          "fixAvailable": true,
+          "advisories": []
+        },
+        {
+          "name": "eslint",
+          "severity": "critical",
+          "fixAvailable": {
+            "name": "eslint",
+            "version": "10.11.0",
+            "isSemVerMajor": true
+          },
+          "advisories": []
+        },
+        {
+          "name": "eslint-plugin-import",
+          "severity": "high",
+          "fixAvailable": true,
+          "advisories": []
+        },
+        {
+          "name": "eslint-plugin-node",
+          "severity": "high",
+          "fixAvailable": {
+            "name": "eslint-plugin-node",
+            "version": "11.1.0",
+            "isSemVerMajor": true
+          },
+          "advisories": []
+        },
+        {
+          "name": "express",
+          "severity": "high",
+          "fixAvailable": true,
+          "advisories": [
+            {
+              "title": "express vulnerable to XSS via response.redirect()",
+              "url": "https://github.com/advisories/GHSA-qw6h-vgh9-j6wx"
+            },
+            {
+              "title": "Express.js Open Redirect in malformed URLs",
+              "url": "https://github.com/advisories/GHSA-rv95-896h-c2vc"
+            }
+          ]
+        },
+        {
+          "name": "mocha",
+          "severity": "critical",
+          "fixAvailable": {
+            "name": "mocha",
+            "version": "12.0.2",
+            "isSemVerMajor": true
+          },
+          "advisories": []
+        },
+        {
+          "name": "mocha-junit-reporter",
+          "severity": "critical",
+          "fixAvailable": true,
+          "advisories": []
+        },
+        {
+          "name": "nsp",
+          "severity": "critical",
+          "fixAvailable": true,
+          "advisories": []
+        },
+        {
+          "name": "sinon",
+          "severity": "critical",
+          "fixAvailable": true,
+          "advisories": []
+        }
+      ]
+    },
+    {
+      "project": "api/main",
+      "counts": {
+        "info": 0,
+        "low": 2,
+        "moderate": 84,
+        "high": 26,
+        "critical": 29,
+        "total": 141
+      },
+      "directDependencies": [
+        {
+          "name": "azure",
+          "severity": "critical",
+          "fixAvailable": {
+            "name": "azure",
+            "version": "0.7.18",
+            "isSemVerMajor": true
+          },
+          "advisories": []
+        },
+        {
+          "name": "azure-functions-pack",
+          "severity": "moderate",
+          "fixAvailable": false,
+          "advisories": []
+        },
+        {
+          "name": "request",
+          "severity": "critical",
+          "fixAvailable": {
+            "name": "azure",
+            "version": "0.7.18",
+            "isSemVerMajor": true
+          },
+          "advisories": [
+            {
+              "title": "Server-Side Request Forgery in Request",
+              "url": "https://github.com/advisories/GHSA-p8p7-x288-28g6"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "project": "api/products",
+      "counts": {
+        "info": 0,
+        "low": 8,
+        "moderate": 13,
+        "high": 33,
+        "critical": 15,
+        "total": 69
+      },
+      "directDependencies": [
+        {
+          "name": "azure-functions-pack",
+          "severity": "moderate",
+          "fixAvailable": false,
+          "advisories": []
+        },
+        {
+          "name": "eslint",
+          "severity": "high",
+          "fixAvailable": {
+            "name": "eslint",
+            "version": "10.11.0",
+            "isSemVerMajor": true
+          },
+          "advisories": []
+        },
+        {
+          "name": "eslint-plugin-node",
+          "severity": "high",
+          "fixAvailable": {
+            "name": "eslint-plugin-node",
+            "version": "11.1.0",
+            "isSemVerMajor": true
+          },
+          "advisories": []
+        },
+        {
+          "name": "express",
+          "severity": "high",
+          "fixAvailable": true,
+          "advisories": [
+            {
+              "title": "express vulnerable to XSS via response.redirect()",
+              "url": "https://github.com/advisories/GHSA-qw6h-vgh9-j6wx"
+            },
+            {
+              "title": "Express.js Open Redirect in malformed URLs",
+              "url": "https://github.com/advisories/GHSA-rv95-896h-c2vc"
+            }
+          ]
+        },
+        {
+          "name": "nsp",
+          "severity": "high",
+          "fixAvailable": {
+            "name": "nsp",
+            "version": "2.8.1",
+            "isSemVerMajor": true
+          },
+          "advisories": []
+        }
+      ]
+    },
+    {
+      "project": "api/transactions",
+      "counts": {
+        "info": 0,
+        "low": 13,
+        "moderate": 21,
+        "high": 52,
+        "critical": 42,
+        "total": 128
+      },
+      "directDependencies": [
+        {
+          "name": "azure-functions-pack",
+          "severity": "high",
+          "fixAvailable": false,
+          "advisories": []
+        },
+        {
+          "name": "chai",
+          "severity": "high",
+          "fixAvailable": true,
+          "advisories": []
+        },
+        {
+          "name": "eslint",
+          "severity": "critical",
+          "fixAvailable": {
+            "name": "eslint",
+            "version": "10.11.0",
+            "isSemVerMajor": true
+          },
+          "advisories": []
+        },
+        {
+          "name": "eslint-plugin-import",
+          "severity": "high",
+          "fixAvailable": true,
+          "advisories": []
+        },
+        {
+          "name": "eslint-plugin-node",
+          "severity": "high",
+          "fixAvailable": {
+            "name": "eslint-plugin-node",
+            "version": "11.1.0",
+            "isSemVerMajor": true
+          },
+          "advisories": []
+        },
+        {
+          "name": "express",
+          "severity": "high",
+          "fixAvailable": true,
+          "advisories": [
+            {
+              "title": "express vulnerable to XSS via response.redirect()",
+              "url": "https://github.com/advisories/GHSA-qw6h-vgh9-j6wx"
+            },
+            {
+              "title": "Express.js Open Redirect in malformed URLs",
+              "url": "https://github.com/advisories/GHSA-rv95-896h-c2vc"
+            }
+          ]
+        },
+        {
+          "name": "mocha",
+          "severity": "critical",
+          "fixAvailable": {
+            "name": "mocha",
+            "version": "12.0.2",
+            "isSemVerMajor": true
+          },
+          "advisories": []
+        },
+        {
+          "name": "mocha-junit-reporter",
+          "severity": "critical",
+          "fixAvailable": true,
+          "advisories": []
+        },
+        {
+          "name": "nsp",
+          "severity": "critical",
+          "fixAvailable": true,
+          "advisories": []
+        },
+        {
+          "name": "sinon",
+          "severity": "critical",
+          "fixAvailable": true,
+          "advisories": []
+        }
+      ]
+    },
+    {
+      "project": "api/user",
+      "counts": {
+        "info": 0,
+        "low": 12,
+        "moderate": 21,
+        "high": 46,
+        "critical": 31,
+        "total": 110
+      },
+      "directDependencies": [
+        {
+          "name": "azure-functions-pack",
+          "severity": "moderate",
+          "fixAvailable": false,
+          "advisories": []
+        },
+        {
+          "name": "eslint",
+          "severity": "high",
+          "fixAvailable": {
+            "name": "eslint",
+            "version": "10.11.0",
+            "isSemVerMajor": true
+          },
+          "advisories": []
+        },
+        {
+          "name": "eslint-plugin-import",
+          "severity": "high",
+          "fixAvailable": true,
+          "advisories": []
+        },
+        {
+          "name": "eslint-plugin-node",
+          "severity": "high",
+          "fixAvailable": {
+            "name": "eslint-plugin-node",
+            "version": "11.1.0",
+            "isSemVerMajor": true
+          },
+          "advisories": []
+        },
+        {
+          "name": "express",
+          "severity": "high",
+          "fixAvailable": true,
+          "advisories": [
+            {
+              "title": "express vulnerable to XSS via response.redirect()",
+              "url": "https://github.com/advisories/GHSA-qw6h-vgh9-j6wx"
+            },
+            {
+              "title": "Express.js Open Redirect in malformed URLs",
+              "url": "https://github.com/advisories/GHSA-rv95-896h-c2vc"
+            }
+          ]
+        },
+        {
+          "name": "mocha",
+          "severity": "critical",
+          "fixAvailable": {
+            "name": "mocha",
+            "version": "12.0.2",
+            "isSemVerMajor": true
+          },
+          "advisories": []
+        },
+        {
+          "name": "nsp",
+          "severity": "high",
+          "fixAvailable": {
+            "name": "nsp",
+            "version": "2.8.1",
+            "isSemVerMajor": true
+          },
+          "advisories": []
+        }
+      ]
+    },
+    {
+      "project": "mobile",
+      "counts": {
+        "info": 0,
+        "low": 7,
+        "moderate": 11,
+        "high": 23,
+        "critical": 8,
+        "total": 49
+      },
+      "directDependencies": [
+        {
+          "name": "cordova",
+          "severity": "high",
+          "fixAvailable": {
+            "name": "cordova",
+            "version": "13.0.0",
+            "isSemVerMajor": true
+          },
+          "advisories": []
+        }
+      ]
+    },
+    {
+      "project": "website",
+      "counts": {
+        "info": 0,
+        "low": 13,
+        "moderate": 46,
+        "high": 60,
+        "critical": 7,
+        "total": 126
+      },
+      "directDependencies": [
+        {
+          "name": "@angular-devkit/build-angular",
+          "severity": "high",
+          "fixAvailable": {
+            "name": "@angular-devkit/build-angular",
+            "version": "21.2.24",
+            "isSemVerMajor": true
+          },
+          "advisories": []
+        },
+        {
+          "name": "@angular-eslint/schematics",
+          "severity": "high",
+          "fixAvailable": {
+            "name": "@angular-eslint/schematics",
+            "version": "22.5.0",
+            "isSemVerMajor": true
+          },
+          "advisories": []
+        },
+        {
+          "name": "@angular/animations",
+          "severity": "moderate",
+          "fixAvailable": {
+            "name": "@angular/animations",
+            "version": "20.1.8",
+            "isSemVerMajor": true
+          },
+          "advisories": []
+        },
+        {
+          "name": "@angular/cli",
+          "severity": "high",
+          "fixAvailable": {
+            "name": "@angular/cli",
+            "version": "22.1.8",
+            "isSemVerMajor": true
+          },
+          "advisories": []
+        },
+        {
+          "name": "@angular/common",
+          "severity": "high",
+          "fixAvailable": {
+            "name": "@nguniversal/builders",
+            "version": "11.0.1",
+            "isSemVerMajor": true
+          },
+          "advisories": [
+            {
+              "title": "Angular is Vulnerable to XSRF Token Leakage via Protocol-Relative URLs in Angular HTTP Client",
+              "url": "https://github.com/advisories/GHSA-58c5-g7wp-6w37"
+            },
+            {
+              "title": "@angular/common: Denial of Service (DoS) via OOM in Date Formatting (formatDate)",
+              "url": "https://github.com/advisories/GHSA-48r7-hpm6-gfxm"
+            },
+            {
+              "title": "@angular/common: Weak 32-Bit Cache Key Hashing in `HttpTransferCache` Leading to Cross-Request Data Leakage and State Poisoning",
+              "url": "https://github.com/advisories/GHSA-39pv-4j6c-2g6v"
+            },
+            {
+              "title": "@angular/common: Denial of Service (DoS) via OOM in Number Formatting (digitsInfo)",
+              "url": "https://github.com/advisories/GHSA-p3vc-36g9-x9gr"
+            },
+            {
+              "title": "@angular/common: Information Leak via Default Caching of Credentialed Requests in HttpTransferCache",
+              "url": "https://github.com/advisories/GHSA-q6f4-qqrg-jv6x"
+            },
+            {
+              "title": "Angular: Cache-Key Ambiguity in HttpTransferCache Leading to Cross-Request Response Reuse and State Poisoning",
+              "url": "https://github.com/advisories/GHSA-jhpw-976m-542j"
+            },
+            {
+              "title": "Angular: Information Leak via `HttpTransferCache` Bypass When Using `withRequestsMadeViaParent`",
+              "url": "https://github.com/advisories/GHSA-p297-fm68-3q8c"
+            }
+          ]
+        },
+        {
+          "name": "@angular/compiler",
+          "severity": "high",
+          "fixAvailable": {
+            "name": "@angular/compiler",
+            "version": "22.1.7",
+            "isSemVerMajor": true
+          },
+          "advisories": [
+            {
+              "title": "Angular has XSS Vulnerability via Unsanitized SVG Script Attributes",
+              "url": "https://github.com/advisories/GHSA-jrmj-c5cx-3cw6"
+            },
+            {
+              "title": "Angular Stored XSS Vulnerability via SVG Animation, SVG URL and MathML Attributes",
+              "url": "https://github.com/advisories/GHSA-v4hv-rgfq-gp49"
+            },
+            {
+              "title": "@angular/compiler: Two-Way Property Binding Sanitization Bypass (XSS)",
+              "url": "https://github.com/advisories/GHSA-58w9-8g37-x9v5"
+            },
+            {
+              "title": "Angular: Template and Attribute Namespace Sanitization Bypass (XSS)",
+              "url": "https://github.com/advisories/GHSA-f3m7-gqxr-g87x"
+            },
+            {
+              "title": "Angular i18n: Cross-Site Scripting (XSS) via event-handler attributes",
+              "url": "https://github.com/advisories/GHSA-jj27-h5hq-8x99"
+            },
+            {
+              "title": "Angular: Sanitization bypass via directive host bindings on concrete host elements in @angular/core and @angular/compiler",
+              "url": "https://github.com/advisories/GHSA-hh8m-fm6v-7cvg"
+            }
+          ]
+        },
+        {
+          "name": "@angular/compiler-cli",
+          "severity": "moderate",
+          "fixAvailable": {
+            "name": "@angular/compiler-cli",
+            "version": "22.1.7",
+            "isSemVerMajor": true
+          },
+          "advisories": []
+        },
+        {
+          "name": "@angular/core",
+          "severity": "high",
+          "fixAvailable": {
+            "name": "@angular/core",
+            "version": "22.1.7",
+            "isSemVerMajor": true
+          },
+          "advisories": [
+            {
+              "title": "Angular i18n vulnerable to Cross-Site Scripting",
+              "url": "https://github.com/advisories/GHSA-prjf-86w9-mfqv"
+            },
+            {
+              "title": "Angular has XSS Vulnerability via Unsanitized SVG Script Attributes",
+              "url": "https://github.com/advisories/GHSA-jrmj-c5cx-3cw6"
+            },
+            {
+              "title": "Angular: Template and Attribute Namespace Sanitization Bypass (XSS)",
+              "url": "https://github.com/advisories/GHSA-f3m7-gqxr-g87x"
+            },
+            {
+              "title": "@angular/core: Angular Template and Dynamic Component Namespace Bypass leading to Cross-Site Scripting (XSS)",
+              "url": "https://github.com/advisories/GHSA-692r-grfm-v8x7"
+            },
+            {
+              "title": "Angular Client Hydration DOM Clobbering & Response-Cache Poisoning",
+              "url": "https://github.com/advisories/GHSA-rgjc-h3x7-9mwg"
+            },
+            {
+              "title": "Angular i18n: Cross-Site Scripting (XSS) via event-handler attributes",
+              "url": "https://github.com/advisories/GHSA-jj27-h5hq-8x99"
+            },
+            {
+              "title": "Angular: Sanitization bypass via directive host bindings on concrete host elements in @angular/core and @angular/compiler",
+              "url": "https://github.com/advisories/GHSA-hh8m-fm6v-7cvg"
+            }
+          ]
+        },
+        {
+          "name": "@angular/forms",
+          "severity": "moderate",
+          "fixAvailable": {
+            "name": "@angular/forms",
+            "version": "22.1.7",
+            "isSemVerMajor": true
+          },
+          "advisories": []
+        },
+        {
+          "name": "@angular/localize",
+          "severity": "moderate",
+          "fixAvailable": {
+            "name": "@angular/localize",
+            "version": "22.1.7",
+            "isSemVerMajor": true
+          },
+          "advisories": []
+        },
+        {
+          "name": "@angular/platform-browser",
+          "severity": "moderate",
+          "fixAvailable": {
+            "name": "@angular/platform-browser",
+            "version": "22.1.7",
+            "isSemVerMajor": true
+          },
+          "advisories": []
+        },
+        {
+          "name": "@angular/platform-browser-dynamic",
+          "severity": "moderate",
+          "fixAvailable": {
+            "name": "@angular/platform-browser-dynamic",
+            "version": "20.0.7",
+            "isSemVerMajor": true
+          },
+          "advisories": []
+        },
+        {
+          "name": "@angular/platform-server",
+          "severity": "high",
+          "fixAvailable": {
+            "name": "@angular-devkit/build-angular",
+            "version": "21.2.24",
+            "isSemVerMajor": true
+          },
+          "advisories": [
+            {
+              "title": "Angular: SSRF via protocol-relative and backslash URLs in Angular Platform-Server",
+              "url": "https://github.com/advisories/GHSA-45q2-gjvg-7973"
+            },
+            {
+              "title": "@angular/platform-server: Missing `<noscript>` Raw-Text Serialization Escaping leads to Cross-Site Scripting (XSS) in Angular SSR",
+              "url": "https://github.com/advisories/GHSA-gxx4-3xcv-f8qx"
+            },
+            {
+              "title": "@angular/platform-server: Improper Neutralization of Input During Web Page Generation ('Cross-site Scripting')",
+              "url": "https://github.com/advisories/GHSA-hqr9-c56f-3x7f"
+            },
+            {
+              "title": "@angular/platform-server: URL Parser Differential leading to SSRF Allowlist Bypass",
+              "url": "https://github.com/advisories/GHSA-xrxm-cp7j-8xf6"
+            },
+            {
+              "title": "@angular/platform-server: SSRF via Hostname Hijacking",
+              "url": "https://github.com/advisories/GHSA-rfh7-fxqc-q52v"
+            },
+            {
+              "title": "Angular SSR: Missing Fallback Raw-Content Serialization Escaping leads to Cross-Site Scripting (XSS)",
+              "url": "https://github.com/advisories/GHSA-vpx6-8pjr-4g3v"
+            },
+            {
+              "title": "Angular: SSR XSS via Unescaped <template> Content Across DocumentFragment Boundaries in Fallback Raw-Content Elements",
+              "url": "https://github.com/advisories/GHSA-v3p8-whq6-r5jg"
+            },
+            {
+              "title": "Angular: SSRF and Cross-Origin Credential Disclosure via URL Resolution Discrepancy in SSR",
+              "url": "https://github.com/advisories/GHSA-f6mr-pjwc-34m4"
+            }
+          ]
+        },
+        {
+          "name": "@angular/router",
+          "severity": "moderate",
+          "fixAvailable": {
+            "name": "@angular/router",
+            "version": "22.1.7",
+            "isSemVerMajor": true
+          },
+          "advisories": []
+        },
+        {
+          "name": "@angular/service-worker",
+          "severity": "high",
+          "fixAvailable": {
+            "name": "@angular/service-worker",
+            "version": "22.1.7",
+            "isSemVerMajor": true
+          },
+          "advisories": [
+            {
+              "title": "@angular/service-worker: Sensitive Header Leakage on Cross-Origin Redirects in Angular Service Worker",
+              "url": "https://github.com/advisories/GHSA-qxh6-94w6-9r5p"
+            },
+            {
+              "title": "@angular/service-worker: Request Credential & Cache Policy Stripping",
+              "url": "https://github.com/advisories/GHSA-95qp-cmmw-mgqv"
+            },
+            {
+              "title": "Angular Service Worker Policy-Bypass & Credential-Stripping Vulnerabilities",
+              "url": "https://github.com/advisories/GHSA-gv2q-mqqv-365m"
+            }
+          ]
+        },
+        {
+          "name": "@nguniversal/builders",
+          "severity": "critical",
+          "fixAvailable": {
+            "name": "@nguniversal/builders",
+            "version": "11.0.1",
+            "isSemVerMajor": true
+          },
+          "advisories": []
+        },
+        {
+          "name": "@nguniversal/express-engine",
+          "severity": "critical",
+          "fixAvailable": false,
+          "advisories": [
+            {
+              "title": "Angular SSR is vulnerable to SSRF and Header Injection via request handling pipeline",
+              "url": "https://github.com/advisories/GHSA-x288-3778-4hhx"
+            }
+          ]
+        },
+        {
+          "name": "@progress/kendo-angular-dialog",
+          "severity": "moderate",
+          "fixAvailable": {
+            "name": "@progress/kendo-angular-dialog",
+            "version": "25.1.0",
+            "isSemVerMajor": true
+          },
+          "advisories": []
+        },
+        {
+          "name": "@progress/kendo-angular-dropdowns",
+          "severity": "moderate",
+          "fixAvailable": {
+            "name": "@progress/kendo-angular-dropdowns",
+            "version": "25.1.0",
+            "isSemVerMajor": true
+          },
+          "advisories": []
+        },
+        {
+          "name": "auth0-js",
+          "severity": "high",
+          "fixAvailable": {
+            "name": "auth0-js",
+            "version": "10.2.1",
+            "isSemVerMajor": true
+          },
+          "advisories": [
+            {
+              "title": "Auth.js SDK has Improper Permission Checking",
+              "url": "https://github.com/advisories/GHSA-8qjv-jj2q-x832"
+            }
+          ]
+        },
+        {
+          "name": "bootstrap",
+          "severity": "moderate",
+          "fixAvailable": true,
+          "advisories": [
+            {
+              "title": "Bootstrap Vulnerable to Cross-Site Scripting in its Popover and Tooltip Components",
+              "url": "https://github.com/advisories/GHSA-q58r-hwc8-rm9j"
+            },
+            {
+              "title": "Bootstrap Cross-Site Scripting (XSS) vulnerability for data-* attributes",
+              "url": "https://github.com/advisories/GHSA-vxmc-5x29-h64v"
+            }
+          ]
+        },
+        {
+          "name": "express",
+          "severity": "high",
+          "fixAvailable": true,
+          "advisories": [
+            {
+              "title": "express vulnerable to XSS via response.redirect()",
+              "url": "https://github.com/advisories/GHSA-qw6h-vgh9-j6wx"
+            },
+            {
+              "title": "Express.js Open Redirect in malformed URLs",
+              "url": "https://github.com/advisories/GHSA-rv95-896h-c2vc"
+            }
+          ]
+        },
+        {
+          "name": "ngx-bootstrap",
+          "severity": "moderate",
+          "fixAvailable": {
+            "name": "ngx-bootstrap",
+            "version": "22.0.0",
+            "isSemVerMajor": true
+          },
+          "advisories": []
+        },
+        {
+          "name": "ngx-device-detector",
+          "severity": "moderate",
+          "fixAvailable": {
+            "name": "ngx-device-detector",
+            "version": "12.0.0",
+            "isSemVerMajor": true
+          },
+          "advisories": []
+        },
+        {
+          "name": "ngx-stripe",
+          "severity": "moderate",
+          "fixAvailable": {
+            "name": "ngx-stripe",
+            "version": "22.9.0",
+            "isSemVerMajor": true
+          },
+          "advisories": []
+        },
+        {
+          "name": "xlsx",
+          "severity": "high",
+          "fixAvailable": false,
+          "advisories": [
+            {
+              "title": "Prototype Pollution in sheetJS",
+              "url": "https://github.com/advisories/GHSA-4r6h-8v6p-xvw6"
+            },
+            {
+              "title": "SheetJS Regular Expression Denial of Service (ReDoS)",
+              "url": "https://github.com/advisories/GHSA-5pgg-2g8v-p4x9"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

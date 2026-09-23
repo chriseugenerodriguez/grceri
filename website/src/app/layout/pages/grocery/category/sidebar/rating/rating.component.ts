@@ -1,7 +1,6 @@
 import { RatingFilter } from '../../../../../../core';
 
 import { Input, Component, OnInit, Output, EventEmitter } from '@angular/core';
-import * as lodash from 'lodash';
 
 @Component({
 	selector: 'rating',
@@ -13,13 +12,12 @@ export class RatingComponent implements OnInit {
 	@Input() activatedFilters: RatingFilter[] = [];
 	@Output() activeFilters: EventEmitter<RatingFilter[]> = new EventEmitter<RatingFilter[]>();
 
-	public stars = lodash.range(1, 6);
+	public stars = [1, 2, 3, 4, 5];
 
 	constructor() {
 	}
 
 	ngOnInit() {
-		console.log(this.availableFilters);
 	}
 
 	public filterActive(rating): boolean {

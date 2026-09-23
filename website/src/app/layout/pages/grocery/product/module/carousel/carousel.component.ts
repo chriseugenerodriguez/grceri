@@ -37,7 +37,11 @@ export class ProductCarouselComponent implements OnChanges, AfterViewInit {
 		this.shownItems = 5;
 	}
 
-	ngOnChanges() {
+	imageError(event: Event) {
+    const image = event.target as HTMLImageElement;
+    if (!image.src.endsWith('/assets/svg/cart.svg')) image.src = '/assets/svg/cart.svg';
+  }
+  ngOnChanges() {
 		this.product = this.data;
 		this.activeProduct = this.product['images'][0];
 
@@ -73,6 +77,7 @@ export class ProductCarouselComponent implements OnChanges, AfterViewInit {
 
 	private _calculateItems() {
 		// BASIC CONFIGURATION
+		if (!this.ITEM) return;
 		this.item = this.ITEM.nativeElement.offsetHeight;
 
 

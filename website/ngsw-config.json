@@ -1,38 +1,6 @@
 {
   "index": "/index.html",
-  "dataGroups": [{
-    "name": "api-performance",
-    "urls": [
-      "/assets/**"
-    ],
-    "cacheConfig": {
-      "strategy": "performance",
-      "maxSize": 100,
-      "maxAge": "3d"
-    }
-  },{
-    "name": "categories",
-    "urls": [
-      "/api/misc/assets/categories"
-    ],
-    "cacheConfig": {
-      "strategy": "freshness",
-      "maxSize": 100,
-      "maxAge": "10d",
-      "timeout": "10s"
-    }
-  },{
-    "name": "polyfills",
-    "urls": [
-      "/polyfills.*.js"
-    ],
-    "cacheConfig": {
-      "strategy": "freshness",
-      "maxSize": 100,
-      "maxAge": "10d",
-      "timeout": "10s"
-    }
-  }],
+  "dataGroups": [],
   "assetGroups": [
     {
       "name": "app",
@@ -47,7 +15,8 @@
           "/*.woff"
         ]
       }
-    }, {
+    },
+    {
       "name": "assets",
       "installMode": "lazy",
       "updateMode": "prefetch",

@@ -33,22 +33,6 @@ export class ProductSocialComponent {
 	}
 
 	share() {
-		if (this.DS.isMobile) {
-			window.plugins.socialsharing.shareWithOptions({
-				subject: this.meta.title,
-				message: this.meta.description,
-				url: 'http://grceri.com' + this.router.url
-			});
-		} else {
-			navigator.share({
-				title: this.meta.title,
-				text: this.meta.description,
-				url: 'http://grceri.com' + this.router.url
-			}).then((response) => {
-				console.log(response);
-			}).catch((error) => {
-				console.log(error);
-			});
-		}
+		return this.social('share');
 	}
 }

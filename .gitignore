@@ -49,3 +49,16 @@ designs/*
 mobile/*
 scraper/*
 utils/*
+
+# Local database credentials and generated demo artifacts
+.env
+.env.*
+!.env.example
+data/demo/
+website/src/assets/demo-config.json
+**/local.settings.json
+**/*-audit.log
+firebase-debug.log
+**/firebase-debug.log
+**/.firebase/
+frontend/public/assets/
