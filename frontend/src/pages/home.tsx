@@ -12,7 +12,7 @@ export function HomePage() {
   <div className="app-viewer-stripes"></div>
   <div className="app-viewer__container container">
     <div className="app-viewer__container__content">
-
+      <span className="home-eyebrow">Grocery discovery, simplified</span>
       <h1 className="app-viewer__container__content-title">The new standard in grocery shopping.</h1>
       <p className="app-viewer__container__content-desc">Grceri is the best solution for searching all your favorite food
         products
@@ -68,9 +68,7 @@ export function HomePage() {
           </div>
         </li>
       </ul>
-      <a className="groceries__illustrations__sub-header-link" href="/groceries/all">Discover how our features can start
-        saving you
-        money <span aria-hidden="true">?</span></a>
+        <Link className="groceries__illustrations__sub-header-link" to="/groceries/all">Explore the sample catalog <span aria-hidden="true">→</span></Link>
     </div>
     <section className="groceries__illustrations__sub-header__recommendations">
       <div className="container">
@@ -82,9 +80,8 @@ export function HomePage() {
 
 <section className="container category text-center">
   <div className="category__content">
-    <h3 className="category__content-title">Build a grocery list from the best source</h3>
-    <p className="category__content-desc">At Grceri. You will be able to set custom preferences based on your diet, with a
-      bunch of goodies included.</p>
+    <h3 className="category__content-title">Find the right groceries faster</h3>
+    <p className="category__content-desc">Browse a focused sample catalog, compare products, and keep the details you need in one place.</p>
     <ul className="category__content__lists">
       <li className="category__content__lists__list">
         <strong>Food Analytics</strong>
@@ -117,8 +114,8 @@ export function HomePage() {
   <div className="container">
     <div className="row">
       <div className="col col-md-6">
-        <h3 className="cta-title">Ready to get started?</h3>
-        <h4 className="cta-subtitle">Explore the sample catalog.</h4>
+        <h3 className="cta-title">Ready to explore?</h3>
+        <h4 className="cta-subtitle">Start with the public catalog preview.</h4>
       </div>
       <div className="col col-md-6">
         <Button asChild><Link to="/groceries/all">Browse the demo</Link></Button>

@@ -4,7 +4,6 @@ import { Link, useLocation } from 'react-router-dom';
 import { ChevronDown } from 'lucide-react';
 import { Button } from './ui/button';
 import { DropdownMenu, DropdownMenuTrigger, DropdownMenuContent, DropdownMenuItem, DropdownMenuSub, DropdownMenuSubTrigger, DropdownMenuSubContent } from './ui/dropdown-menu';
-import { SearchForm } from './shared';
 import { useCatalog } from '@/lib/state';
 import { children, PERSONAL_SITE, type CategoryEntry } from '@/lib/catalog';
 
@@ -28,7 +27,6 @@ export function OriginalHeader() {
   return <header className={`original-header ${home ? 'original-header-home' : ''}`}><div className="original-header-inner">
     <Link to="/" aria-label="Grceri home"><img src="/assets/svg/logo.svg" alt="Grceri" className="original-logo" /></Link>
     <nav aria-label="Categories"><HoverMenu label="Categories" arrow><DropdownMenuItem asChild><Link to="/groceries">All categories</Link></DropdownMenuItem>{entries.filter(e => !e.parents.length).map(e => <CategoryMenu key={e.node.id} entry={e} />)}</HoverMenu></nav>
-    <div className="original-header-search">{!home && <SearchForm />}</div>
     <nav aria-label="Resources and solutions" className="original-header-right">
       <HoverMenu label="Solutions">{['Parents','Cooks','Hosts','Students'].map(name => <DropdownMenuItem asChild key={name}><Link to={`/solutions/${name.toLowerCase()}`}>For {name}</Link></DropdownMenuItem>)}</HoverMenu>
       <HoverMenu label="Resources">{['Blog','Help Center'].map(name => <DropdownMenuItem asChild key={name}><a href={PERSONAL_SITE}>{name}</a></DropdownMenuItem>)}</HoverMenu>

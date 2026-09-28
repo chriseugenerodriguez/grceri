@@ -22,11 +22,11 @@ export function SearchForm({ large = false }: { large?: boolean }) {
   const navigate = useNavigate(); const id = useId(); const input = useRef<HTMLInputElement>(null);
   const savedQuery = params.get('q') || '';
   useEffect(() => setValue(savedQuery), [savedQuery]);
-  return <form role="search" className={`flex w-full min-w-0 items-center gap-2 ${large ? 'max-w-xl rounded-xl bg-white p-2 shadow-lg' : ''}`} onSubmit={e => { e.preventDefault(); navigate(value.trim() ? `/groceries/search?q=${encodeURIComponent(value.trim())}` : "/groceries/all"); }}>
+  return <form role="search" className={`search-form flex w-full min-w-0 items-center gap-2 ${large ? 'search-form-large max-w-xl rounded-xl bg-white p-2 shadow-lg' : 'search-form-compact'}`} onSubmit={e => { e.preventDefault(); navigate(value.trim() ? `/groceries/search?q=${encodeURIComponent(value.trim())}` : "/groceries/all"); }}>
     <Label htmlFor={id} className="sr-only">Search groceries</Label>
     <div className="relative min-w-0 flex-1"><Input ref={input} id={id} name="query" type="search" value={value} onChange={e => setValue(e.target.value)} placeholder="Search groceries" className={`min-w-0 bg-white pr-10 text-foreground ${large ? 'h-12 border-0 shadow-none' : 'h-11'}`} />
     {value && <Button type="button" variant="ghost" size="icon" className="absolute right-1 top-1/2 size-8 -translate-y-1/2" aria-label="Clear search" onClick={() => { setValue(''); input.current?.focus(); }}><X className="size-4" /></Button>}</div>
-    <Button type="submit" size={large ? 'lg' : 'icon'} className={large ? 'h-12 shrink-0' : 'size-11 shrink-0'} aria-label="Search groceries"><Search />{large && <span className="hidden sm:inline">Search</span>}</Button>
+    <Button type="submit" size={large ? 'lg' : 'icon'} className={'mr-0' + large ? 'h-12 shrink-0' : 'size-11 shrink-0'} aria-label="Search groceries"><Search />{large && <span className="hidden sm:inline">Search</span>}</Button>
   </form>;
 }
 export function ProductImage({ product, className = '' }: { product: Product; className?: string }) {
@@ -43,15 +43,16 @@ export function ProductCard({ product }: { product: Product }) {
   return <Card className="h-full min-w-0 gap-3 py-4 shadow-none transition-shadow hover:shadow-md" data-testid="product-card" role="article">
     <Link to={productUrl(product)} className="block px-4"><ProductImage product={product} /></Link>
     <CardContent className="flex flex-1 flex-col gap-3 px-4">
-      <p className="truncate text-xs text-muted-foreground">{product.brand || product.category}</p>
+      <p className="truncate text-[11px] font-semibold uppercase tracking-[.12em] text-muted-foreground">{product.brand || product.category}</p>
       <Link to={productUrl(product)} className="product-name text-sm font-semibold leading-relaxed hover:text-primary">{product.name}</Link>
+      <div className="flex min-h-6 items-center"><Rating value={product.rating} /></div>
       <div className="mt-auto flex items-center justify-between gap-2"><span className="text-lg font-semibold" data-testid="product-price">{money(product)}</span><CompareButton product={product} compact /></div>
     </CardContent>
   </Card>;
 }
 export function ProductRow({ title, products, href = '/groceries/all' }: { title: string; products: Product[]; href?: string }) {
   if (!products.length) return null;
-  return <section className="page-width py-10"><div className="mb-6 flex items-end justify-between gap-4"><h2 className="text-2xl sm:text-3xl">{title}</h2></div>
+  return <section className="page-width py-10"><div className="mb-6 flex items-end justify-between gap-4"><h2 className="text-2xl sm:text-3xl"><Link to={href} className="section-heading-link">{title}<ArrowRight aria-hidden="true" /></Link></h2></div>
     <Carousel opts={{ align: 'start', slidesToScroll: 'auto' }} aria-label={title} tabIndex={0} className="min-w-0 rounded-lg focus-visible:outline-2 focus-visible:outline-primary"><div className="mb-4 flex items-center justify-end gap-3"><div className="flex shrink-0 gap-2"><CarouselPrevious className="static size-10 translate-y-0" /><CarouselNext className="static size-10 translate-y-0" /></div></div><CarouselContent className="touch-pan-y">{products.slice(0, 9).map((p, index) => <CarouselItem key={p.sem3_id} aria-label={`${index + 1} of ${Math.min(products.length, 9)}`} className="basis-full sm:basis-1/2 lg:basis-1/3"><ProductCard product={p} /></CarouselItem>)}</CarouselContent></Carousel>
   </section>;
 }
