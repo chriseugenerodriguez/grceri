@@ -1,3 +1,4 @@
+import { loadPersonalCatalog } from './personal-catalog.mjs';
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { categoryEntries, readComparison, type Product, type Tree } from './catalog';
 
@@ -10,12 +11,7 @@ function useCatalogState() {
   useEffect(() => {
     const controller = new AbortController();
     setLoading(true); setError('');
-    async function json(path: string) {
-      const response = await fetch(path, { signal: controller.signal });
-      if (!response.ok) throw new Error('Catalog unavailable');
-      return response.json();
-    }
-    Promise.all([json('/assets/json/products-demo.json'), json('/assets/json/category.json')]).then(([products, tree]) => {
+    loadPersonalCatalog(controller.signal).then(([products, tree]) => {
       if (!Array.isArray(products) || !tree?.groceries?.categories) throw new Error('Invalid catalog');
       setProducts(products); setTree(tree);
     }).catch(error => { if (error.name !== 'AbortError') setError('The catalog could not load. Please try again.'); })

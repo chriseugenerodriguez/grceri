@@ -6,7 +6,7 @@ The site now runs as a public preview: accounts, login, signup, payments, checko
 
 ## Firebase Hosting and the populated catalog
 
-The public site is a static React build on Firebase project `chriseugenerodriguez`, site `chriseugenerodriguez-grceri`. Search, categories, product details, comparisons, and homepage recommendations use the same bundled catalog. Personal Supabase (`ojofbckfasftdhrthabs`) remains the import store in the isolated `grceri` schema; visitors do not need a live database connection. No Firebase Functions, Firestore, or authentication migration is needed for this preview.
+The public site is a static React build on Firebase project `chriseugenerodriguez`, site `chriseugenerodriguez-grceri`. Search, categories, product details, comparisons, and homepage recommendations use the same Personal catalog. Personal Supabase (`ojofbckfasftdhrthabs`) remains the import store in the isolated `grceri` schema; the storefront now reads products and categories directly from Personal. No Firebase Functions, Firestore, or authentication migration is needed for this preview.
 
 Search and the all-products view show 24 products per page. Shareable `q` and `page` URL parameters preserve searches and navigation. Search matches product names, brands, barcodes, and category ancestry, ignoring accents and punctuation. Out-of-range page requests are clamped to the available results.
 
@@ -86,3 +86,7 @@ The active shadcn development preview runs at **http://localhost:64680** via `np
 ### Personal migration verification — October 29, 2026
 
 Moved both existing catalog tables from Personal’s `public` schema into `grceri`, preserving their indexes, foreign keys, policies, and all 610 products and 606 categories. Database imports and REST snapshots now explicitly target `grceri`. Anonymous/authenticated roles have SELECT only; service writes remain restricted. The public React site still uses its bundled snapshot, so this backend change does not require a new frontend deployment. Legacy Azure/Go services are archived code, not migrated active services.
+
+### Direct storefront connection
+
+The deployed React storefront reads Personal through `frontend/src/lib/personal-catalog.mjs`, fetching every page of `grceri.demo_products` and `grceri.demo_categories`. `frontend/public/personal-demo.json` contains only public client configuration. A failed read shows the existing error/retry state. The JSON snapshot export remains a maintenance/export tool, not the storefront data source. Search and category behavior were verified in the live browser after deployment; no auth migration was needed.
