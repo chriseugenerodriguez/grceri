@@ -33,7 +33,7 @@ export async function saveDatabaseRows(client, rows) {
   await client.query('begin');
   try {
     for (const row of rows) {
-      await client.query(`insert into public.demo_products (id, source, source_id, payload, updated_at)
+      await client.query(`insert into grceri.demo_products (id, source, source_id, payload, updated_at)
         values ($1, $2, $3, $4::jsonb, now())
         on conflict (id) do update set source = excluded.source, source_id = excluded.source_id,
         payload = excluded.payload, updated_at = now()`,

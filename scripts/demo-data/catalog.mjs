@@ -86,7 +86,8 @@ export function extractProducts(html, pageUrl) {
 }
 
 export async function request(url, key, { method = 'GET', body, fetcher = fetch } = {}) {
-  const headers = { apikey: key, 'Content-Type': 'application/json' };
+  const headers = { apikey: key, 'Content-Type': 'application/json',
+    'Accept-Profile': 'grceri', 'Content-Profile': 'grceri' };
   // New sb_* keys are API keys, not JWT bearer tokens.
   if (!key.startsWith('sb_')) headers.Authorization = `Bearer ${key}`;
   if (method === 'POST') headers.Prefer = 'resolution=merge-duplicates,return=minimal';

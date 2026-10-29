@@ -6,8 +6,8 @@ import { categoryTree } from './categories.mjs';
 process.loadEnvFile(new URL('../../.env', import.meta.url));
 const { values } = parseArgs({ options: { 'dry-run': { type: 'boolean', default: false } } });
 await withDatabase(async client => {
-  const tree = categoryTree((await client.query('select * from public.demo_categories')).rows);
-  const rows = (await client.query("select id, source, source_id, payload from public.demo_products where source='supermarketitaly'")).rows;
+  const tree = categoryTree((await client.query('select * from grceri.demo_categories')).rows);
+  const rows = (await client.query("select id, source, source_id, payload from grceri.demo_products where source='supermarketitaly'")).rows;
   const changes = rows.map(row => ({ ...row, payload: { ...row.payload, cat_id: classifyProduct(row.payload, tree) } }))
     .filter((row, index) => row.payload.cat_id !== rows[index].payload.cat_id);
   const report = changes.map(row => ({ name: row.payload.name, category_id: row.payload.cat_id }));

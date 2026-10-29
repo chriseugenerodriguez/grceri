@@ -40,6 +40,8 @@ test('upserts batches and does not send new API keys as bearer JWTs', async () =
   });
   assert.deepEqual(calls.map(call => JSON.parse(call.options.body).length), [100, 100, 1]);
   assert.equal(calls[0].options.headers.Authorization, undefined);
+  assert.equal(calls[0].options.headers['Accept-Profile'], 'grceri');
+  assert.equal(calls[0].options.headers['Content-Profile'], 'grceri');
   assert.match(calls[0].options.headers.Prefer, /merge-duplicates/);
   assert.match(calls[0].url, /on_conflict=id/);
 });

@@ -48,7 +48,7 @@ async function main() {
       }
       await client.query('begin');
       try {
-        await client.query(`insert into public.demo_categories (id, parent_id, name, position, child_key, icon_class)
+        await client.query(`insert into grceri.demo_categories (id, parent_id, name, position, child_key, icon_class)
           select id, parent_id, name, position, child_key, icon_class from jsonb_to_recordset($1::jsonb)
           as c(id text, parent_id text, name text, position integer, child_key text, icon_class text)
           on conflict (id) do update set parent_id=excluded.parent_id, name=excluded.name,
@@ -61,16 +61,16 @@ async function main() {
   }
   if (command === 'verify') {
     await withDatabase(async client => {
-      const counts = (await client.query(`select (select count(*)::int from public.demo_products) as products,
-        (select count(*)::int from public.demo_categories) as categories,
-        (select count(*)::int from public.demo_products p left join public.demo_categories c
+      const counts = (await client.query(`select (select count(*)::int from grceri.demo_products) as products,
+        (select count(*)::int from grceri.demo_categories) as categories,
+        (select count(*)::int from grceri.demo_products p left join grceri.demo_categories c
           on c.id=p.payload->>'cat_id' where c.id is null) as unknown_categories`)).rows[0];
       const permissions = (await client.query(`select c.relname as name,c.relrowsecurity as rls,
         has_table_privilege('anon',c.oid,'SELECT') as public_read,
         has_table_privilege('anon',c.oid,'INSERT,UPDATE,DELETE') as public_write,
         has_table_privilege('authenticated',c.oid,'INSERT,UPDATE,DELETE') as authenticated_write
         from pg_class c join pg_namespace n on n.oid=c.relnamespace
-        where n.nspname='public' and c.relname in ('demo_products','demo_categories')`)).rows;
+        where n.nspname='grceri' and c.relname in ('demo_products','demo_categories')`)).rows;
       if (!counts.products || !counts.categories || counts.unknown_categories || permissions.length !== 2 ||
         permissions.some(p => !p.rls || !p.public_read || p.public_write || p.authenticated_write)) throw new Error('Catalog verification failed');
       console.log(JSON.stringify({ ...counts, permissions }, null, 2));

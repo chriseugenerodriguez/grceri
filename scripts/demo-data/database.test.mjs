@@ -9,6 +9,7 @@ test('password-based imports use parameterized queries and a transaction', async
     { id: 'id', source: 'fixture', source_id: '123', payload }
   ]);
   assert.equal(calls[0][0], 'begin');
+  assert.match(calls[1][0], /insert into grceri\.demo_products/);
   assert.match(calls[1][0], /on conflict \(id\) do update/);
   assert.ok(!calls[1][0].includes(payload.name));
   assert.equal(JSON.parse(calls[1][1][3]).name, payload.name);

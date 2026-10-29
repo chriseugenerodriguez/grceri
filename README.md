@@ -6,7 +6,7 @@ The site now runs as a public preview: accounts, login, signup, payments, checko
 
 ## Firebase Hosting and the populated catalog
 
-The public site is a static React build on Firebase project/site `grceri-c3702`. Search, categories, product details, comparisons, and homepage recommendations use the same bundled catalog. Supabase remains the import store; visitors do not need a live database connection. No Firebase Functions, Firestore, or authentication migration is needed for this preview.
+The public site is a static React build on Firebase project `chriseugenerodriguez`, site `chriseugenerodriguez-grceri`. Search, categories, product details, comparisons, and homepage recommendations use the same bundled catalog. Personal Supabase (`ojofbckfasftdhrthabs`) remains the import store in the isolated `grceri` schema; visitors do not need a live database connection. No Firebase Functions, Firestore, or authentication migration is needed for this preview.
 
 Search and the all-products view show 24 products per page. Shareable `q` and `page` URL parameters preserve searches and navigation. Search matches product names, brands, barcodes, and category ancestry, ignoring accents and punctuation. Out-of-range page requests are clamped to the available results.
 
@@ -25,14 +25,14 @@ npm run hosting:deploy
 
 New imports assign more specific subcategories when the product title supports them (for example spaghetti, oatmeal, Dijon mustard, and anchovies). Unclear products remain in their broad category. Product URL categories stay unchanged. For existing Supermarket Italy records, preview assignment changes with `npm run data:classify -- --dry-run`, then apply with `npm run data:classify`; follow with snapshot/build/deploy. The local review report is `data/demo/classification-report.json`.
 
-`hosting:deploy` caches product images into `website/src/assets/img/products/`, selects snapshot mode, builds production, and deploys **only** Hosting to `grceri-c3702`. The separate `grceri-api` site and legacy services are unaffected. It requires an authenticated Firebase CLI (`firebase login`). On Windows installations that need the operating system CA store, set `$env:NODE_USE_SYSTEM_CA='1'` first. Unavailable images use the local placeholder. The image cache and catalog should be committed together. Run `npm run hosting:build` to prepare without deploying.
+`hosting:deploy` caches product images into `website/src/assets/img/products/`, selects snapshot mode, builds production, and deploys **only** Hosting to `chriseugenerodriguez-grceri` in Personal. The separate `grceri-api` site and legacy services are unaffected. It requires an authenticated Firebase CLI (`firebase login`). On Windows installations that need the operating system CA store, set `$env:NODE_USE_SYSTEM_CA='1'` first. Unavailable images use the local placeholder. The image cache and catalog should be committed together. Run `npm run hosting:build` to prepare without deploying.
 
 ### Supabase setup
 
 Requires Node.js 22 or newer. Run `npm ci` in the repository root to install the Postgres client used by database commands. Run `npm --prefix frontend ci` to install the frontend dependencies. Start the app with `npm run dev`. No Angular dependencies are required.
 
 1. Copy `.env.example` to `.env` in the repository root. Fill in the project URL, public publishable/anon key, and database connection parameters from Supabase **Connect â†’ Session pooler**. The database password is used only by local CLI commands. `.env` is ignored by Git. Set `SUPABASE_DB_SSL_CA_FILE=supabase/certs/prod-ca-2021.crt` to use the supplied public CA certificate; TLS and hostname verification remain enabled.
-2. Run `npm run data:migrate`. It applies all SQL files in `supabase/migrations/` in filename order, creating isolated `demo_products` and `demo_categories` tables with public read access and server-only writes. It also upserts the 606-node category tree, preserving parent links, display order, and icons. The migrations and category import can be run again safely without replacing products. A service-role key is optional for REST product imports; it does not replace the database connection needed by `data:migrate`.
+2. Run `npm run data:migrate`. It applies all SQL files in `supabase/migrations/` in filename order, creating isolated `grceri.demo_products` and `grceri.demo_categories` tables with public read access and server-only writes. It also upserts the 606-node category tree, preserving parent links, display order, and icons. The migrations and category import can be run again safely without replacing products. A service-role key is optional for REST product imports; it does not replace the database connection needed by `data:migrate`.
 3. From the repository root:
 
    ```powershell
@@ -82,3 +82,7 @@ The importer uses the [Supabase REST API](https://supabase.com/docs/guides/api).
 Run `npm run test:data` for importer and React catalog regressions, then `npm run hosting:build` for type checking, production compilation and asset validation. `npm run test:browser` runs the production app through Playwright; install Playwright in your development tools and set `PLAYWRIGHT_MODULE` and `CHROMIUM_EXECUTABLE` if it is not on the default module/browser path. See [UI migration](docs/UI-MIGRATION.md) for component coverage.
 
 The active shadcn development preview runs at **http://localhost:64680** via `npm start` or `npm run dev`. Stop an existing preview before restarting; strict port checking prevents opening a different app on an unexpected port.
+
+### Personal migration verification — October 29, 2026
+
+Moved both existing catalog tables from Personal’s `public` schema into `grceri`, preserving their indexes, foreign keys, policies, and all 610 products and 606 categories. Database imports and REST snapshots now explicitly target `grceri`. Anonymous/authenticated roles have SELECT only; service writes remain restricted. The public React site still uses its bundled snapshot, so this backend change does not require a new frontend deployment. Legacy Azure/Go services are archived code, not migrated active services.
